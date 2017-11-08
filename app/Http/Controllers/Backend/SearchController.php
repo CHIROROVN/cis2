@@ -20,4 +20,8 @@ class SearchController extends BackendController
 
 		return view('backend.search.list');
 	}
+	public function detail(){	
+
+		return view('backend.search.detail');
+	}
 }

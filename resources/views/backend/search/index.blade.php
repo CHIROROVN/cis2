@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
- {!! Form::open(array('url' => 'overwork','id'=>'frmSearch', 'method' => 'post')) !!} 
+ {!! Form::open(array('url' => 'hoge/teacher-db/search','id'=>'frmSearch', 'method' => 'post')) !!} 
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
@@ -34,7 +34,7 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><input type="button" value="検索開始" id="btnSubmit">
+      <td align="center"><input type="submit" value="検索開始" id="btnSubmit">
         　　　　　
         <input type="reset" name="reset" value="リセット"></td>
     </tr>
@@ -43,5 +43,24 @@
     </tr>
   </tbody>
 </table>
-{!! Form::close() !!} 
+{!! Form::close() !!}
+<script type="text/javascript">
+$("#btnSubmit").on("click",function() { 
+  /* var flag = true; 
+  if (!$("[name=staff_belong]").val().replace(/ /g, "")) {  
+    $("#error-staff-belong").html('<?php //echo $error['error_belong_required'];?>');             
+    $("#error-staff-belong").css('display','block');   
+    $('[name=staff_belong]').focus();
+    flag = false;    
+  }
+
+ if (!$("#cb_year").val().replace(/ /g, "")) {  
+    $("#error-cb-year").html('<?php ///echo $error['error_year_required'];?>');             
+    $("#error-cb-year").css('display','block');   
+    $('#cb_year').focus();
+    flag = false; 
+  }  
+  if(flag)*/ $( "#frmSearch" ).submit();
+});
+</script>  
 @endsection
