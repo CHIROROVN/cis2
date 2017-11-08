@@ -17,6 +17,7 @@ class ComposerStaticInitcdf8dd5dc1b13680ba6ddf5cecd68af7
         '65fec9ebcfbb3cbb4fd0d519687aea01' => __DIR__ . '/..' . '/danielstjules/stringy/src/Create.php',
         'f0906e6318348a765ffb6eb24e0d0938' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Foundation/helpers.php',
         '58571171fd5812e6e447dce228f52f4d' => __DIR__ . '/..' . '/laravel/framework/src/Illuminate/Support/helpers.php',
+        '1f9e54d362959b6a1a8e882d41880168' => __DIR__ . '/../..' . '/app/Helper/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
