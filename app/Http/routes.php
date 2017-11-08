@@ -19,3 +19,15 @@ Route::controllers([
 	'auth' => 'Auth\AuthController',
 	'password' => 'Auth\PasswordController',
 ]);
+
+
+Route::group(['prefix' => 'hoge', 'namespace' => 'Backend'], function () 
+{
+	Route::get('/', function(){
+		return redirect()->route('backend.menu.index');
+	});
+
+	// menu
+	Route::get('teacher-db/menu', ['as' => 'backend.menu.index', 'uses' => 'MenuController@index']);
+
+});

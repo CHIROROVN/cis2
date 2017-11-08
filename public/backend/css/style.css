@@ -1,0 +1,43 @@
+@charset "utf-8";
+td {
+	font-family: "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3";
+	font-size: 12px;
+	line-height: 18px;
+}
+.col1 {
+	font-size: 14px;
+	font-weight: bold;
+	color: white;
+	background-color: #00a7e0;
+	line-height: 18px;
+}
+.col2 {
+	font-size: 12px;
+	background-color: #63D7FF;
+	line-height: 18px;
+}
+.col3 {
+	font-size: 12px;
+	background-color: #B2EBFF;
+	line-height: 18px;
+}
+.f_note {color: #772222}
+.f_red {color: red}
+.f_blue {color: blue}
+.f_caution {color: #CE0000}
+
+a {
+    color: #0000FF
+}
+a:link {
+    color: #0000FF
+}
+a:visited {
+    color: #0000FF
+}
+a:hover {
+    color: #0000FF
+}
+a:active {
+    color: #0000FF
+}
