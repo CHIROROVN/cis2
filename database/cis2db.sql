@@ -113,12 +113,6 @@ CREATE TABLE `m_user` (
   `last_user` int(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
---
--- Contenu de la table `m_user`
---
-
-INSERT INTO `m_user` (`u_id`, `u_name`, `u_login`, `u_passwd`, `u_power01`, `u_power02`, `u_free1`, `u_free2`, `u_free3`, `u_free4`, `u_free5`, `last_date`, `last_kind`, `last_ipadrs`, `last_user`) VALUES
-
 
 --
 -- Structure de la table `t_teacher`
