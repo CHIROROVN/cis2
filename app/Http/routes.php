@@ -31,3 +31,4 @@ Route::group(['prefix' => 'hoge', 'namespace' => 'Backend'], function ()
 	Route::get('teacher-db/menu', ['as' => 'backend.menu.index', 'uses' => 'MenuController@index']);
 
 });
+Route::get('/cis/teacher-db', ['as' => 'frontend.search.index', 'uses' => 'SearchController@index']);
