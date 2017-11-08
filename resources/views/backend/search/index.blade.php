@@ -1,5 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
+ {!! Form::open(array('url' => 'overwork','id'=>'frmSearch', 'method' => 'post')) !!} 
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
@@ -33,7 +34,7 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="location.href='teacher_list.html'" value="検索開始">
+      <td align="center"><input type="button" value="検索開始" id="btnSubmit">
         　　　　　
         <input type="reset" name="reset" value="リセット"></td>
     </tr>
@@ -42,4 +43,5 @@
     </tr>
   </tbody>
 </table>
+{!! Form::close() !!} 
 @endsection
