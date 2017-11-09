@@ -11,7 +11,9 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', function(){
+	return redirect()->route('frontend.search.index');
+});
 
 Route::get('home', 'HomeController@index');
 
