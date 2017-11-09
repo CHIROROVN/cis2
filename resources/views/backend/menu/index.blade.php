@@ -21,7 +21,7 @@
       <td class="col3"><strong>▼マスタの管理</strong></td>
     </tr>
     <tr>
-      <td>　・<a href="faculty_list.html">学部・学科・研究分野の登録／変更／削除</a></td>
+      <td>　・<a href="{{route('backend.faculty.index')}}">学部・学科・研究分野の登録／変更／削除</a></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

@@ -27,7 +27,7 @@ Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backen
 	Route::get('/', function(){
 		return redirect()->route('backend.menu.index');
 	});
-	
+
 	// menu
 	Route::get('/menu', ['as' => 'backend.menu.index', 'uses' => 'MenuController@index']);
 	//users
@@ -35,6 +35,16 @@ Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backen
 	Route::post('/login', ['as' => 'backend.users.login', 'uses' => 'UsersController@postLogin']);
 	Route::get('/logout', ['as' => 'backend.users.logout', 'uses' => 'UsersController@logout']);
 
+	//Faculty
+	Route::get('/faculty', ['as' => 'backend.faculty.index', 'uses' => 'FacultyController@index']);
+
+	//Dept
+	Route::get('/department', ['as' => 'backend.dept.index', 'uses' => 'DeptController@index']);
+
+	//Research
+	Route::get('/research', ['as' => 'backend.research.index', 'uses' => 'ResearchController@index']);
+
+	//Search
 	Route::get('/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@index']);
 	Route::post('/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@search']);
 	Route::get('/search/detail', ['as' => 'backend.search.detail', 'uses' => 'SearchController@detail']);
