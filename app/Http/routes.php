@@ -11,11 +11,10 @@
 |
 */
 
-// Route::get('/', function(){
-// 	return redirect()->route('frontend.search.index');
-// });
+ Route::get('/', function(){
+ 	return redirect()->route('frontend.search.index');
+});
 
-Route::get('home', 'HomeController@index');
 
 // Route::controllers([
 // 	'auth' => 'Auth\AuthController',
@@ -25,7 +24,8 @@ Route::get('home', 'HomeController@index');
 
 Route::group(['prefix' => 'hoge/teacher-db', 'namespace' => 'Frontend'], function () 
 {
-	//Route::get('/search', ['as' => 'frontend.search.index', 'uses' => 'SearchController@index']);
+	Route::get('/search', ['as' => 'frontend.search.index', 'uses' => 'SearchController@index']);
+	Route::post('/search', ['as' => 'frontend.search.index', 'uses' => 'SearchController@search']);
 });
 
 Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backend'], function () 
