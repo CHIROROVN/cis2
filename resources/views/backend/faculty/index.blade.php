@@ -14,69 +14,100 @@
     <tr>
       <td><table width="100%" border="1" cellspacing="0" cellpadding="5">
         <tbody>
-          <tr class="col3">
-            <td width="1%" align="center">削除</td>
-            <td width="8%" align="center">表示</td>
-            <td align="center">学部/研究科名</td>
-            <td width="1%" align="center">配下の学科/専攻を管理</td>
-            <td width="1%" align="center">配下の研究分野を管理</td>
-            <td width="1%" align="center">編集</td>
-            <td colspan="4" align="center">表示順序</td>
+            <tr class="col3">
+                <td width="4%" align="center">削除</td>
+                <td width="8%" align="center">表示</td>
+                <td align="center">学部/研究科名</td>
+                <td width="18%" align="center">配下の学科/専攻を管理</td>
+                <td width="18%" align="center">配下の研究分野を管理</td>
+                <td width="5%" align="center">編集</td>
+                <td width="20%" colspan="4" align="center">表示順序</td>
             </tr>
-          <tr>
-            <td><input type="button" onClick="location.href='faculty_delete_check.html'" value="削除"></td>
-            <td align="center"><span class="f_blue">○</span></td>
-            <td>薬学部</td>
-            <td><input type="button" onClick="location.href='department_list.html'" value="配下の「学科/専攻」管理"></td>
-            <td><input type="button" onClick="location.href='research_list.html'" value="配下の「研究分野」管理"></td>
-            <td><input type="button" onClick="location.href='faculty_edit.html'" value="編集"></td>
-            <td width="1%">&nbsp;</td>
-            <td width="1%">&nbsp;</td>
-            <td width="1%"><input type="button" name="button8" id="button8" value="↓"></td>
-            <td width="1%"><input type="button" name="button9" id="button9" value="LAST"></td>
-          </tr>
-          <tr>
-            <td><input type="button" onClick="location.href='faculty_delete_check.html'" value="削除"></td>
-            <td align="center"><span class="f_red">×</span></td>
-            <td>薬学部</td>
-            <td><input type="button" onClick="location.href='department_list.html'" value="配下の「学科/専攻」管理"></td>
-            <td><input type="button" onClick="location.href='research_list.html'" value="配下の「研究分野」管理"></td>
-            <td><input type="button" onClick="location.href='faculty_edit.html'" value="編集"></td>
-            <td><input type="button" name="button6" id="button6" value="TOP"></td>
-            <td><input type="button" name="button7" id="button7" value="↑"></td>
-            <td><input type="button" name="button8" id="button8" value="↓"></td>
-            <td><input type="button" name="button9" id="button9" value="LAST"></td>
+            @if(count($faculty)>0)
+            @foreach($faculty as $key => $fc)
+            <tr>
+                <td><input type="button" onClick="location.href='{{route('backend.faculty.delete',$fc->faculty_id)}}'" value="削除"></td>
+
+                <td align="center">
+                    @if(empty($fc->faculty_dspl_flag))
+                    <span class="f_blue">○</span>
+                    @else
+                    <span class="f_red">×</span>
+                    @endif
+                </td>
+
+                <td>{{$fc->faculty_name}}</td>
+                <td><input type="button" onClick="location.href='{{route('backend.dept.index',$fc->faculty_id)}}'" value="配下の「学科/専攻」管理"></td>
+                <td><input type="button" onClick="location.href='{{route('backend.research.index',$fc->faculty_id)}}'" value="配下の「研究分野」管理"></td>
+                <td><input type="button" onClick="location.href='{{route('backend.faculty.edit',$fc->faculty_id)}}'" value="編集"></td>
+                
+                @if($key == 0)
+                <td class="width-md">&nbsp;</td>
+                <td class="width-sm">&nbsp;</td>
+                <td class="width-sm"><input type="button" class="btn-sort" sort="{{$fc->faculty_sort}}" id="{{$fc->faculty_id}}" action="DOWN" value="↓"></td>
+                <td class="width-md"><input type="button" class="btn-sort" sort="{{$fc->faculty_sort}}" id="{{$fc->faculty_id}}" action="LAST" value="LAST"></td>
+                @elseif(count($faculty) - 1 == $key)
+                <td class="width-md"><input type="button" class="btn-sort" sort="{{$fc->faculty_sort}}" id="{{$fc->faculty_id}}" action="TOP" value="TOP"></td>
+                <td class="width-sm"><input type="button" class="btn-sort" sort="{{$fc->faculty_sort}}" id="{{$fc->faculty_id}}" action="UP" value="↑"></td>
+                <td class="width-sm">&nbsp;</td>
+                <td class="width-md">&nbsp;</td>
+                @else
+                <td class="width-md"><input type="button" class="btn-sort" sort="{{$fc->faculty_sort}}" id="{{$fc->faculty_id}}" action="TOP" value="TOP"></td>
+                <td class="width-sm"><input type="button" class="btn-sort" sort="{{$fc->faculty_sort}}" id="{{$fc->faculty_id}}" action="UP" value="↑"></td>
+                <td class="width-sm"><input type="button" class="btn-sort" sort="{{$fc->faculty_sort}}" id="{{$fc->faculty_id}}" action="DOWN" value="↓"></td>
+                <td class="width-md"><input type="button" class="btn-sort" sort="{{$fc->faculty_sort}}" id="{{$fc->faculty_id}}" action="LAST" value="LAST"></td>
+                @endif
+            
             </tr>
-          <tr>
-            <td><input type="button" onClick="location.href='faculty_delete_check.html'" value="削除"></td>
-            <td align="center"><span class="f_blue">○</span></td>
-            <td>薬学部</td>
-            <td><input type="button" onClick="location.href='department_list.html'" value="配下の「学科/専攻」管理"></td>
-            <td><input type="button" onClick="location.href='research_list.html'" value="配下の「研究分野」管理"></td>
-            <td><input type="button" onClick="location.href='faculty_edit.html'" value="編集"></td>
-            <td><input type="button" name="button6" id="button6" value="TOP"></td>
-            <td><input type="button" name="button7" id="button7" value="↑"></td>
-            <td><input type="button" name="button8" id="button8" value="↓"></td>
-            <td><input type="button" name="button9" id="button9" value="LAST"></td>
+            @endforeach
+            @else
+            <tr>
+                <td colspan="10" style="text-align: center;">データ無し </td>
             </tr>
-          <tr>
-            <td><input type="button" onClick="location.href='faculty_delete_check.html'" value="削除"></td>
-            <td align="center"><span class="f_blue">○</span></td>
-            <td>薬学部</td>
-            <td><input type="button" onClick="location.href='department_list.html'" value="配下の「学科/専攻」管理"></td>
-            <td><input type="button" onClick="location.href='research_list.html'" value="配下の「研究分野」管理"></td>
-            <td><input type="button" onClick="location.href='faculty_edit.html'" value="編集"></td>
-            <td><input type="button" name="button6" id="button6" value="TOP"></td>
-            <td><input type="button" name="button7" id="button7" value="↑"></td>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-            </tr>
+            @endif
+
         </tbody>
-      </table></td>
+      </table>      
+  </td>
     </tr>
     <tr>
       <td>&nbsp;</td>
     </tr>
   </tbody>
 </table>
+
+<script>
+    $(document).ready(function(){
+    $('.btn-sort').click(function(e){
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                }
+            });
+            e.preventDefault();
+            var id = $(this).attr('id');
+            var action = $(this).attr('action');
+            var sort = $(this).attr('sort');
+
+            $.ajax({
+                        type: "GET",
+                        url: "{{route('backend.faculty.sort_ajax')}}",
+                        data: {id: id, action: action, sort: sort},
+                        dataType: 'json',
+                        success: function (data) {
+                                console.log(data);
+                                if(data.response == 'OK'){
+                                    window.location.href=window.location.href;
+                                }
+                        },
+                        error: function (data) {
+                                console.log('Error:', data);
+                        }
+                });
+
+
+        });
+});
+</script>
+
 @endsection
