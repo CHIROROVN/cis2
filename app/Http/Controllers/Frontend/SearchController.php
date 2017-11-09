@@ -22,13 +22,16 @@ class SearchController extends FrontendController {
 	public function search()
 	{
 		$clsSearch            		= new SearchModel();
-		$data['teacher_dept'] 		= !empty(Input::get('teacher_dept')) ? Input::get('teacher_dept') : NULL;
-		$data['teacher_research'] 	= !empty(Input::get('teacher_research')) ? Input::get('teacher_research') : NULL ;
-		$data['txtKeyword'] 		= !empty(Input::get('txtKeyword')) ? Input::get('txtKeyword') : NULL ;		
+		$teacher_dept               = Input::get('teacher_dept');
+		$teacher_research           = Input::get('teacher_research');
+		$txtKeyword                 = Input::get('txtKeyword');
+		$data['teacher_dept'] 		= !empty($teacher_dept ) ? $teacher_dept  : NULL;
+		$data['teacher_research'] 	= !empty($teacher_research ) ? $teacher_research  : NULL ;
+		$data['txtKeyword'] 		= !empty($txtKeyword ) ? $txtKeyword  : NULL ;		
 		$data['researches']   		= $clsSearch->getlistResearch();
         $data['departments']   		= $clsSearch->getlistDepartment();
 		$data['teachers']      		= $clsSearch->get_all($data['teacher_dept'],$data['teacher_research'],$data['txtKeyword']);	
-
+       
 		return view('frontend.search.list',$data);
 	}
 

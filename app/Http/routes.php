@@ -28,6 +28,7 @@ Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backen
 		return redirect()->route('backend.menu.index');
 	});
 
+
 	// menu
 	Route::get('/menu', ['as' => 'backend.menu.index', 'uses' => 'MenuController@index']);
 	//users
@@ -47,7 +48,13 @@ Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backen
 	//Search
 	Route::get('/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@index']);
 	Route::post('/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@search']);
-	Route::get('/search/detail', ['as' => 'backend.search.detail', 'uses' => 'SearchController@detail']);
+	Route::get('/search/detail/{id}', ['as' => 'backend.search.detail', 'uses' => 'SearchController@detail']);
+	//teacher	
+	Route::get('/teacher/regist', ['as' => 'backend.teacher.regist', 'uses' => 'TeacherController@getRegist']);
+    Route::post('/teacher/regist', ['as' => 'backend.teacher.regist', 'uses' => 'TeacherController@postRegist']);
+    Route::get('/teacher/delete/{dataname}', ['as' => 'backend.teacher.delete', 'uses' => 'TeacherController@getDelete']);
+    Route::get('/teacher/edit/{id}', ['as' => 'backend.teacher.edit', 'uses' => 'TeacherController@getEdit']); 
+    Route::post('/teacher/edit/{id}', ['as' => 'backend.teacher.edit', 'uses' => 'TeacherController@postEdit']); 
 });
 
 Route::get('/auth/login', function(){

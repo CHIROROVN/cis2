@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
- {!! Form::open(array('url' => 'hoge/teacher-db/search','id'=>'frmSearch', 'method' => 'post')) !!} 
+ {!! Form::open(array('url' => 'hoge/teacher-db/contents-adm/search','id'=>'frmSearch', 'method' => 'post')) !!} 
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
@@ -21,13 +21,17 @@
         <tbody>
           <tr>
             <td width="25%" class="col3">学部・所属</td>
-            <td><select name="select" id="select">
-              <option>指定しない</option>
+            <td><select name="teacher_dept" id="teacher_dept">
+              <option value="">指定しない</option>
+                @foreach($departments as $key=>$department)
+                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
+                @endforeach
+                </select>
             </select></td>
           </tr>
           <tr>
             <td width="25%" class="col3">氏名</td>
-            <td><input type="text" name="textfield3" id="textfield3">
+            <td><input type="text" name="txtKeyword" id="txtKeyword" >
               を含む　※漢字または読み仮名（ひらがな）</td>
           </tr>
         </tbody>

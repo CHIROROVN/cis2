@@ -37,7 +37,7 @@
           </tr>
           <tr>
             <td class="td_color">キーワード</td>
-            <td ><input type="text" name="txtKeyword" id="txtKeyword"></td>
+            <td ><input type="text" name="txtKeyword" id="txtKeyword" value="@if(!empty($txtKeyword)) {{$txtKeyword}} @endif"></td>
           </tr>   
           <tr>
             <td colspan="2" align="left"><br><button type="submit" class="button">検索する</button></td>   　　　　　        
@@ -69,7 +69,7 @@
                 </tr>
                 <tr>
                   <th>専門分野</th>
-                  <td>{{$teacher->teacher_research}}</td>
+                  <td>{{$teacher->research_name}}</td>
                 </tr>                
               </tbody>
             </table>

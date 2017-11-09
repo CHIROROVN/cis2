@@ -22,46 +22,20 @@
             <td align="center">最終更新日</td>
             <td width="1%" align="center">詳細・変更</td>
           </tr>
+          @if(empty($teachers) || count($teachers) < 1)
+          <tr><td colspan="6"><strong style="color: #777;">該当するデータがありません。</strong></td></tr>
+          @else
+          @foreach($teachers as $teacher) 
           <tr>
-            <td><input type="button" onClick="location.href='teacher_delete_check.html'" value="削除"></td>
-            <td align="center"><span class="f_blue">○</span></td>
-            <td>薬学科</td>
-            <td>木島　孝夫</td>
-            <td>2017/10/31 12:34:56</td>
-            <td><input type="button" onClick="location.href='teacher_detail.html'" value="詳細・変更"></td>
+            <td><input type="button" onClick="#" value="削除"></td>
+            <td align="center">@if($teacher->teacher_dspl_flag==1)<span class="f_red">×</span> @else <span class="f_blue">○</span>@endif</td>
+            <td>{{$teacher->dept_name}}</td>
+            <td>{{$teacher->teacher_name1f}}　{{$teacher->teacher_name1g}}</td>
+            <td>{{$teacher->last_date}}</td>
+            <td><input type="button" value="詳細・変更" onclick="location.href='{{ asset('hoge/teacher-db/contents-adm/search/detail/' . $teacher->teacher_id) }}'"></td>
           </tr>
-          <tr>
-            <td><input type="button" onClick="location.href='teacher_delete_check.html'" value="削除"></td>
-            <td align="center"><span class="f_blue">○</span></td>
-            <td>薬学科</td>
-            <td>木島　孝夫</td>
-            <td>2017/10/31 12:34:56</td>
-            <td><input type="button" onClick="location.href='teacher_detail.html'" value="詳細・変更"></td>
-          </tr>
-          <tr>
-            <td><input type="button" onClick="location.href='teacher_delete_check.html'" value="削除"></td>
-            <td align="center"><span class="f_blue">○</span></td>
-            <td>薬学科</td>
-            <td>木島　孝夫</td>
-            <td>2017/10/31 12:34:56</td>
-            <td><input type="button" onClick="location.href='teacher_detail.html'" value="詳細・変更"></td>
-          </tr>
-          <tr>
-            <td><input type="button" onClick="location.href='teacher_delete_check.html'" value="削除"></td>
-            <td align="center"><span class="f_red">×</span></td>
-            <td>薬学科</td>
-            <td>木島　孝夫</td>
-            <td>2017/10/31 12:34:56</td>
-            <td><input type="button" onClick="location.href='teacher_detail.html'" value="詳細・変更"></td>
-          </tr>
-          <tr>
-            <td><input type="button" onClick="location.href='teacher_delete_check.html'" value="削除"></td>
-            <td align="center"><span class="f_blue">○</span></td>
-            <td>薬学科</td>
-            <td>木島　孝夫</td>
-            <td>2017/10/31 12:34:56</td>
-            <td><input type="button" onClick="location.href='teacher_detail.html'" value="詳細・変更"></td>
-          </tr>
+          @endforeach  
+          @endif  
         </tbody>
       </table></td>
     </tr>
@@ -74,7 +48,7 @@
       <td align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="location.href='teacher_search.html'" value="条件を変えて再検索"></td>
+      <td align="center"><input type="button" onClick="window.history.back();" value="条件を変えて再検索"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
