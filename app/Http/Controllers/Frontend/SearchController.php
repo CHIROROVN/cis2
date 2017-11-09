@@ -1,6 +1,6 @@
-<?php namespace App\Http\Controllers;
+<?php namespace App\Http\Controllers\Frontend;
 
-class SearchController extends Controller {
+class SearchController extends FrontendController {
 
 	/*
 	|--------------------------------------------------------------------------
