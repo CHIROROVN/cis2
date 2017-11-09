@@ -6,7 +6,7 @@ use DB;
 class FrontendController extends Controller
 {
     public function __construct(){
-        $configs = Config::get('constants.DEFINE');
+        $configs = Config::get('constants.DEFINE');     
         foreach($configs as $key => $value)
         {
             define($key, $value);

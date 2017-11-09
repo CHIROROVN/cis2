@@ -1,5 +1,6 @@
 <?php namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Backend\BackendController;
+use App\Http\Models\SearchModel;
 use Form;
 use Input;
 use Validator;
@@ -12,8 +13,8 @@ class SearchController extends BackendController
 {
 	
 	public function index(){	
-
-		return view('backend.search.index');
+      
+	   return view('backend.search.index',$data);
 	}
 
 	public function search(){	

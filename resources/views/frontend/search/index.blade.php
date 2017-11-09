@@ -26,7 +26,8 @@
           <tr>
             <td class="td_color">研究分野</td>
             <td ><select name="teacher_research" id="teacher_research">
-                  <option>指定しない</option>
+                  <option value="">指定しない</option>
+                  
                 </select></td>
           </tr>
           <tr>

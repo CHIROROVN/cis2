@@ -1,4 +1,7 @@
 <?php namespace App\Http\Controllers\Frontend;
+use App\Http\Controllers\Frontend\FrontendController;
+use App\Http\Models\SearchModel;
+use Config;
 
 class SearchController extends FrontendController {
 
@@ -30,7 +33,9 @@ class SearchController extends FrontendController {
 	 */
 	public function index()
 	{
-		return view('frontend.search.index');
+	   $clsSearch            = new SearchModel(); 
+       $data['researches']   = $clsSearch->getlistResearch();      
+	   return view('frontend.search.index');
 	}
 	public function search()
 	{
