@@ -6,6 +6,7 @@ use Validator;
 use Session;
 use Html;
 use Input;
+use Auth;
 
 use Illuminate\Pagination\BootstrapThreePresenter;
 
@@ -36,11 +37,24 @@ class FacultyController extends BackendController
 	}
 
 	public function delete($id){
-		return view('backend.faculty.delete');
+		$clsFaculty = new FacultyModel();
+		$data['faculty'] = $clsFaculty->get_by_id($id);
+		return view('backend.faculty.delete', $data);
 	}
 
 	public function saveDelete($id){
-		
+		$clsFaculty = new FacultyModel();
+		$data['last_date'] = date('Y-m-d H:i:s');
+		$data['last_kind'] = DELETE;
+		$data['last_user'] = Auth::user()->u_id;
+
+		if($clsFaculty->update($id, $data)){
+			Session::flash('success', trans('common.msg_cts-adm_del_success'));
+			return redirect()->route('backend.faculty.index');
+		}else{
+			Session::flash('danger', trans('common.msg_cts-adm_del_danger'));
+			return redirect()->route('backend.faculty.index');
+		}
 	}
 
 

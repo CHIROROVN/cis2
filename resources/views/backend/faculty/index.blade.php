@@ -8,8 +8,27 @@
     <tr>
       <td>&nbsp;</td>
     </tr>
+    @if($message = Session::get('danger'))
     <tr>
-      <td align="right"><input type="button" onClick="location.href='faculty_regist.html'" value="学部の新規登録"></td>
+      <td>
+        <div id="error" class="message">
+            <a id="close" title="Message"  href="#" onClick="document.getElementById('error').setAttribute('style','display: none;');">&times;</a>
+            <span>{{$message}}</span>
+        </div>
+        </td>
+    </tr>
+    @elseif($message = Session::get('success'))
+    <tr>
+      <td>
+        <div id="success" class="message">
+            <a id="close" title="Message"  href="javascript::void(0);" onClick="document.getElementById('success').setAttribute('style','display: none;');">&times;</a>
+            <span>{{$message}}</span>
+        </div>
+        </td>
+    </tr>
+    @endif
+    <tr>
+      <td align="right"><input type="button" onClick="location.href='{{route('backend.faculty.regist')}}'" value="学部の新規登録"></td>
     </tr>
     <tr>
       <td><table width="100%" border="1" cellspacing="0" cellpadding="5">

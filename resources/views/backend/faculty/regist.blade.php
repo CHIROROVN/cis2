@@ -8,6 +8,7 @@
     <tr>
       <td>&nbsp;</td>
     </tr>
+    {!! Form::open(array('route' => ['backend.faculty.regist'], 'class' => 'form-horizontal', 'method' => 'post', 'enctype'=>'multipart/form-data', 'accept-charset'=>'utf-8')) !!}
     <tr>
       <td><table width="100%" border="1" cellspacing="0" cellpadding="5">
         <tbody>
@@ -23,16 +24,19 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="location.href='faculty_list.html'" value="登録する">
+      <td align="center">
+        <input type="submit" value="登録する">
       　　　　　
         <input type="reset" name="button2" id="button2" value="クリア"></td>
     </tr>
     <tr>
       <td align="center">&nbsp;</td>
     </tr>
+    {!! Form::close() !!}
     <tr>
-      <td align="center"><input type="button" onClick="location.href='faculty_list.html'" value="登録済み学部/研究科の一覧へ"></td>
+      <td align="center"><input type="button" onClick="location.href='{{route('backend.faculty.index')}}'" value="登録済み学部/研究科の一覧へ"></td>
     </tr>
+
     <tr>
       <td>&nbsp;</td>
     </tr>
