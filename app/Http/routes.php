@@ -11,28 +11,32 @@
 |
 */
 
-Route::get('/', function(){
-	return redirect()->route('frontend.search.index');
-});
+// Route::get('/', function(){
+// 	return redirect()->route('frontend.search.index');
+// });
 
 Route::get('home', 'HomeController@index');
 
-Route::controllers([
-	'auth' => 'Auth\AuthController',
-	'password' => 'Auth\PasswordController',
-]);
+// Route::controllers([
+// 	'auth' => 'Auth\AuthController',
+// 	'password' => 'Auth\PasswordController',
+// ]);
 
 
-Route::group(['prefix' => 'hoge', 'namespace' => 'Backend'], function () 
+Route::group(['prefix' => 'hoge/teacher-db', 'namespace' => 'Frontend'], function () 
 {
-	Route::get('/', function(){
-		return redirect()->route('backend.menu.index');
-	});
+	//Route::get('/search', ['as' => 'frontend.search.index', 'uses' => 'SearchController@index']);
+});
+
+Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backend'], function () 
+{
+	// Route::get('/', function(){
+	// 	return redirect()->route('backend.menu.index');
+	// });
 
 	// menu
-	Route::get('teacher-db/menu', ['as' => 'backend.menu.index', 'uses' => 'MenuController@index']);
-	Route::get('teacher-db/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@index']);
-	Route::post('teacher-db/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@search']);
-	Route::get('teacher-db/search/detail', ['as' => 'backend.search.detail', 'uses' => 'SearchController@detail']);
+	Route::get('/menu', ['as' => 'backend.menu.index', 'uses' => 'MenuController@index']);
+	Route::get('/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@index']);
+	Route::post('/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@search']);
+	Route::get('/search/detail', ['as' => 'backend.search.detail', 'uses' => 'SearchController@detail']);
 });
-Route::get('/cis/teacher-db', ['as' => 'frontend.search.index', 'uses' => 'SearchController@index']);
