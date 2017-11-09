@@ -1,21 +1,11 @@
 <?php namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Models\SearchModel;
+use Html;
 use Config;
 
-class SearchController extends FrontendController {
+class SearchController extends FrontendController {	
 
-	/*
-	|--------------------------------------------------------------------------
-	| Welcome Controller
-	|--------------------------------------------------------------------------
-	|
-	| This controller renders the "marketing page" for the application and
-	| is configured to only allow guests. Like most of the other sample
-	| controllers, you are free to modify or remove it as you desire.
-	|
-	*/
-	
 	/**
 	 * Show the application welcome screen to the user.
 	 *
