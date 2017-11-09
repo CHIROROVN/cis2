@@ -26,7 +26,7 @@ class FacultyModel
     }
 
     public function getAllFaculty(){
-        return DB::table($this->table)->where('last_kind', '<>', DELETE)->orderBy('faculty_sort', 'ASC')->get();
+        return DB::table($this->table)->where('last_kind', '<>', DELETE)->orderBy('faculty_sort', 'ASC')->paginate(2);
     }
 
 }

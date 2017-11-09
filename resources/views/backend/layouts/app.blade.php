@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>CIS教員検索システム | 管理画面</title>
 <link href="{{ asset('') }}public/backend/css/style.css" rel="stylesheet" />
+<script src="{{ asset('') }}public/backend/js/jquery-1.11.3.min.js"></script>
 </head>
 
 <body>

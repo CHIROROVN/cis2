@@ -122,3 +122,11 @@ span.required {
     color: #D50000;
     padding-left: 8px;
 }
+
+.width-sm {
+    width: 29px;
+}
+
+.width-md {
+    width: 52px;
+}
