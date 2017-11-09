@@ -24,6 +24,9 @@ Route::group(['prefix' => 'hoge/teacher-db', 'namespace' => 'Frontend'], functio
 
 Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backend'], function () 
 {
+	Route::get('/', function(){
+		return redirect()->route('backend.menu.index');
+	});
 	
 	// menu
 	Route::get('/menu', ['as' => 'backend.menu.index', 'uses' => 'MenuController@index']);
