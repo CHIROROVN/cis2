@@ -14,7 +14,7 @@
         新たに教員を登録する場合は、「新規登録」をクリックしてください。</td>
     </tr>
     <tr>
-      <td align="right"><input type="button" onClick="location.href='teacher_regist.html'" value="新規登録"></td>
+      <td align="right"><input type="button" onClick="location.href='{{route('backend.teacher.regist')}}'" value="新規登録"></td>
     </tr>
     <tr>
       <td><table width="100%" border="1" cellspacing="0" cellpadding="5">

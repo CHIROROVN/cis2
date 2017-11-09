@@ -4,6 +4,8 @@ use App\Http\Controllers\Backend\BackendController;
 use Auth;
 use App\User;
 use App\Http\Models\TeacherModel;
+use App\Http\Models\ResearchModel;
+use App\Http\Models\DeptModel;
 use Form;
 use Html;
 use Input;
@@ -23,27 +25,27 @@ class TeacherController extends BackendController
 
 	public function getRegist(){
         $data =array();
-        $data['error']['error_belong_name_required']    = trans('validation.error_belong_name_required');
-        $data['error']['error_belong_code_required']    = trans('validation.error_belong_code_required');
-		return view('backend.division.regist',$data);
+        $clsResearch      = new ResearchModel();
+        $data['researches'] = $clsResearch->getlistResearch();
+		return view('backend.teacher.regist',$data);
 	}
 
 	public function postRegist()
     {
-        $clsBelong      = new TeacherModel();
+        $clsTeacher      = new TeacherModel();
         $inputs         = Input::all();
-        $validator      = Validator::make($inputs, $clsBelong->Rules(), $clsBelong->Messages());
+        $validator      = Validator::make($inputs, $clsTeacher->Rules(), $clsTeacher->Messages());
 
         if ($validator->fails()) {
-            return redirect()->route('backend.division.regist')->withErrors($validator)->withInput();
+            return redirect()->route('backend.teacher.regist')->withErrors($validator)->withInput();
         }
-        $belong = $clsBelong->get_by_belong_code(Input::get('belong_code'));
+        $belong = $clsTeacher->get_by_belong_code(Input::get('belong_code'));
         if(isset($belong->belong_id)){
             $error['belong_code']      = trans('validation.error_belong_code_unique');  
-            return redirect()->route('backend.division.regist')->withErrors($error)->withInput();
+            return redirect()->route('backend.teacher.regist')->withErrors($error)->withInput();
         }
         // insert
-        $max = $clsBelong->get_max();
+        $max = $clsTeacher->get_max();
         $dataInsert             = array(
             'belong_name'       => Input::get('belong_name'),
             'belong_sort'       => $max + 1,            
@@ -54,12 +56,12 @@ class TeacherController extends BackendController
             'last_user'         => Auth::user()->u_id            
         );
         
-        if ( $clsBelong->insert($dataInsert) ) {
+        if ( $clsTeacher->insert($dataInsert) ) {
             Session::flash('success', trans('common.msg_regist_success'));
         } else {
             Session::flash('danger', trans('common.msg_regist_danger'));
         }
-        return redirect()->route('backend.division.index');
+        return redirect()->route('backend.teacher.index');
     }
 
     /**
@@ -67,11 +69,11 @@ class TeacherController extends BackendController
      */
     public function getEdit($id)
     {
-        $clsBelong          = new TeacherModel();
-        $data['belong']     = $clsBelong->get_by_id($id);
+        $clsTeacher          = new TeacherModel();
+        $data['belong']     = $clsTeacher->get_by_id($id);
         $data['error']['error_belong_name_required']    = trans('validation.error_belong_name_required');
         $data['error']['error_belong_code_required']    = trans('validation.error_belong_code_required');
-        return view('backend.division.edit', $data);
+        return view('backend.teacher.edit', $data);
     }
 
     /**
@@ -79,16 +81,16 @@ class TeacherController extends BackendController
      */
     public function postEdit($id)
     {
-        $clsBelong      = new TeacherModel();
+        $clsTeacher      = new TeacherModel();
         $inputs         = Input::all();
-        $validator      = Validator::make($inputs, $clsBelong->Rules(), $clsBelong->Messages());
+        $validator      = Validator::make($inputs, $clsTeacher->Rules(), $clsTeacher->Messages());
         if ($validator->fails()) {
-            return redirect()->route('backend.division.edit', [$id])->withErrors($validator)->withInput();
+            return redirect()->route('backend.teacher.edit', [$id])->withErrors($validator)->withInput();
         }
-        $belong = $clsBelong->get_by_belong_code(Input::get('belong_code'));
+        $belong = $clsTeacher->get_by_belong_code(Input::get('belong_code'));
         if(isset($belong->belong_id) && $belong->belong_id != $id){
             $error['belong_code']      = trans('validation.error_belong_code_unique');  
-            return redirect()->route('backend.division.edit', [$id])->withErrors($error)->withInput();
+            return redirect()->route('backend.teacher.edit', [$id])->withErrors($error)->withInput();
         }
         // update
         $dataUpdate = array(
@@ -100,12 +102,12 @@ class TeacherController extends BackendController
             'last_user'         => Auth::user()->u_id 
         );
 
-        if ( $clsBelong->update($id, $dataUpdate) ) {
+        if ( $clsTeacher->update($id, $dataUpdate) ) {
             Session::flash('success', trans('common.msg_edit_success'));
         } else {
             Session::flash('danger', trans('common.msg_edit_danger'));
         }
-        return redirect()->route('backend.division.index');
+        return redirect()->route('backend.teacher.index');
     }
 
     /**
@@ -113,19 +115,19 @@ class TeacherController extends BackendController
      */
     public function getDelete($id)
     {
-        $clsBelong              = new TeacherModel();
+        $clsTeacher              = new TeacherModel();
         $dataUpdate             = array(
             'last_date'         => date('Y-m-d H:i:s'),
             'last_kind'         => DELETE,
             'last_ipadrs'       => $_SERVER['REMOTE_ADDR'],
             'last_user'         => Auth::user()->u_id 
         );
-        if ( $clsBelong->delete($id, $dataUpdate) ) {
+        if ( $clsTeacher->delete($id, $dataUpdate) ) {
             Session::flash('success', trans('common.msg_delete_success'));
         } else {
             Session::flash('danger', trans('common.msg_delete_danger'));
         }
-        return redirect()->route('backend.division.index');
+        return redirect()->route('backend.teacher.index');
     }
 
     
