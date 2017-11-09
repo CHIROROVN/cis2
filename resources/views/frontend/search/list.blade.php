@@ -1,15 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-<style type="text/css">
-  .td_color{
-        background-color: #d0eeee;
-        height: 30px; width: 25%; font-weight: bold; border-bottom: solid 1px #ffffff; 
-  }
-  .button{
-    background-color: #13a9a9;color: #fff;width: 100px;height: 30px;
-  }
-</style>
+<link rel="stylesheet" href="{{ asset('') }}public/css/style.css" type="text/css" media="screen,print">
 <div id="pnav">
   <ul>
     <li><a href="http://www.cis.ac.jp/index.html">千葉科学大学ホーム</a></li>          
@@ -48,5 +40,27 @@
       </table>
       {!! Form::close() !!}
   </div>
+  <header class="article-header"><h1>検索結果</h1></header>
+  <div style="position: relative;margin: 0 29px 25px;padding: 0 8px 7px;">
+    <table width="100%" border="0" cellpadding="2" cellspacing="2">
+      <tr><td width="150px"><img src="{{ asset('') }}public/common/img/img_master.jpg"></td>
+          <td><div style="padding-left: 38px" class="teacher_row">
+               <div class="teacher_title">武田　光志 (たけだ　みつし）　／　Mitsushi Takeda</div>
+               <table id="teacher_detail">
+                 <tr><td width="100px">所属</td>
+                     <td>薬学部　薬学科　教授<br></td>
+                  </tr>
+                  <tr><td >学位</td>
+                     <td>薬学部　薬学科　教授</td>
+                  </tr>
+                  <tr><td >専門分野</td>
+                     <td>薬学部　薬学科　教授</td>
+                  </tr>   
+               </table>
+             </div>
+          </td>
+      </tr>
+    </table>  
+  </div> 
 </div> 
 @endsection

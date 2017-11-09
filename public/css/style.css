@@ -1,0 +1,22 @@
+@charset "utf-8";
+td {
+	font-family: "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3";
+	font-size: 12px;
+	line-height: 18px;
+}
+ .td_color{
+        background-color: #d0eeee;
+        height: 30px; width: 25%; font-weight: bold; border-bottom: solid 1px #ffffff; 
+  }
+  .button{
+    background-color: #13a9a9;color: #fff;width: 100px;height: 30px;
+  }
+  .teacher_title{
+    background-color: #d0eeee;border-top: solid 1px #cccccc;height: 38px; font-weight: bold;
+  }
+  .teacher_detail{
+    margin: 0 0 0 30px;padding: 0 0 0 30px;
+  }
+  .teacher_row{
+     margin: 0 0 0 30px;padding: 0 0 0 30px;position: relative;
+  }

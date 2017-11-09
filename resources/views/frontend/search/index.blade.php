@@ -1,15 +1,7 @@
 @extends('frontend.layouts.app')
 
 @section('content')
-<style type="text/css">
-  .td_color{
-        background-color: #d0eeee;
-        height: 30px; width: 25%; font-weight: bold; border-bottom: solid 1px #ffffff; 
-  }
-  .button{
-    background-color: #13a9a9;color: #fff;width: 100px;height: 30px;
-  }
-</style>
+<link rel="stylesheet" href="{{ asset('') }}public/css/style.css" type="text/css" media="screen,print">
 <div id="pnav">
   <ul>
     <li><a href="http://www.cis.ac.jp/index.html">千葉科学大学ホーム</a></li>          
