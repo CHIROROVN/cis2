@@ -7,7 +7,7 @@
 </head>
 
 <body>
-<table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
+<table width="960" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
       <td class="col1">■教員検索システム　＞　管理者ログイン</td>
@@ -37,8 +37,7 @@
 
     {!! Form::open(array('route' => ['backend.users.login'], 'class' => 'form-horizontal', 'method' => 'post', 'enctype'=>'multipart/form-data', 'accept-charset'=>'utf-8')) !!}
     <tr>
-      <td align="center">
-      	<table width="60%" border="1" cellspacing="0" cellpadding="5">
+      <td align="center"><table width="60%" border="1" cellspacing="0" cellpadding="5">
         <tbody>
           <tr>
             <td width="40%" class="col3">ログインID</td>

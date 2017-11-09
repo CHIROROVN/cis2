@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="ja">
 <head>
 <meta charset="utf-8">
 <title>CIS教員検索システム | 管理画面</title>
@@ -10,8 +10,8 @@
 <table width="100%" border="0" cellspacing="0" cellpadding="5">
   <tbody>
     <tr>
-      <td width="50%"><input type="button" onClick="location.href='menu.html'" value="管理者メニューへ"></td>
-      <td width="50%" align="right"><input type="button" onClick="location.href='logout.html'" value="ログアウト"></td>
+      <td width="50%"><input type="button" onClick="location.href='{{route('backend.menu.index')}}'" value="管理者メニューへ"></td>
+      <td width="50%" align="right"><input type="button" onClick="location.href='{{route('backend.users.logout')}}'" value="ログアウト"></td>
     </tr>
   </tbody>
 </table>
