@@ -12,7 +12,7 @@
       <td class="col3"><strong>▼教員情報の管理</strong></td>
     </tr>
     <tr>
-      <td>　・<a href="teacher_search.html">登録済み教員の検索／一覧／新規登録／変更／削除</a></td>
+      <td>　・<a href="{{route('backend.search.index')}}">登録済み教員の検索／一覧／新規登録／変更／削除</a></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

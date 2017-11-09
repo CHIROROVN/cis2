@@ -2,6 +2,7 @@
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Models\SearchModel;
 use Html;
+use Input;
 use Config;
 
 class SearchController extends FrontendController {	
@@ -20,10 +21,13 @@ class SearchController extends FrontendController {
 	}
 	public function search()
 	{
-		$clsSearch            = new SearchModel();
-		$data['researches']   = $clsSearch->getlistResearch();
-        $data['departments']   = $clsSearch->getlistDepartment();
-		$data['teachers']      = $clsSearch->get_all();	
+		$clsSearch            		= new SearchModel();
+		$data['teacher_dept'] 		= !empty(Input::get('teacher_dept')) ? Input::get('teacher_dept') : NULL;
+		$data['teacher_research'] 	= !empty(Input::get('teacher_research')) ? Input::get('teacher_research') : NULL ;
+		$data['txtKeyword'] 		= !empty(Input::get('txtKeyword')) ? Input::get('txtKeyword') : NULL ;		
+		$data['researches']   		= $clsSearch->getlistResearch();
+        $data['departments']   		= $clsSearch->getlistDepartment();
+		$data['teachers']      		= $clsSearch->get_all($data['teacher_dept'],$data['teacher_research'],$data['txtKeyword']);	
 
 		return view('frontend.search.list',$data);
 	}

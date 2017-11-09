@@ -35,6 +35,9 @@ class SearchModel
                                  $query->where('teacher_dept1',  '=',  $dept_id)
                                         ->orWhere('teacher_dept2','=', $dept_id);  
                                });
+        } 
+        if(!empty($research_id)){
+          $results = $results->where('teacher_research', '=', $research_id);
         }  
         $results = $results->where('last_kind', '<>', DELETE)->where('teacher_dspl_flag', '<>', '1')->get();
         return $results;           

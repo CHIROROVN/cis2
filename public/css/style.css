@@ -11,26 +11,15 @@ td {
   .button{
     background-color: #13a9a9;color: #fff;width: 100px;height: 30px;
   }
-  .teacher_title{
-    background-color: #d0eeee;border-top: solid 1px #cccccc;height: 38px; font-weight: bold;
-  }
-  #teacher_detail{
-    width: 100%
-  }
+ 
   .teacher_row{
      margin: 0 0 0 30px;padding: 0 0 0 30px;position: relative;
   }
   .td_border_botton{
   	border-bottom: solid 1px #bbe7e7;
-  }
-  #teacher_detail tr {
-  	border-bottom: solid 1px #cccccc;
-  }
-  #teacher_detail td{
-  	line-height: 18px;margin: 0 29px 25px;padding: 0 8px 7px;
-  }
+  }  
  .flow-item {
-    width: 560px;
+    width: 100%; padding-top:0px; 
     margin: 0 auto;
 }  
 .flow-item h4 {
@@ -66,5 +55,13 @@ tr {
     padding: 8px 10px;
     border-bottom: solid 1px #dedede; text-align: left;
 }
-
+.flow-item table th {
+    text-align: left;
+    font-style: normal;
+    font-weight: normal;
+}
+td, th {
+    display: table-cell;
+    vertical-align: inherit;
+}
   
