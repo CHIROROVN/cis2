@@ -17,7 +17,7 @@
         <tbody>
           <tr>
             <td class="td_color">学部・所属</td>
-            <td style="border-bottom: solid 1px #bbe7e7;">
+            <td class="td_border_botton">
                 <select name="teacher_dept" id="teacher_dept">
                   <option>指定しない</option>
                 </select>
@@ -25,13 +25,13 @@
           </tr>
           <tr>
             <td class="td_color">研究分野</td>
-            <td ><select name="teacher_research" id="teacher_research">
+            <td class="td_border_botton"><select name="teacher_research" id="teacher_research">
                   <option>指定しない</option>
                 </select></td>
           </tr>
           <tr>
             <td class="td_color">キーワード</td>
-            <td style="border-top: solid 1px #bbe7e7;"><input type="text" name="txtKeyword" id="txtKeyword"></td>
+            <td ><input type="text" name="txtKeyword" id="txtKeyword"></td>
           </tr>   
           <tr>
             <td colspan="2" align="left"><br><button type="submit" class="button">検索する</button></td>   　　　　　        
@@ -43,18 +43,52 @@
   <header class="article-header"><h1>検索結果</h1></header>
   <div style="position: relative;margin: 0 29px 25px;padding: 0 8px 7px;">
     <table width="100%" border="0" cellpadding="2" cellspacing="2">
-      <tr><td width="150px"><img src="{{ asset('') }}public/common/img/img_master.jpg"></td>
-          <td><div style="padding-left: 38px" class="teacher_row">
+      <tr><td width="150px"><img src="{{ asset('') }}public/common/img/teacher_01.jpg"></td>
+          <td><div  class="teacher_row">
                <div class="teacher_title">武田　光志 (たけだ　みつし）　／　Mitsushi Takeda</div>
                <table id="teacher_detail">
                  <tr><td width="100px">所属</td>
-                     <td>薬学部　薬学科　教授<br></td>
+                     <td>薬学部　薬学科<br>大学院　薬学研究科　薬学専攻　博士課程</td>
                   </tr>
                   <tr><td >学位</td>
                      <td>薬学部　薬学科　教授</td>
                   </tr>
                   <tr><td >専門分野</td>
                      <td>薬学部　薬学科　教授</td>
+                  </tr>   
+               </table>
+             </div>
+          </td>
+      </tr>
+      <tr><td width="150px"><img src="{{ asset('') }}public/common/img/teacher_02.jpg"></td>
+          <td><div  class="teacher_row">
+               <div class="teacher_title">宮﨑　工 (みやざき　たくみ）　／　Takumi Miyazaki</div>
+               <table id="teacher_detail">
+                 <tr><td width="100px">所属</td>
+                     <td>薬学部　薬学科　教授</td>
+                  </tr>
+                  <tr><td >学位</td>
+                     <td>博士（医薬学）　（千葉大学　2009年3月）</td>
+                  </tr>
+                  <tr><td >専門分野</td>
+                     <td>臨床薬学、コミュニケーション</td>
+                  </tr>   
+               </table>
+             </div>
+          </td>
+      </tr>
+      <tr><td width="150px"><img src="{{ asset('') }}public/common/img/teacher_03.jpg"></td>
+          <td><div  class="teacher_row">
+               <div class="teacher_title">横濱　明 (よこはま　あきら）　／　Akira Yokohama</div>
+               <table id="teacher_detail">
+                 <tr><td width="100px">所属</td>
+                     <td>薬学部　薬学科</td>
+                  </tr>
+                  <tr><td >学位</td>
+                     <td></td>
+                  </tr>
+                  <tr><td >専門分野</td>
+                     <td>臨床薬学、コミュニケーション</td>
                   </tr>   
                </table>
              </div>

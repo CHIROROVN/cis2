@@ -14,9 +14,19 @@ td {
   .teacher_title{
     background-color: #d0eeee;border-top: solid 1px #cccccc;height: 38px; font-weight: bold;
   }
-  .teacher_detail{
-    margin: 0 0 0 30px;padding: 0 0 0 30px;
+  #teacher_detail{
+    width: 100%
   }
   .teacher_row{
      margin: 0 0 0 30px;padding: 0 0 0 30px;position: relative;
   }
+  .td_border_botton{
+  	border-bottom: solid 1px #bbe7e7;
+  }
+  #teacher_detail tr {
+  	border-bottom: solid 1px #cccccc;
+  }
+  #teacher_detail td{
+  	line-height: 18px;margin: 0 29px 25px;padding: 0 8px 7px;
+  }
+  
