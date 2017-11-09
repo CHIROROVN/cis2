@@ -60,7 +60,8 @@
               <tbody>
                 <tr>
                   <th>所属</th>
-                  <td>{{getDepartmentName($departments,$teacher->teacher_dept1)}}</td>
+                  <td>{{getDepartmentName($departments,$teacher->teacher_dept1)}}
+                      @if($teacher->teacher_dept2 >0)<br>{{getDepartmentName($departments,$teacher->teacher_dept2)}}@endif</td>
                 </tr>  
                 <tr>
                   <th>学位</th>
