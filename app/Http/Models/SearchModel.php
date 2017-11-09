@@ -5,9 +5,9 @@ use Validator;
 
 class SearchModel
 {
-    protected $table   = 't_teacher';
+    protected $table        = 't_teacher';
     protected $primaryKey   = 'teacher_id';
-    public $timestamps  = false;
+    public $timestamps      = false;
 
     public function Rules()
     {
@@ -19,27 +19,36 @@ class SearchModel
         return array();
     }
 
-    public function get_all($belong_id=null, $year=null)
+    public function get_all($dept_id=null, $research_id=null,$key_words=null)
     {        
-        $results = DB::table($this->table)->join('m_belong', 't_staff.staff_belong', '=', 'm_belong.belong_id')->where('t_staff.last_kind', '<>', DELETE);
-        
-        if(!empty($belong_id)){
-              $results = $results->Where(function ($query) use ($belong_id) {
-                                                            $query->where('m_belong.belong_id',  '=', $belong_id)
-                                                                  ->orWhere('m_belong.belong_parent_id','=', $belong_id);
-                                                        });                   
-        }             
-
-        $count = $results->count();
-        $data  = $results->orderBy('staff_id', 'desc')->get();       
-        return [
-            'count' => $count,
-            'data' => $data
-        ];      
+        $results = DB::table($this->table);
+        if(!empty($key_words)){
+          $results = $results->Where(function ($query) use ($key_words) {
+                                  $query->where('teacher_name1f',  'like',  '%' . $key_words . '%')
+                                        ->orWhere('teacher_name1g','like', '%' . $key_words . '%')
+                                        ->orWhere('teacher_name2f','like', '%' . $key_words . '%')
+                                        ->orWhere('teacher_name2g','like', '%' . $key_words . '%');  
+                               });  
+        }
+        if(!empty($dept_id)){
+          $results = $results->Where(function ($query) use ($dept_id) {
+                                 $query->where('teacher_dept1',  '=',  $dept_id)
+                                        ->orWhere('teacher_dept2','=', $dept_id);  
+                               });
+        }  
+        $results = $results->where('last_kind', '<>', DELETE)->where('teacher_dspl_flag', '<>', '1')->get();
+        return $results;           
     }
     public function getlistResearch()
     {        
-        $results = DB::table('m_research')->lists( 'research_name','research_id'); //->where('last_kind', '<>', DELETE)      
+        $results = DB::table('m_research')->where('last_kind', '<>', DELETE)->lists( 'research_name','research_id'); //      
+        return $results;
+    }
+
+    public function getlistDepartment()
+    {        
+        $results = DB::table('m_dept')->join('m_faculty', 'm_faculty.faculty_id', '=', 'm_dept.dept_id')->where('m_faculty.last_kind', '<>', DELETE)
+                                      ->where('m_dept.last_kind', '<>', DELETE)->select('dept_name', 'faculty_name','dept_id')->orderBy('faculty_sort', 'asc')->orderBy('dept_sort', 'asc')->get(); //->where('last_kind', '<>', DELETE)    
         return $results;
     }
 

@@ -29,4 +29,42 @@ td {
   #teacher_detail td{
   	line-height: 18px;margin: 0 29px 25px;padding: 0 8px 7px;
   }
+ .flow-item {
+    width: 560px;
+    margin: 0 auto;
+}  
+.flow-item h4 {
+    padding: 0.25em 0.75em;
+    margin-bottom: 0.5em;
+    font-size: 15px;
+    font-weight: bold;
+    color: #000;
+    background: #d0eeee;
+}
+h4 {
+    display: block;
+    -webkit-margin-before: 1.33em;
+    -webkit-margin-after: 1.33em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
+}
+.flow-item table {
+    width: 540px;
+    margin: 0 10px;
+    border-collapse: collapse;
+}
+.flow-item table tr {
+    vertical-align: top;
+}
+tr {
+    display: table-row;
+    vertical-align: inherit;
+    border-color: inherit;
+}
+.flow-item table th, .flow-item table td {
+    padding: 8px 10px;
+    border-bottom: solid 1px #dedede; text-align: left;
+}
+
   

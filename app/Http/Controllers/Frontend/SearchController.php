@@ -15,17 +15,7 @@ class SearchController extends FrontendController {
 	| controllers, you are free to modify or remove it as you desire.
 	|
 	*/
-
-	/**
-	 * Create a new controller instance.
-	 *
-	 * @return void
-	 */
-	public function __construct()
-	{
-		$this->middleware('guest');
-	}
-
+	
 	/**
 	 * Show the application welcome screen to the user.
 	 *
@@ -34,12 +24,18 @@ class SearchController extends FrontendController {
 	public function index()
 	{
 	   $clsSearch            = new SearchModel(); 
-       $data['researches']   = $clsSearch->getlistResearch();      
-	   return view('frontend.search.index');
+       $data['researches']   = $clsSearch->getlistResearch();
+       $data['departments']   = $clsSearch->getlistDepartment();            
+	   return view('frontend.search.index',$data);
 	}
 	public function search()
 	{
-		return view('frontend.search.list');
+		$clsSearch            = new SearchModel();
+		$data['researches']   = $clsSearch->getlistResearch();
+        $data['departments']   = $clsSearch->getlistDepartment();
+		$data['teachers']      = $clsSearch->get_all();	
+
+		return view('frontend.search.list',$data);
 	}
 
 }

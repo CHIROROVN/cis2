@@ -19,7 +19,10 @@
             <td class="td_color">学部・所属</td>
             <td style="border-bottom: solid 1px #bbe7e7;">
                 <select name="teacher_dept" id="teacher_dept">
-                  <option>指定しない</option>
+                  <option value="">指定しない</option>
+                  @foreach($departments as $key=>$department)
+                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
+                  @endforeach
                 </select>
             </td>
           </tr>
@@ -27,7 +30,9 @@
             <td class="td_color">研究分野</td>
             <td ><select name="teacher_research" id="teacher_research">
                   <option value="">指定しない</option>
-                  
+                  @foreach($researches as $key=>$research) 
+                     <option value="{{$key}}">{{$research}}</option>
+                  @endforeach
                 </select></td>
           </tr>
           <tr>

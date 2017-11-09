@@ -19,14 +19,20 @@
             <td class="td_color">学部・所属</td>
             <td class="td_border_botton">
                 <select name="teacher_dept" id="teacher_dept">
-                  <option>指定しない</option>
+                  <option value="">指定しない</option>
+                  @foreach($departments as $key=>$department)
+                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
+                  @endforeach
                 </select>
             </td>
           </tr>
           <tr>
             <td class="td_color">研究分野</td>
             <td class="td_border_botton"><select name="teacher_research" id="teacher_research">
-                  <option>指定しない</option>
+                  <option value="">指定しない</option>
+                  @foreach($researches as $key=>$research) 
+                     <option value="{{$key}}">{{$research}}</option>
+                  @endforeach
                 </select></td>
           </tr>
           <tr>
@@ -43,57 +49,34 @@
   <header class="article-header"><h1>検索結果</h1></header>
   <div style="position: relative;margin: 0 29px 25px;padding: 0 8px 7px;">
     <table width="100%" border="0" cellpadding="2" cellspacing="2">
-      <tr><td width="150px"><img src="{{ asset('') }}public/common/img/teacher_01.jpg"></td>
-          <td><div  class="teacher_row">
-               <div class="teacher_title">武田　光志 (たけだ　みつし）　／　Mitsushi Takeda</div>
-               <table id="teacher_detail">
-                 <tr><td width="100px">所属</td>
-                     <td>薬学部　薬学科<br>大学院　薬学研究科　薬学専攻　博士課程</td>
-                  </tr>
-                  <tr><td >学位</td>
-                     <td>薬学部　薬学科　教授</td>
-                  </tr>
-                  <tr><td >専門分野</td>
-                     <td>薬学部　薬学科　教授</td>
-                  </tr>   
-               </table>
-             </div>
-          </td>
-      </tr>
-      <tr><td width="150px"><img src="{{ asset('') }}public/common/img/teacher_02.jpg"></td>
-          <td><div  class="teacher_row">
-               <div class="teacher_title">宮﨑　工 (みやざき　たくみ）　／　Takumi Miyazaki</div>
-               <table id="teacher_detail">
-                 <tr><td width="100px">所属</td>
-                     <td>薬学部　薬学科　教授</td>
-                  </tr>
-                  <tr><td >学位</td>
-                     <td>博士（医薬学）　（千葉大学　2009年3月）</td>
-                  </tr>
-                  <tr><td >専門分野</td>
-                     <td>臨床薬学、コミュニケーション</td>
-                  </tr>   
-               </table>
-             </div>
-          </td>
-      </tr>
-      <tr><td width="150px"><img src="{{ asset('') }}public/common/img/teacher_03.jpg"></td>
-          <td><div  class="teacher_row">
-               <div class="teacher_title">横濱　明 (よこはま　あきら）　／　Akira Yokohama</div>
-               <table id="teacher_detail">
-                 <tr><td width="100px">所属</td>
-                     <td>薬学部　薬学科</td>
-                  </tr>
-                  <tr><td >学位</td>
-                     <td></td>
-                  </tr>
-                  <tr><td >専門分野</td>
-                     <td>臨床薬学、コミュニケーション</td>
-                  </tr>   
-               </table>
-             </div>
-          </td>
-      </tr>
+      @if(empty($teachers) || count($teachers) < 1)
+      <tr><td colspan="2"><strong style="color: #777;">該当するデータがありません。</strong></td></tr>
+      @else
+        @foreach($teachers as $teacher)           
+          <tr><td >@if(!empty($teacher->teacher_photo))<img src="{{ asset('') }}public/{{$teacher->teacher_photo}}">@endif</td>
+              <td>
+                <div class="flow-item"><h4>{{$teacher->teacher_name1f}} {{$teacher->teacher_name1g}} {{$teacher->teacher_name2f}} {{$teacher->teacher_name2g}} {{$teacher->teacher_name3g}} {{$teacher->teacher_name3f}}</h4>
+            <table>
+              <tbody>
+                <tr>
+                  <th>所属</th>
+                  <td>{{getDepartmentName($departments,$teacher->teacher_dept1)}}</td>
+                </tr>  
+                <tr>
+                  <th>学位</th>
+                  <td>{{$teacher->teacher_degree}} ({{$teacher->teacher_getplace}} {{$teacher->teacher_getyear}} {{$teacher->teacher_getmonth}})</td>
+                </tr>
+                <tr>
+                  <th>専門分野</th>
+                  <td>{{$teacher->teacher_research}}</td>
+                </tr>                
+              </tbody>
+            </table>
+          </div>
+              </td>
+          </tr>
+        @endforeach  
+    @endif  
     </table>  
   </div> 
 </div> 
