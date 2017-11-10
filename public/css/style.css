@@ -1,12 +1,17 @@
 @charset "utf-8";
+table {
+    display: table;
+    border-collapse: separate;
+    border-spacing: 2px;    
+}
 td {
 	font-family: "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3";
 	font-size: 12px;
 	line-height: 18px;
 }
  .td_color{
-        background-color: #d0eeee;
-        height: 30px; width: 25%; font-weight: bold; border-bottom: solid 1px #ffffff; 
+    background-color: #d0eeee;
+    height: 30px; width: 25%; font-weight: bold; border-bottom: solid 1px #ffffff;     
   }
   .button{
     background-color: #13a9a9;color: #fff;width: 100px;height: 30px;
@@ -63,5 +68,50 @@ tr {
 td, th {
     display: table-cell;
     vertical-align: inherit;
+}
+select:not(:-internal-list-box) {
+    overflow: visible !important;
+}
+
+select, select[size="0"], select[size="1"] {
+    border-radius: 0px;
+    border-color: rgb(169, 169, 169);
+}
+
+select {
+    -webkit-appearance: menulist;
+    box-sizing: border-box;
+    align-items: center;
+    white-space: pre;
+    -webkit-rtl-ordering: logical;
+    color: black;
+    background-color: white;
+    cursor: default;
+    border-width: 1px;
+    border-style: solid;
+    border-color: initial;
+    border-image: initial;
+}
+
+select {
+    border-radius: 5px;
+}
+
+input, textarea, select, button {
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    margin: 0em;
+    font: 13.3333px Arial;
+}
+
+input, textarea, select, button, meter, progress {
+    -webkit-writing-mode: horizontal-tb;
 }
   

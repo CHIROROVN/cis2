@@ -28,10 +28,15 @@ class ResearchModel
     public function getAllResearch(){
         return DB::table($this->table)->where('last_kind', '<>', DELETE)->orderBy('research_sort', 'ASC')->get();
     }
-     public function getlistResearch()
+    public function getlistResearch()
     {        
         $results = DB::table('m_research')->where('last_kind', '<>', DELETE)->lists( 'research_name','research_id'); //      
         return $results;
+    }
+    public function getResearchNameByID($research_id)
+    {        
+        $results = DB::table('m_research')->where('last_kind', '<>', DELETE)->where('research_id', '=', $research_id)->select('research_name')->first();  //      
+        return isset($results->research_name)?$results->research_name:'';
     }
 
 }

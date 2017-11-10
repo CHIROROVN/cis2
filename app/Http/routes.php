@@ -72,6 +72,7 @@ Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backen
 	//teacher	
 	Route::get('/teacher/regist', ['as' => 'backend.teacher.regist', 'uses' => 'TeacherController@getRegist']);
     Route::post('/teacher/regist', ['as' => 'backend.teacher.regist', 'uses' => 'TeacherController@postRegist']);
+    Route::post('/teacher/save', ['as' => 'backend.teacher.save', 'uses' => 'TeacherController@save']);
     Route::get('/teacher/delete/{dataname}', ['as' => 'backend.teacher.delete', 'uses' => 'TeacherController@getDelete']);
     Route::get('/teacher/edit/{id}', ['as' => 'backend.teacher.edit', 'uses' => 'TeacherController@getEdit']); 
     Route::post('/teacher/edit/{id}', ['as' => 'backend.teacher.edit', 'uses' => 'TeacherController@postEdit']); 

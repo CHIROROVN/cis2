@@ -7,6 +7,7 @@ use App\Http\Models\TeacherModel;
 use App\Http\Models\ResearchModel;
 use App\Http\Models\DeptModel;
 use Form;
+use File;
 use Html;
 use Input;
 use Validator;
@@ -26,42 +27,61 @@ class TeacherController extends BackendController
 	public function getRegist(){
         $data =array();
         $clsResearch      = new ResearchModel();
+        $clsDept          = new DeptModel();
         $data['researches'] = $clsResearch->getlistResearch();
+        $data['departments'] = $clsDept->getListDepartment();
 		return view('backend.teacher.regist',$data);
 	}
 
 	public function postRegist()
     {
-        $clsTeacher      = new TeacherModel();
+        $clsDept          = new DeptModel();
         $inputs         = Input::all();
-        $validator      = Validator::make($inputs, $clsTeacher->Rules(), $clsTeacher->Messages());
+        $Filename= '';
+        if(Input::hasFile('teacher_photo')){
+            $upload_file = Input::file('teacher_photo');
+            $Filename  = $upload_file->getClientOriginalName();
+            $path   = '/uploads/tempt/';
+            $upload_file->move(public_path().$path, $Filename);
+        }        
+        $data = array();
+        if(count($inputs) >0){
+           foreach($inputs as $key=>$val)
+           {
+               if($key !='_token' && $key !='teacher_photo')
+                 $data['teacher'][$key] = $val; 
+           } 
+           $data['teacher']['teacher_photo'] = $Filename;
+           $data['teacher']['dept_name1']    = (!empty($data['teacher']['teacher_dept1']))?$clsDept->getDepartmentNameByID($data['teacher']['teacher_dept1']) :''; 
+           $data['teacher']['dept_name2']    = (!empty($data['teacher']['teacher_dept2']))?$clsDept->getDepartmentNameByID($data['teacher']['teacher_dept2']) :'';
+           $data['teacher']['research_name'] = (!empty($data['teacher']['teacher_research']))?$clsDept->getResearchNameByID($data['teacher']['teacher_research']) :''; 
+        }                     
+        Session::put('teacher', $data['teacher']);
+        return view('backend.teacher.check',$data);
+    }
 
-        if ($validator->fails()) {
-            return redirect()->route('backend.teacher.regist')->withErrors($validator)->withInput();
+    public function save()
+    {
+        $clsTeacher      = new TeacherModel();
+        $data            = session('teacher');   
+        $data['last_date']  = date('Y-m-d H:i:s');
+        $data['last_kind']  = INSERT;  
+        $data['last_ipadrs']  = CLIENT_IP_ADRS;  
+        $data['last_user']  = Auth::user()->u_id;   
+        if(!empty($data['teacher_photo'])){            
+           if (\File::copy(public_path().'/uploads/tempt/'.$data['teacher_photo'] , public_path().'/uploads/'.$data['teacher_photo'])) {
+              $data['teacher_photo'] =  'uploads/'.$data['teacher_photo'];
+              File::delete(public_path().'/uploads/tempt/'.$data['teacher_photo']); 
+           }
         }
-        $belong = $clsTeacher->get_by_belong_code(Input::get('belong_code'));
-        if(isset($belong->belong_id)){
-            $error['belong_code']      = trans('validation.error_belong_code_unique');  
-            return redirect()->route('backend.teacher.regist')->withErrors($error)->withInput();
-        }
-        // insert
-        $max = $clsTeacher->get_max();
-        $dataInsert             = array(
-            'belong_name'       => Input::get('belong_name'),
-            'belong_sort'       => $max + 1,            
-            'belong_code'       => Input::get('belong_code'),
-            'last_date'         => date('Y-m-d H:i:s'),
-            'last_kind'         => INSERT,
-            'last_ipadrs'       => CLIENT_IP_ADRS,
-            'last_user'         => Auth::user()->u_id            
-        );
+        unset($data['dept_name1']);unset($data['dept_name2']);unset($data['research_name']);
         
-        if ( $clsTeacher->insert($dataInsert) ) {
+        if ( $clsTeacher->insert($data) ) {
             Session::flash('success', trans('common.msg_regist_success'));
         } else {
             Session::flash('danger', trans('common.msg_regist_danger'));
         }
-        return redirect()->route('backend.teacher.index');
+        return view('backend.teacher.save'); 
     }
 
     /**

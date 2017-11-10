@@ -16,8 +16,8 @@
      <table width="500px" border="1" cellpadding="2" cellspacing="2">
         <tbody>
           <tr>
-            <td class="td_color">学部・所属</td>
-            <td style="border-bottom: solid 1px #bbe7e7;">
+            <td  class="td_color">学部・所属</td>
+            <td class="td_border_botton">
                 <select name="teacher_dept" id="teacher_dept">
                   <option value="">指定しない</option>
                   @foreach($departments as $key=>$department)
@@ -27,7 +27,7 @@
             </td>
           </tr>
           <tr>
-            <td class="td_color">研究分野</td>
+            <td  class="td_color">研究分野</td>
             <td ><select name="teacher_research" id="teacher_research">
                   <option value="">指定しない</option>
                   @foreach($researches as $key=>$research) 
