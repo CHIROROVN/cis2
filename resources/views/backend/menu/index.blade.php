@@ -2,12 +2,14 @@
 @section('content')
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
+
     <tr>
       <td class="col1">■教員検索システム　＞　管理者メニュー</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
     </tr>
+    @if(Auth::user()->u_power01 == 1)
     <tr>
       <td class="col3"><strong>▼教員情報の管理</strong></td>
     </tr>
@@ -17,6 +19,8 @@
     <tr>
       <td>&nbsp;</td>
     </tr>
+    @endif
+    @if(Auth::user()->u_power02 == 1)
     <tr>
       <td class="col3"><strong>▼マスタの管理</strong></td>
     </tr>
@@ -26,6 +30,7 @@
     <tr>
       <td>&nbsp;</td>
     </tr>
+    @endif
   </tbody>
 </table>
 @endsection
