@@ -106,7 +106,7 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="#" value="変更する">
+      <td align="center"><input type="button" onClick="location.href='{{route('backend.teacher.edit',$teacher->teacher_id)}}'" value="変更する">
         　　　　　
       <input type="button" onClick="#" value="削除する"></td>
     </tr>

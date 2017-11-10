@@ -90,9 +90,11 @@ class TeacherController extends BackendController
     public function getEdit($id)
     {
         $clsTeacher          = new TeacherModel();
-        $data['belong']     = $clsTeacher->get_by_id($id);
-        $data['error']['error_belong_name_required']    = trans('validation.error_belong_name_required');
-        $data['error']['error_belong_code_required']    = trans('validation.error_belong_code_required');
+        $clsResearch         = new ResearchModel();
+        $clsDept             = new DeptModel();
+        $data['teacher']     = $clsTeacher->get_by_id($id);
+        $data['researches'] = $clsResearch->getlistResearch();
+        $data['departments'] = $clsDept->getListDepartment();
         return view('backend.teacher.edit', $data);
     }
 

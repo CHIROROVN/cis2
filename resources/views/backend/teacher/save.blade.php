@@ -15,13 +15,13 @@
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="location.href='teacher_regist.html'" value="新規登録画面へ"></td>
+      <td align="center"><input type="button" onClick="location.href='{{route('backend.teacher.regist')}}'" value="新規登録画面へ"></td>
     </tr>
     <tr>
       <td align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="location.href='teacher_search.html'" value="検索画面へ"></td>
+      <td align="center"><input type="button" onClick="location.href='{{route('backend.search.index')}}'" value="検索画面へ"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
