@@ -23,6 +23,7 @@ class TeacherController extends BackendController
         parent::__construct();
         $this->middleware('auth');
     }	
+    
 
 	public function getRegist(){
         $data =array();

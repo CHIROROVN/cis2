@@ -15,6 +15,25 @@ td {
   }
   .button{
     background-color: #13a9a9;color: #fff;width: 100px;height: 30px;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    /*border-radius: 4px;*/
   }
  
   .teacher_row{
@@ -75,7 +94,7 @@ select:not(:-internal-list-box) {
 
 select, select[size="0"], select[size="1"] {
     border-radius: 0px;
-    border-color: rgb(169, 169, 169);
+    /*border-color: rgb(169, 169, 169);*/
 }
 
 select {
@@ -87,15 +106,12 @@ select {
     color: black;
     background-color: white;
     cursor: default;
-    border-width: 1px;
+    
     border-style: solid;
     border-color: initial;
     border-image: initial;
 }
 
-select {
-    border-radius: 5px;
-}
 
 input, textarea, select, button {
     text-rendering: auto;
