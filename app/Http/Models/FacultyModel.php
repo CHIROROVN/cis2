@@ -34,6 +34,11 @@ class FacultyModel
         return DB::table($this->table)->where('faculty_id', $id)->first();
     }
 
+    public function get_name_by_id($id)
+    {
+        return DB::table($this->table)->select('faculty_name')->where('faculty_id', $id)->first();
+    }
+
     public function insert($data)
     {
         return DB::table($this->table)->insert($data);

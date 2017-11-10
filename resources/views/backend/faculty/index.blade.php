@@ -114,7 +114,7 @@
                         data: {id: id, action: action, sort: sort},
                         dataType: 'json',
                         success: function (data) {
-                                console.log(data);
+                                //console.log(data);
                                 if(data.response == 'OK'){
                                     window.location.href=window.location.href;
                                 }

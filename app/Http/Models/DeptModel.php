@@ -25,8 +25,8 @@ class DeptModel
         );
     }
 
-    public function getAllDept(){
-        return DB::table($this->table)->where('last_kind', '<>', DELETE)->orderBy('dept_sort', 'ASC')->get();
+    public function getAllDept($faculty_id){
+        return DB::table($this->table)->where('last_kind', '<>', DELETE)->where('dept_parent_id', '=', $faculty_id)->orderBy('dept_sort', 'ASC')->get();
     }
 
     public function getListDepartment()
@@ -43,6 +43,27 @@ class DeptModel
                    ->where('m_faculty.last_kind', '<>', DELETE)->select('dept_name', 'faculty_name','dept_id')->where('dept_id', '=', $dept_id)->first(); 
    
         return isset($results->dept_id)?$results->faculty_name.' '.$results->dept_name:'';
+    }
+
+    public function insert($data)
+    {
+        return DB::table($this->table)->insert($data);
+    }
+
+    public function update($id, $data)
+    {
+        return DB::table($this->table)->where('dept_id', $id)->update($data);
+    }
+
+    public function get_by_id($id)
+    {
+        return DB::table($this->table)->where('dept_id', $id)->first();
+    }
+
+    //get max dept sort
+    public function sort_max()
+    {
+        return DB::table($this->table)->select('dept_sort')->where('last_kind', '<>', DELETE)->max('dept_sort');
     }
 
 }

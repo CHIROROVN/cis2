@@ -3,11 +3,7 @@
 return [
 
     'msg_manage_login_danger'             => 'ログインに失敗しました。',
-
-    //category
-    'msg_cts-adm_cat_regist_success'      => 'カテゴリが正常に追加されました。',
-    'msg_cts-adm_cat_regist_danger'       => 'カテゴリ登録に失敗しました。',
-    
+   
     //message common
     'msg_cts-adm_del_success'             => '削除に成功しました。',
     'msg_cts-adm_regist_success'          => '登録が成功しました。',

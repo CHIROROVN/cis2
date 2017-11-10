@@ -48,13 +48,13 @@ Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backen
 
 	//Dept
 	Route::get('/dept/{id}', ['as' => 'backend.dept.index', 'uses' => 'DeptController@index']);
-	Route::get('/dept/regist', ['as' => 'backend.dept.regist', 'uses' => 'DeptController@regist']);
-	Route::post('/dept/regist', ['as' => 'backend.dept.regist', 'uses' => 'DeptController@postRegist']);
-	Route::get('/dept/edit/{id}', ['as' => 'backend.dept.edit', 'uses' => 'DeptController@edit']);
-	Route::post('/dept/edit/{id}', ['as' => 'backend.dept.edit', 'uses' => 'DeptController@postEdit']);
-	Route::get('/dept/delete/{id}', ['as' => 'backend.dept.delete', 'uses' => 'DeptController@delete']);
-	Route::get('/dept/save_delete/{id}', ['as' => 'backend.dept.save_delete', 'uses' => 'FacultyController@saveDelete']);
-
+	Route::get('/dept/regist/{id}', ['as' => 'backend.dept.regist', 'uses' => 'DeptController@regist']);
+	Route::post('/dept/regist/{id}', ['as' => 'backend.dept.regist', 'uses' => 'DeptController@postRegist']);
+	Route::get('/dept/edit/{faculty_id}/{id}', ['as' => 'backend.dept.edit', 'uses' => 'DeptController@edit']);
+	Route::post('/dept/edit/{faculty_id}/{id}', ['as' => 'backend.dept.edit', 'uses' => 'DeptController@postEdit']);
+	Route::get('/dept/delete/{faculty_id}/{id}', ['as' => 'backend.dept.delete', 'uses' => 'DeptController@delete']);
+	Route::get('/dept/save_delete/{faculty_id}/{id}', ['as' => 'backend.dept.save_delete', 'uses' => 'DeptController@saveDelete']);
+	Route::get('/depts/sort_ajax', ['as' => 'backend.dept.sort_ajax', 'uses' => 'DeptController@sort_ajax']);
 
 	//Research
 	Route::get('/research/{id}', ['as' => 'backend.research.index', 'uses' => 'ResearchController@index']);
