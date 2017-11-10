@@ -164,6 +164,12 @@ class TeacherController extends BackendController
      */
     public function getDelete($id)
     {
+       $clsTeacher              = new TeacherModel();
+       $data['teacher']     = $clsTeacher->get_by_id($id);
+       return view('backend.teacher.detail', $data);
+    }
+     public function postDelete($id)
+    {
         $clsTeacher              = new TeacherModel();
         $dataUpdate             = array(
             'last_date'         => date('Y-m-d H:i:s'),
@@ -171,12 +177,12 @@ class TeacherController extends BackendController
             'last_ipadrs'       => $_SERVER['REMOTE_ADDR'],
             'last_user'         => Auth::user()->u_id 
         );
-        if ( $clsTeacher->delete($id, $dataUpdate) ) {
+        if ( $clsTeacher->update($id, $dataUpdate) ) {
             Session::flash('success', trans('common.msg_delete_success'));
         } else {
             Session::flash('danger', trans('common.msg_delete_danger'));
         }
-        return redirect()->route('backend.teacher.index');
+        return view('backend.teacher.save');
     }
 
     

@@ -27,12 +27,12 @@
           @else
           @foreach($teachers as $teacher) 
           <tr>
-            <td><input type="button" onClick="#" value="削除"></td>
+            <td><input type="button" onClick="location.href='{{route('backend.teacher.delete',$teacher->teacher_id)}}'" value="削除"></td>
             <td align="center">@if($teacher->teacher_dspl_flag==1)<span class="f_red">×</span> @else <span class="f_blue">○</span>@endif</td>
             <td>{{$teacher->dept_name}}</td>
             <td>{{$teacher->teacher_name1f}}　{{$teacher->teacher_name1g}}</td>
             <td>{{$teacher->last_date}}</td>
-            <td><input type="button" value="詳細・変更" onclick="location.href='{{ asset('hoge/teacher-db/contents-adm/search/detail/' . $teacher->teacher_id) }}'"></td>
+            <td><input type="button" value="詳細・変更" onclick="location.href='{{route('backend.search.detail',$teacher->teacher_id)}}'"></td>
           </tr>
           @endforeach  
           @endif  
@@ -40,9 +40,9 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><input name="button11" type="button" disabled id="button11" value="前の20件を表示">
+      <td align="center"><!--<input name="button11" type="button" disabled id="button11" value="前の20件を表示">
       　　　　　
-      <input type="button" name="button12" id="button12" value="次の20件を表示"></td>
+      <input type="button" name="button12" id="button12" value="次の20件を表示">-->@include('vendor.pagination.default', ['paginator' => $teachers])</td>
     </tr>
     <tr>
       <td align="center">&nbsp;</td>

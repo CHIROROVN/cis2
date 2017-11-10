@@ -6,6 +6,8 @@
 	            'DELETE'                => 9,
 	            'START_YEAR'            => 1937,
 	            'END_YEAR'            => date("Y"),
+	            'LIMIT_PAGE'            => 2,
+
 	        )
 
         ];

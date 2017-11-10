@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
-{!! Form::open(array('route' => 'backend.teacher.create','id'=>'frmUpload', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8')) !!} 
+{!! Form::open(array('route' => 'backend.teacher.save','id'=>'frmUpload', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8')) !!} 
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <td width="25%" class="col3">顔写真</td>
-            <td>@if(!empty($teacher['teacher_photo']))<img src="{{ asset('') }}public/uploads/tempt/{{$teacher['teacher_photo']}}" width="120" height="180"> @else 画像なし@endif</td>
+            <td>@if(!empty($teacher['teacher_photo']))<img src="{{ asset('') }}public/{{$teacher['teacher_photo']}}" width="120" height="180"> @else 画像なし@endif</td>
           </tr>
           <tr>
             <td width="25%" class="col3">リンク先URL</td>

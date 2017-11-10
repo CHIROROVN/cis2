@@ -62,7 +62,7 @@ class SearchModel
                                });
         } 
         $results = $results->where('t_teacher.last_kind', '<>', DELETE)->where('teacher_dspl_flag', '<>', '1')
-                                ->select('dept_name', 'teacher_name1f', 'teacher_name1g','teacher_id','t_teacher.last_date','teacher_dspl_flag')->get();
+                                ->select('dept_name', 'teacher_name1f', 'teacher_name1g','teacher_id','t_teacher.last_date','teacher_dspl_flag')->paginate(LIMIT_PAGE);
         return $results;
     }
     public function getlistResearch()

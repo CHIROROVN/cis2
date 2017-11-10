@@ -37,7 +37,8 @@ class TeacherModel
 
     public function get_by_id($id)
     {
-        $results = DB::table($this->table)->where('teacher_id', $id)->first();        
+        $results = DB::table($this->table)->leftJoin('m_research', 'm_research.research_id', '=', 't_teacher.teacher_research')
+                                         ->leftJoin('m_dept', 'm_dept.dept_id', '=', 't_teacher.teacher_dept1')->where('teacher_id', $id)->first();        
         return $results;
     }
    

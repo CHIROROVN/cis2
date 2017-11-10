@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
-{!! Form::open(array('route' => 'backend.teacher.edit','id'=>'frmUpload', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8')) !!} 
+{!! Form::open(array('route' => ['backend.teacher.edit',  $teacher->teacher_id],'id'=>'frmUpload', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8')) !!} 
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
@@ -74,12 +74,13 @@
               <tbody>
                 <tr>
                   <td width="1%"><input type="radio" name="chkPhoto" id="chkPhoto" value="1" checked="checked"></td>
-                  <td>登録されている画像をそのまま利用　→　@if(!empty($teacher->teacher_photo))<a href="{{ asset('') }}public/{{$teacher->teacher_photo}}" target="blank" >画像を参照</a>する @else 画像なし @endif</td>
+                  <td>登録されている画像をそのまま利用　→　@if(!empty($teacher->teacher_photo))<a href="{{ asset('') }}public/{{$teacher->teacher_photo}}" target="blank" >画像を参照</a>する 
+                       <input type="hidden" name="teacher_photo" id="teacher_photo" value="{{ $teacher->teacher_photo }}"> @else 画像なし @endif</td>
                 </tr>
                 <tr>
                   <td width="1%"><input type="radio" name="chkPhoto" id="chkPhoto" value="2"></td>
                   <td>次の画像に差し替える：
-                    <input type="file" name="teacher_photo" id="teacher_photo">
+                    <input type="file" name="upload_photo" id="upload_photo">
                     <input name="img-delete" type="button" id="img-delete" value="×"></td>
                 </tr>
                 <tr>
@@ -172,7 +173,7 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="location.href='teacher_change_check.html'" value="確認画面へ"></td>
+      <td align="center"><input type="submit" value="確認画面へ"></td>
     </tr>
     <tr>
       <td align="center"><input type="reset" name="button" id="button" value="編集前の状態に戻す"></td>
@@ -190,7 +191,7 @@
 </table>
 <script type="text/javascript">
 $("#img-delete").on("click",function() {
-   $("#teacher_photo").val("");
+   $("#upload_photo").val("");
 });
 </script>  
 {!! Form::close() !!} 
