@@ -24,16 +24,71 @@ class FacultyController extends BackendController
 	}
 
 	public function postRegist(){
-		return view('backend.faculty.regist');
+		$clsFaculty = new FacultyModel();
+		$max_sort = $clsFaculty->sort_max();
+		$validator = Validator::make(Input::all(), $clsFaculty->Rules(), $clsFaculty->Messages());
+
+		if ($validator->fails()) {
+			return redirect()->route('backend.faculty.regist')->withErrors($validator)->withInput();
+		}
+
+		$data['faculty_name'] = Input::get('faculty_name');
+
+		if(!empty(Input::get('faculty_dspl_flag'))){
+			$data['faculty_dspl_flag'] = Input::get('faculty_dspl_flag');
+		}else{
+			$data['faculty_dspl_flag'] = NULL;
+		}
+
+		$data['faculty_sort'] = (int) $max_sort + 1;
+		$data['last_date'] = date('Y-m-d H:i:s');
+		$data['last_kind'] = INSERT;
+		$data['last_user'] = Auth::user()->u_id;
+
+		if($clsFaculty->insert($data)){
+			Session::flash('success', trans('common.msg_cts-adm_regist_success'));
+			return redirect()->route('backend.faculty.index');
+		}else{
+			Session::flash('danger', trans('common.msg_cts-adm_regist_danger'));
+			return redirect()->route('backend.faculty.regist');
+		}
+
 	}
 
-
 	public function edit($id){
-		return view('backend.faculty.edit');
+		$clsFaculty = new FacultyModel();
+		$data['faculty'] = $clsFaculty->get_by_id($id);
+		$data['faculty_id'] = $id; 
+		return view('backend.faculty.edit', $data);
 	}
 
 	public function postEdit($id){
-		
+		$clsFaculty = new FacultyModel();
+		$validator = Validator::make(Input::all(), $clsFaculty->Rules(), $clsFaculty->Messages());
+
+		if ($validator->fails()) {
+			return redirect()->route('backend.faculty.edit',$id)->withErrors($validator)->withInput();
+		}
+
+		$data['faculty_name'] = Input::get('faculty_name');
+
+		if(!empty(Input::get('faculty_dspl_flag'))){
+			$data['faculty_dspl_flag'] = Input::get('faculty_dspl_flag');
+		}else{
+			$data['faculty_dspl_flag'] = NULL;
+		}
+
+		$data['last_date'] = date('Y-m-d H:i:s');
+		$data['last_kind'] = UPDATE;
+		$data['last_user'] = Auth::user()->u_id;
+
+		if($clsFaculty->update($id, $data)){
+			Session::flash('success', trans('common.msg_cts-adm_edit_success'));
+			return redirect()->route('backend.faculty.index');
+		}else{
+			Session::flash('danger', trans('common.msg_cts-adm_edit_danger'));
+			return redirect()->route('backend.faculty.edit',$id);
+		}
 	}
 
 	public function delete($id){
@@ -87,8 +142,8 @@ class FacultyController extends BackendController
 					$prevC = $faculty[$kC-1];
 					$prevID = $prevC->faculty_id;
 					$prevSort = $prevC->faculty_sort;
-					$clsFaculty->update($prevID, ['faculty_sort'=>$sort, 'last_date'=>date('Y-m-d H:i:s')]);
-					$clsFaculty->update($id, ['faculty_sort'=>$prevSort, 'last_date'=>date('Y-m-d H:i:s')]);
+					$clsFaculty->update($prevID, ['faculty_sort'=>$sort]);
+					$clsFaculty->update($id, ['faculty_sort'=>$prevSort]);
 					break;
 				}
 			}
@@ -108,8 +163,8 @@ class FacultyController extends BackendController
 					$nextC = $faculty[$kC+1];
 					$nextID = $nextC->faculty_id;
 					$nextSort = $nextC->faculty_sort;
-					$clsFaculty->update($nextID, ['faculty_sort'=>$sort, 'last_date'=>date('Y-m-d H:i:s')]);
-					$clsFaculty->update($id, ['faculty_sort'=>$nextSort, 'last_date'=>date('Y-m-d H:i:s')]);
+					$clsFaculty->update($nextID, ['faculty_sort'=>$sort]);
+					$clsFaculty->update($id, ['faculty_sort'=>$nextSort]);
 
 					break;
 				}

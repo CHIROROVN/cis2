@@ -21,6 +21,8 @@ return [
     'error_u_login_required'              => 'ログインIDを入力してください。',
     'error_u_passwd_required'             => 'パスワードを入力してください。',
 
+    //Faculty
+    'error_faculty_name_required'         => '学部/研究科の名称を入力してください。',
     
 
 ];
