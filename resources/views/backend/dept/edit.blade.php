@@ -26,7 +26,12 @@
         <tbody>
           <tr>
             <td width="25%" class="col3">学科/専攻の名称 <span class="f_caution">[*]</span></td>
-            <td><input name="dept_name" type="text" id="dept_name" size="30" value="@if(old('dept_name')){{old('dept_name')}}@else{{$dept->dept_name}}@endif"></td>
+            <td>
+              <input name="dept_name" type="text" id="dept_name" size="30" value="@if(old('dept_name')){{old('dept_name')}}@else{{$dept->dept_name}}@endif">
+                @if ($errors->first('dept_name'))
+                  <div class="error-text"> {{$errors->first('dept_name')}}</div>
+                @endif
+            </td>
           </tr>
           <tr>
             <td width="25%" class="col3">表示／非表示</td>

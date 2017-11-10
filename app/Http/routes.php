@@ -58,12 +58,13 @@ Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backen
 
 	//Research
 	Route::get('/research/{id}', ['as' => 'backend.research.index', 'uses' => 'ResearchController@index']);
-	Route::get('/research/regist', ['as' => 'backend.research.regist', 'uses' => 'ResearchController@regist']);
-	Route::post('/research/regist', ['as' => 'backend.research.regist', 'uses' => 'ResearchController@postRegist']);
-	Route::get('/research/edit/{id}', ['as' => 'backend.research.edit', 'uses' => 'ResearchController@edit']);
-	Route::post('/research/edit/{id}', ['as' => 'backend.research.edit', 'uses' => 'ResearchController@postEdit']);
-	Route::get('/research/delete/{id}', ['as' => 'backend.research.delete', 'uses' => 'ResearchController@delete']);
-	Route::get('/research/save_delete/{id}', ['as' => 'backend.research.save_delete', 'uses' => 'ResearchController@saveDelete']);
+	Route::get('/research/regist/{id}', ['as' => 'backend.research.regist', 'uses' => 'ResearchController@regist']);
+	Route::post('/research/regist/{id}', ['as' => 'backend.research.regist', 'uses' => 'ResearchController@postRegist']);
+	Route::get('/research/edit/{faculty_id}/{id}', ['as' => 'backend.research.edit', 'uses' => 'ResearchController@edit']);
+	Route::post('/research/edit/{faculty_id}/{id}', ['as' => 'backend.research.edit', 'uses' => 'ResearchController@postEdit']);
+	Route::get('/research/delete/{faculty_id}/{id}', ['as' => 'backend.research.delete', 'uses' => 'ResearchController@delete']);
+	Route::get('/research/save_delete/{faculty_id}/{id}', ['as' => 'backend.research.save_delete', 'uses' => 'ResearchController@saveDelete']);
+	Route::get('/researchs/sort_ajax', ['as' => 'backend.research.sort_ajax', 'uses' => 'ResearchController@sort_ajax']);
 
 	//Search
 	Route::get('/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@index']);

@@ -26,6 +26,9 @@ return [
 
     //Dept
     'error_dept_name_required'            => '学科/専攻の名称を入力してください。',
+
+    //Research
+    'error_research_name_required'        => '研究分野の名称を入力してください。',
     
 
 ];
