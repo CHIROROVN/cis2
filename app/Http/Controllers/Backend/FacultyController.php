@@ -34,7 +34,8 @@ class FacultyController extends BackendController
 
 		$data['faculty_name'] = Input::get('faculty_name');
 
-		if(!empty(Input::get('faculty_dspl_flag'))){
+		$faculty_dspl_flag = Input::get('faculty_dspl_flag');
+		if(!empty($faculty_dspl_flag)){
 			$data['faculty_dspl_flag'] = Input::get('faculty_dspl_flag');
 		}else{
 			$data['faculty_dspl_flag'] = NULL;
@@ -71,8 +72,8 @@ class FacultyController extends BackendController
 		}
 
 		$data['faculty_name'] = Input::get('faculty_name');
-
-		if(!empty(Input::get('faculty_dspl_flag'))){
+		$faculty_dspl_flag = Input::get('faculty_dspl_flag');
+		if(!empty($faculty_dspl_flag)){
 			$data['faculty_dspl_flag'] = Input::get('faculty_dspl_flag');
 		}else{
 			$data['faculty_dspl_flag'] = NULL;
@@ -174,7 +175,5 @@ class FacultyController extends BackendController
 	return response()->json(['response'=> 'OK']);
 
 	}
-
-
 
 }
