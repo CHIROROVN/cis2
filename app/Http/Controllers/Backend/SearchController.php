@@ -14,9 +14,12 @@ class SearchController extends BackendController
 	
 	public function index()
 	{	
-       $clsSearch            = new SearchModel(); 
+       $clsSearch            = new SearchModel();
+       $data['teacher_dept'] = Input::get('teacher_dept');
+	   $data['txtKeyword']   = Input::get('txtKeyword'); 
+
        $data['researches']   = $clsSearch->getlistResearch();
-       $data['departments']   = $clsSearch->getlistDepartment(); 
+       $data['departments']  = $clsSearch->getlistDepartment(); 
 	   return view('backend.search.index',$data);
 	}
 
@@ -31,6 +34,7 @@ class SearchController extends BackendController
         $data['teachers']      		= $clsSearch->get_teacher($data['teacher_dept'],$data['txtKeyword']);       	
 		return view('backend.search.list',$data);
 	}
+	
 	public function detail($id){	
         $clsSearch            = new SearchModel(); 
         $data['teacher']   		= $clsSearch->get_detail_teacher($id);        

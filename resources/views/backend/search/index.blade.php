@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
- {!! Form::open(array('url' => 'hoge/teacher-db/contents-adm/search','id'=>'frmSearch', 'method' => 'post')) !!} 
+ {!! Form::open(array('route' => 'backend.search.teacher','id'=>'frmSearch', 'method' => 'get')) !!} 
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
@@ -24,14 +24,14 @@
             <td><select name="teacher_dept" id="teacher_dept">
               <option value="">指定しない</option>
                 @foreach($departments as $key=>$department)
-                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
+                  <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher_dept) selected="" @endif>{{$department->faculty_name}} {{$department->dept_name}}</option>
                 @endforeach
                 </select>
             </select></td>
           </tr>
           <tr>
             <td width="25%" class="col3">氏名</td>
-            <td><input type="text" name="txtKeyword" id="txtKeyword" >
+            <td><input type="text" name="txtKeyword" id="txtKeyword" value="@if(isset($txtKeyword)) {{$txtKeyword}} @endif">
               を含む　※漢字または読み仮名（ひらがな）</td>
           </tr>
         </tbody>
@@ -50,21 +50,7 @@
 {!! Form::close() !!}
 <script type="text/javascript">
 $("#btnSubmit").on("click",function() { 
-  /* var flag = true; 
-  if (!$("[name=staff_belong]").val().replace(/ /g, "")) {  
-    $("#error-staff-belong").html('<?php //echo $error['error_belong_required'];?>');             
-    $("#error-staff-belong").css('display','block');   
-    $('[name=staff_belong]').focus();
-    flag = false;    
-  }
-
- if (!$("#cb_year").val().replace(/ /g, "")) {  
-    $("#error-cb-year").html('<?php ///echo $error['error_year_required'];?>');             
-    $("#error-cb-year").css('display','block');   
-    $('#cb_year').focus();
-    flag = false; 
-  }  
-  if(flag)*/ $( "#frmSearch" ).submit();
+  $( "#frmSearch" ).submit();
 });
 </script>  
 @endsection

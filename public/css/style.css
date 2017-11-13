@@ -116,7 +116,10 @@ select {
     border-image: initial;*/
 }
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 54e77bbd156d793bde257cf25d20ca167ca9a6ff
 input, textarea, select, button {
     text-rendering: auto;
     color: initial;

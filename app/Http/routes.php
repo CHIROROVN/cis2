@@ -68,7 +68,7 @@ Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backen
 
 	//Search
 	Route::get('/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@index']);
-	Route::post('/search', ['as' => 'backend.search.index', 'uses' => 'SearchController@search']);
+	Route::get('/teacher', ['as' => 'backend.search.teacher', 'uses' => 'SearchController@search']);
 	Route::get('/search/detail/{id}', ['as' => 'backend.search.detail', 'uses' => 'SearchController@detail']);
 	//teacher	
 	Route::get('/teacher/regist', ['as' => 'backend.teacher.regist', 'uses' => 'TeacherController@getRegist']);

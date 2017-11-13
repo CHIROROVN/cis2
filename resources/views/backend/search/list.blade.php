@@ -40,15 +40,25 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><!--<input name="button11" type="button" disabled id="button11" value="前の20件を表示">
-      　　　　　
-      <input type="button" name="button12" id="button12" value="次の20件を表示">-->@include('vendor.pagination.default', ['paginator' => $teachers])</td>
+      <td align="center">
+        @if ($teachers->lastPage() > 1)
+            <ul class="pagination">
+                <li class="{{ ($teachers->currentPage() == 1) ? ' disabled' : '' }}">
+                    <input name="button11" type="button" disabled id="button11" value="前の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{ $teachers->url(1) }}'">                    
+                </li>                
+                <li class="{{ ($teachers->currentPage() == $teachers->lastPage()) ? ' disabled' : '' }}">                    
+                    <input type="button" name="button12" id="button12" value="次の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{ $teachers->url($teachers->currentPage()+1) }}'">
+                </li>
+            </ul>
+
+            @endif
+      </td>
     </tr>
     <tr>
       <td align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="window.history.back();" value="条件を変えて再検索"></td>
+      <td align="center"><input type="button" onClick="{{route('backend.search.index')}}?teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}" value="条件を変えて再検索"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
