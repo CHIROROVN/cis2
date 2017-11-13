@@ -28,19 +28,19 @@
   <header id="global-header">
     <div class="header-contents">
       <ul id="tnav">
-        <li id="tnav01"><a href="www.cis.ac.jp/index.html"><img src="{{ asset('') }}public/common/img/tnav_home_out.gif" alt="Home" width="80" height="70"></a></li>
-        <li id="tnav02"><a href="www.cis.ac.jp/examinee/index.html"><img src="{{ asset('') }}public/common/img/tnav_examinee_out.gif" alt="受験生の方へ" width="180" height="70"></a></li>
-        <li id="tnav03"><a href="index.html"><img src="{{ asset('') }}public/common/img/tnav_student_out.gif" alt="在学生の方へ" width="180" height="70"></a></li>
-        <li id="tnav04"><a href="www.cis.ac.jp/graduate/index.html"><img src="{{ asset('') }}public/common/img/tnav_graduate_out.gif" alt="卒業生の方へ" width="180" height="70"></a></li>
-        <li id="tnav05"><a href="www.cis.ac.jp/guardian/index.html"><img src="{{ asset('') }}public/common/img/tnav_guardian_out.gif" alt="保護者の方へ" width="180" height="70"></a></li>
-        <li id="tnav06"><a href="www.cis.ac.jp/research/index.html"><img src="{{ asset('') }}public/common/img/tnav_educational_out.gif" alt="一般・教育機関の方へ" width="200" height="70"></a></li>
+        <li id="tnav01"><a href="http://www.cis.ac.jp/index.html"><img src="{{ asset('') }}public/common/img/tnav_home_out.gif" alt="Home" width="80" height="70"></a></li>
+        <li id="tnav02"><a href="http://www.cis.ac.jp/examinee/index.html"><img src="{{ asset('') }}public/common/img/tnav_examinee_out.gif" alt="受験生の方へ" width="180" height="70"></a></li>
+        <li id="tnav03"><a href="http://www.cis.ac.jp/index.html"><img src="{{ asset('') }}public/common/img/tnav_student_out.gif" alt="在学生の方へ" width="180" height="70"></a></li>
+        <li id="tnav04"><a href="http://www.cis.ac.jp/graduate/index.html"><img src="{{ asset('') }}public/common/img/tnav_graduate_out.gif" alt="卒業生の方へ" width="180" height="70"></a></li>
+        <li id="tnav05"><a href="http://www.cis.ac.jp/guardian/index.html"><img src="{{ asset('') }}public/common/img/tnav_guardian_out.gif" alt="保護者の方へ" width="180" height="70"></a></li>
+        <li id="tnav06"><a href="http://www.cis.ac.jp/research/index.html"><img src="{{ asset('') }}public/common/img/tnav_educational_out.gif" alt="一般・教育機関の方へ" width="200" height="70"></a></li>
       </ul>
       <h1 id="logo"><a href="http://www.cis.ac.jp/"><img src="{{ asset('') }}public/common/img/logo.gif" alt="千葉科学大学" width="312" height="55"></a></h1>
       <ul id="snav">
-        <li><a href="www.cis.ac.jp/mobile/index.html"><img src="{{ asset('') }}public/common/img/subnav_mobile_off.gif" alt="モバイルサイト" width="100" height="18"></a></li>
-        <li><a href="www.cis.ac.jp/information/access/index.html"><img src="{{ asset('') }}public/common/img/subnav_access_off.gif" alt="アクセス" width="70" height="18"></a></li>
-        <li><a href="www.cis.ac.jp/contact/index.html"><img src="{{ asset('') }}public/common/img/subnav_contact_off.gif" alt="お問い合わせ" width="101" height="18"></a></li>
-        <li><a href="www.cis.ac.jp/shiryo/index.html"><img src="{{ asset('') }}public/common/img/subnav_shiryo_off.gif" alt="資料請求" width="75" height="18"></a></li>
+        <li><a href="http://www.cis.ac.jp/mobile/index.html"><img src="{{ asset('') }}public/common/img/subnav_mobile_off.gif" alt="モバイルサイト" width="100" height="18"></a></li>
+        <li><a href="http://www.cis.ac.jp/information/access/index.html"><img src="{{ asset('') }}public/common/img/subnav_access_off.gif" alt="アクセス" width="70" height="18"></a></li>
+        <li><a href="http://www.cis.ac.jp/contact/index.html"><img src="{{ asset('') }}public/common/img/subnav_contact_off.gif" alt="お問い合わせ" width="101" height="18"></a></li>
+        <li><a href="http://www.cis.ac.jp/shiryo/index.html"><img src="{{ asset('') }}public/common/img/subnav_shiryo_off.gif" alt="資料請求" width="75" height="18"></a></li>
       </ul>
       <div id="language_btn"><a href="www.cis.ac.jp/en/index.html">English</a></div>
       <div id="search">
@@ -56,12 +56,12 @@
       </div>
       <ul id="gnav">
         <li id="gnav01"><a href="http://www.cis.ac.jp/opencampus/index.html"><img src="{{ asset('') }}public/common/img/gnav_opencampus_off.gif" alt="オープンキャンパス" width="190" height="66"></a></li>
-        <li id="gnav02"><a href="www.cis.ac.jp/information/index.html"><img src="{{ asset('') }}public/common/img/gnav_info_off.gif" alt="大学案内" width="140" height="66"></a></li>
-        <li id="gnav03"><a href="www.cis.ac.jp/information/introduction/pharmacy/index.html"><img src="{{ asset('') }}public/common/img/gnav_pharmacy_off.gif" alt="薬学部" width="120" height="66"></a></li>
-        <li id="gnav04"><a href="www.cis.ac.jp/information/introduction/crisis/index.html"><img src="{{ asset('') }}public/common/img/gnav_crisis_off.gif" alt="危機管理学部" width="150" height="66"></a></li>
-        <li id="gnav05"><a href="www.cis.ac.jp/information/introduction/nursing/index.html"><img src="{{ asset('') }}public/common/img/gnav_nursing_off.gif" alt="看護学部" width="140" height="66"></a></li>
-        <li id="gnav06"><a href="www.cis.ac.jp/information/introduction/index.html#grad"><img src="{{ asset('') }}public/common/img/gnav_grad_off.gif" alt="大学院" width="120" height="66"></a></li>
-        <li id="gnav07"><a href="www.cis.ac.jp/information/introduction/bekka/index.html"><img src="{{ asset('') }}public/common/img/gnav_bekka_off.gif" alt="留学生別科" width="140" height="66"></a></li>
+        <li id="gnav02"><a href="http://www.cis.ac.jp/information/index.html"><img src="{{ asset('') }}public/common/img/gnav_info_off.gif" alt="大学案内" width="140" height="66"></a></li>
+        <li id="gnav03"><a href="http://www.cis.ac.jp/information/introduction/pharmacy/index.html"><img src="{{ asset('') }}public/common/img/gnav_pharmacy_off.gif" alt="薬学部" width="120" height="66"></a></li>
+        <li id="gnav04"><a href="http://www.cis.ac.jp/information/introduction/crisis/index.html"><img src="{{ asset('') }}public/common/img/gnav_crisis_off.gif" alt="危機管理学部" width="150" height="66"></a></li>
+        <li id="gnav05"><a href="http://www.cis.ac.jp/information/introduction/nursing/index.html"><img src="{{ asset('') }}public/common/img/gnav_nursing_off.gif" alt="看護学部" width="140" height="66"></a></li>
+        <li id="gnav06"><a href="http://www.cis.ac.jp/information/introduction/index.html#grad"><img src="{{ asset('') }}public/common/img/gnav_grad_off.gif" alt="大学院" width="120" height="66"></a></li>
+        <li id="gnav07"><a href="http://www.cis.ac.jp/information/introduction/bekka/index.html"><img src="{{ asset('') }}public/common/img/gnav_bekka_off.gif" alt="留学生別科" width="140" height="66"></a></li>
       </ul>
     </div>
   </header>

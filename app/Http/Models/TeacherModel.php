@@ -25,7 +25,7 @@ class TeacherModel
     
     public function get_all()
     {
-        $results = DB::table($this->table)->where('last_kind', '<>', DELETE)->orderBy('teacher_id', 'desc')->get();
+        $results = DB::table($this->table)->where('last_kind', '<>', DELETE)->orderBy('teacher_id', 'desc')->get()
         return $results;
     }
 

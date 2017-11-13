@@ -12,7 +12,7 @@
   <header class="article-header"><h1>教員検索</h1></header> 
   <div style="position: relative;margin: 0 29px 25px;padding: 0 8px 7px;">所属、研究分野、キーワードから教員検索ができます。</div>
   <div style="position: relative;margin: 0 29px 25px;padding: 0 8px 7px;">
-     {!! Form::open(array('url' => 'hoge/teacher-db/search','id'=>'frmSearch', 'method' => 'post')) !!} 
+     {!! Form::open(array('route' => 'frontend.search.teacher','id'=>'frmSearch', 'method' => 'get')) !!} 
      <table width="500px" border="1" cellpadding="2" cellspacing="2">
         <tbody>
           <tr>

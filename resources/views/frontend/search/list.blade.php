@@ -12,7 +12,7 @@
   <header class="article-header"><h1>教員検索</h1></header> 
   <div style="position: relative;margin: 0 29px 25px;padding: 0 8px 7px;">所属、研究分野、キーワードから教員検索ができます。</div>
   <div style="position: relative;margin: 0 29px 25px;padding: 0 8px 7px;">
-     {!! Form::open(array('url' => 'hoge/teacher-db/search','id'=>'frmSearch', 'method' => 'post')) !!} 
+     {!! Form::open(array('route' => 'frontend.search.teacher','id'=>'frmSearch', 'method' => 'get')) !!} 
      <table width="500px" border="1" cellpadding="2" cellspacing="2">
         <tbody>
           <tr>
@@ -48,14 +48,14 @@
   </div>
   <header class="article-header"><h1>検索結果</h1></header>
   <div style="margin: 0 29px 0px;padding: 0 8px 0px;">
-    <table width="100%" border="0" cellpadding="2" cellspacing="2">
+    <table width="100%" border="0" cellpadding="2" cellspacing="2" id="tblList">
       @if(empty($teachers) || count($teachers) < 1)
       <tr><td colspan="2"><strong style="color: #777;">該当するデータがありません。</strong></td></tr>
       @else
         @foreach($teachers as $teacher)           
-          <tr><td >@if(!empty($teacher->teacher_photo))<img src="{{ asset('') }}public/{{$teacher->teacher_photo}}">@endif</td>
-              <td >
-                <div class="flow-item"><h4>{{$teacher->teacher_name1f}} {{$teacher->teacher_name1g}} {{$teacher->teacher_name2f}} {{$teacher->teacher_name2g}} {{$teacher->teacher_name3g}} {{$teacher->teacher_name3f}}</h4>
+          <tr><td style="vertical-align: top; width: 15%;">@if(!empty($teacher->teacher_photo))<img src="{{ asset('') }}public/{{$teacher->teacher_photo}}">@endif</td>
+              <td style="vertical-align: top;">
+                <div class="flow-item">@if(!empty($teacher->teacher_url))<a href="{{$teacher->teacher_url}}" target="blank">@endif<h4>{{$teacher->teacher_name1f}} {{$teacher->teacher_name1g}} {{$teacher->teacher_name2f}} {{$teacher->teacher_name2g}} {{$teacher->teacher_name3g}} {{$teacher->teacher_name3f}}<span style="float: right"><img src="{{ asset('') }}public/common/img/li_arrow_blue1.png" class="icon"></span>@if(!empty($teacher->teacher_url))</a>@endif</h4>
             <table>
               <tbody>
                 <tr>
@@ -72,13 +72,32 @@
                   <td>{{$teacher->research_name}}</td>
                 </tr>                
               </tbody>
-            </table>
+            </table>            
           </div>
               </td>
           </tr>
         @endforeach  
     @endif  
     </table>  
+    <?php print_r($teachers);?>
+    @if ($teachers->hasPages())
+    <?php $teachers->setPath('search');?>
+    <div><ul class="pagination">
+          <li class="{{ ($teachers->currentPage() == 1) ? ' disabled' : '' }}">
+            <a href="{{ $teachers->url(1) }}">前へ</a>            
+          </li>
+          @for ($i = 1; $i <= $teachers->lastPage(); $i++)
+          <li class="{{ ($teachers->currentPage() == $i) ? ' active' : '' }}">
+              <a href="{{ $teachers->url($i) }}" class="{{ ($teachers->currentPage() == $i) ? ' active' : '' }}">{{ $i }}</a>
+          </li>
+         @endfor
+
+          <li class="{{ ($teachers->currentPage() == $teachers->lastPage()) ? ' disabled' : '' }}"> 
+            <a href="{{ $teachers->url($teachers->currentPage()+1) }}">次へ</a>                                 
+          </li>
+        </ul>
+    </div>
+    @endif
   </div> 
 </div> 
 @endsection

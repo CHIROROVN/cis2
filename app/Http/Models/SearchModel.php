@@ -39,7 +39,7 @@ class SearchModel
         if(!empty($research_id)){
           $results = $results->where('teacher_research', '=', $research_id);
         }  
-        $results = $results->where('t_teacher.last_kind', '<>', DELETE)->where('teacher_dspl_flag', '<>', '1')->get();
+        $results = $results->where('t_teacher.last_kind', '<>', DELETE)->where('teacher_dspl_flag', '<>', '1')->paginate(LIMIT_PAGE);//->get();        
         return $results;           
     }
 
