@@ -10,8 +10,8 @@
 </div>
 <div id="main-full">
   <header class="article-header"><h1>教員検索</h1></header> 
-  <div style="position: relative;margin: 0 29px 25px;padding: 0 8px 7px;">所属、研究分野、キーワードから教員検索ができます。</div>
-  <div style="position: relative;margin: 0 29px 25px;padding: 0 8px 7px;">
+  <div >所属、研究分野、キーワードから教員検索ができます。</div>
+  <div >
      {!! Form::open(array('route' => 'frontend.search.teacher','id'=>'frmSearch', 'method' => 'get')) !!} 
      <table width="500px" border="1" cellpadding="2" cellspacing="2">
         <tbody>
@@ -28,7 +28,7 @@
           </tr>
           <tr>
             <td  class="td_color">研究分野</td>
-            <td ><select name="teacher_research" id="teacher_research">
+            <td class="td_border_botton"><select name="teacher_research" id="teacher_research">
                   <option value="">指定しない</option>
                   @foreach($researches as $key=>$research) 
                      <option value="{{$key}}">{{$research}}</option>
@@ -37,10 +37,10 @@
           </tr>
           <tr>
             <td class="td_color">キーワード</td>
-            <td style="border-top: solid 1px #bbe7e7;"><input type="text" name="txtKeyword" id="txtKeyword"></td>
+            <td ><input type="text" name="txtKeyword" id="txtKeyword"></td>
           </tr>   
           <tr>
-            <td colspan="2" align="left"><br><button type="submit" class="button">検索する</button></td>   　　　　　        
+            <td colspan="2" align="left"><button type="submit" class="button">検索する</button></td>   　　　　　        
            </tr>       
         </tbody>
       </table>

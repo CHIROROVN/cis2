@@ -48,18 +48,18 @@ td {
   }  
  .flow-item {
     width: 100%; vertical-align: top;
-    margin: 0 auto;
+   /* margin: 0 auto;*/
 }  
 h4 {
     display: block;
-    -webkit-margin-before: 1.33em;
+   /* -webkit-margin-before: 1.33em;
     -webkit-margin-after: 1.33em;
     -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
+    -webkit-margin-end: 0px;*/
     font-weight: bold; 
 }
 .flow-item h4 {
-    padding: 0.25em 0.75em;
+    padding: 0.25em 0.5em;
     margin-bottom: 0.55em;
     font-size: 15px;
     font-weight: bold;line-height: 18px;
@@ -110,7 +110,7 @@ select {
     -webkit-rtl-ordering: logical;
     color: black;
     background-color: white;
-    cursor: default;    
+    cursor: default; line-height: 20px;padding: 5px; 
    /* border-style: solid;
     border-color: initial;
     border-image: initial;*/
@@ -140,39 +140,7 @@ input, textarea, select, button, meter, progress {
     display: block;   
     color: #333;    
 }
-/*
-.pagination {
-    display: inline-block; font-weight: bold;
-}
 
-.pagination a {
-    color: black;background-color: #b3e7e8;
-    float: left;
-    padding: 8px 16px;
-    text-decoration: none;
-}
-
-.pagination li {
-    display: block; 
-    background-color: #b3e7e8;
-    -webkit-margin-before: 1.33em;
-    -webkit-margin-after: 1.33em;
-    -webkit-margin-start: 0px;
-    -webkit-margin-end: 0px;
-
-}
-
-.pagination a.active {
-    background-color: #00b3b3;
-    color: white;
-}
-
-.pagination a:hover:not(.active) {background-color: #b3e7e8;}
-
-.pagination a {
-    margin: 0 4px; 
-}
-*/
 ul.pagination {
     padding: 8px 16px;
     list-style: none;    
@@ -188,9 +156,17 @@ ul.pagination li+li:before {
     padding: 8px;
     color: black;    
 }
-ul.pagination li a {background-color: #b3e7e8;margin: 0 4px;text-decoration: none;padding: 8px 16px; }
+ul.pagination li a {background-color: #d0eeee;margin: 0 4px;text-decoration: none;padding: 8px 16px; color: black;    }
 
 ul.pagination a.active {
     background-color: #00b3b3;
     color: white;
+}
+.disabled {
+    pointer-events:none; 
+    opacity:0.6;         
+}
+#teacher_dept,#teacher_research,#txtKeyword{ width: 300px; line-height: 20px; }
+#main-full div {
+    padding-left: 25px; 
 }
