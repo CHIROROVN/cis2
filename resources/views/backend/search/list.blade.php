@@ -44,10 +44,10 @@
         @if ($teachers->lastPage() > 1)
             <ul class="pagination">
                 <li class="{{ ($teachers->currentPage() == 1) ? ' disabled' : '' }}">
-                    <input name="button11" type="button" disabled id="button11" value="前の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{ $teachers->url(1) }}'">                    
+                    <input name="button11" type="button" disabled id="button11" value="前の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{route('backend.search.teacher')}}?page={{ $teachers->currentPage()-1 }}&teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}'">                    
                 </li>                
                 <li class="{{ ($teachers->currentPage() == $teachers->lastPage()) ? ' disabled' : '' }}">                    
-                    <input type="button" name="button12" id="button12" value="次の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{ $teachers->url($teachers->currentPage()+1) }}'">
+                    <input type="button" name="button12" id="button12" value="次の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{route('backend.search.teacher')}}?page={{ $teachers->currentPage()+1 }}&teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}'">
                 </li>
             </ul>
 

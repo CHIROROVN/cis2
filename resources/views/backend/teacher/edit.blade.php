@@ -182,7 +182,7 @@
       <td align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="location.href='teacher_list.html'" value="検索結果一覧画面へ戻る（編集内容は保存されません）"></td>
+      <td align="center"><input type="button" onClick="window.go.back();" value="検索結果一覧画面へ戻る（編集内容は保存されません）"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

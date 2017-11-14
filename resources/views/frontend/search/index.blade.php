@@ -40,7 +40,8 @@
             <td ><input type="text" name="txtKeyword" id="txtKeyword"></td>
           </tr>   
           <tr>
-            <td colspan="2" align="left"><button type="submit" class="button">検索する</button></td>   　　　　　        
+            <td  align="left" id="btnSubmit"><button type="submit" class="button">検索する</button></td>
+            <td></td>   　　　　　        
            </tr>       
         </tbody>
       </table>

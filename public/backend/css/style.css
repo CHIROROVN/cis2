@@ -50,17 +50,19 @@ a:active {
 }
 
 #success.message {
-    background-color: #DFF0D8;
-    border-left: 6px #4CAF50 solid;
-    color: #296829;
+    background-color: #E9FFD9;
+    border-left: 5px #13C823 solid;
+    color: #AB7955;
     width: 97%;
+    border-radius: 1.8px;
 }
 
 #error.message {
-    background-color: #F2DEDE;
-    border-left: 6px #D6010E solid;
-    color: #d6010e;
+    background-color: #FFECEC;
+    border-left: 5px #E64943 solid;
+    color: #AB7955;
     width: 97%;
+    border-radius: 1.8px;
 }
 
 .message{

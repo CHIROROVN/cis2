@@ -29,6 +29,8 @@ return [
 
     //Research
     'error_research_name_required'        => '研究分野の名称を入力してください。',
+
+    'error_teacher_name_regex'            => 'ひらがなで入力してください。',
     
 
 ];

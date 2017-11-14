@@ -12,14 +12,18 @@ class TeacherModel
     public function Rules()
     {
         return array(
-            //'tt_dataname' => 'required',                      
+           'teacher_name2f' => 'nullable|regex:/^[\x{3041}-\x{3096}]+$/u',  
+           'teacher_name2g' => 'nullable|regex:/^[\x{3041}-\x{3096}]+$/u',     
+           'teacher_url' => 'nullable|regex:/^((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)$/',                   
         );
     }
 
     public function Messages()
     {
         return array(
-           // 'tt_dataname.required'  => trans('validation.error_tt_dataname_required'),            
+           'teacher_name2f.regex'  => trans('validation.error_teacher_name_regex'), 
+           'teacher_name2g.regex'  => trans('validation.error_teacher_name_regex'),            
+           'teacher_url.regex'     => trans('validation.error_teacher_name_regex'),
         );
     }
     

@@ -40,7 +40,8 @@
             <td ><input type="text" name="txtKeyword" id="txtKeyword" value="@if(!empty($txtKeyword)){{$txtKeyword}}@endif"></td>
           </tr>   
           <tr>
-            <td colspan="2" align="left"><br><button type="submit" class="button">検索する</button></td>   　　　　　        
+            <td  align="left" id="btnSubmit"><button type="submit" class="button" >検索する</button></td> 
+            <td></td>  　　　　　        
            </tr>       
         </tbody>
       </table>
@@ -79,7 +80,7 @@
     @endif  
     </table>     
     @if ($teachers->hasPages())        
-    <div style="text-align: center;margin: 0 29px 0px;padding: 0 8px 0px;"><ul class="pagination">
+    <div style="text-align: center;"><ul class="pagination">
           <li class="{{ ($teachers->currentPage() == 1) ? ' disabled' : '' }}">
             <a href="{{route('frontend.search.teacher')}}?page={{$teachers->currentPage()-1}}}&teacher_dept={{$teacher_dept}}&teacher_research={{$teacher_research}}&txtKeyword={{$txtKeyword}}" >前へ</a>           
           </li>
