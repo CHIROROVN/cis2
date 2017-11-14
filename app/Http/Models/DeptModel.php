@@ -14,7 +14,7 @@ class DeptModel
     public function Rules()
     {
         return array(
-            'dept_name'                      => 'required',
+            'dept_name'                      => 'required|regex:/^[^\\p{Zs}]+$/u',
         );
     }
 
@@ -22,6 +22,7 @@ class DeptModel
     {
         return array(
             'dept_name.required'             => trans('validation.error_dept_name_required'),
+            'dept_name.regex'                => trans('validation.error_dept_name_regex'),
         );
     }
 

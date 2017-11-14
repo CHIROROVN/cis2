@@ -14,7 +14,7 @@ class FacultyModel
     public function Rules()
     {
         return array(
-            'faculty_name'                      => 'required',
+            'faculty_name'                      => 'required|regex:/^[^\\p{Zs}]+$/u',
         );
     }
 
@@ -22,6 +22,7 @@ class FacultyModel
     {
         return array(
             'faculty_name.required'             => trans('validation.error_faculty_name_required'),
+            'faculty_name.regex'                => trans('validation.error_faculty_name_regex'),
         );
     }
 

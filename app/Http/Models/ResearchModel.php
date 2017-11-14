@@ -14,7 +14,7 @@ class ResearchModel
     public function Rules()
     {
         return array(
-            'research_name'                      => 'required',
+            'research_name'                      => 'required|regex:/^[^\\p{Zs}]+$/u',
         );
     }
 
@@ -22,6 +22,7 @@ class ResearchModel
     {
         return array(
             'research_name.required'             => trans('validation.error_research_name_required'),
+            'research_name.regex'                => trans('validation.error_research_name_regex'),
         );
     }
 
