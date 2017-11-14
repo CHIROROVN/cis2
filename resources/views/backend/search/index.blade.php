@@ -38,7 +38,7 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><input type="submit" value="検索開始" id="btnSubmit">
+      <td align="center"><input type="button" value="検索開始" id="btnSubmit">
         　　　　　
         <input type="reset" name="reset" value="リセット"></td>
     </tr>
@@ -50,6 +50,8 @@
 {!! Form::close() !!}
 <script type="text/javascript">
 $("#btnSubmit").on("click",function() { 
+  var strKeyword = $('#txtKeyword').val();
+   $('#txtKeyword').val(strKeyword.trim());
   $( "#frmSearch" ).submit();
 });
 </script>  

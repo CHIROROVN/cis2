@@ -16,7 +16,8 @@ class SearchController extends BackendController
 	{	
        $clsSearch            = new SearchModel();
        $data['teacher_dept'] = Input::get('teacher_dept');
-	   $data['txtKeyword']   = Input::get('txtKeyword'); 
+       $txtKeyword           = Input::get('txtKeyword');
+	   $data['txtKeyword']   =  trim($txtKeyword); 
 
        $data['researches']   = $clsSearch->getlistResearch();
        $data['departments']  = $clsSearch->getlistDepartment(); 
@@ -29,7 +30,7 @@ class SearchController extends BackendController
 		$teacher_dept         		= Input::get('teacher_dept');
 		$txtKeyword         		= Input::get('txtKeyword');
         $data['teacher_dept'] 		= !empty($teacher_dept) ? $teacher_dept : NULL;
-        $data['txtKeyword'] 		= !empty($txtKeyword) ? $txtKeyword : NULL ;
+        $data['txtKeyword'] 		= !empty(trim($txtKeyword)) ? trim($txtKeyword) : NULL ;
         $data['departments']   		= $clsSearch->getlistDepartment();
         $data['teachers']      		= $clsSearch->get_teacher($data['teacher_dept'],$data['txtKeyword']);       	
 		return view('backend.search.list',$data);

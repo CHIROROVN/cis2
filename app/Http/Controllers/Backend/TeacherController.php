@@ -31,19 +31,27 @@ class TeacherController extends BackendController
         $clsDept          = new DeptModel();
         $data['researches'] = $clsResearch->getlistResearch();
         $data['departments'] = $clsDept->getListDepartment();
+        $data['error_photo'] = trans('validation.error_teacher_photo_mimes');
 		return view('backend.teacher.regist',$data);
 	}
 
 	public function postRegist()
     {
         $clsDept          = new DeptModel();
-        $inputs         = Input::all();
+        $clsResearch      = new ResearchModel();
+        $clsTeacher      = new TeacherModel();
+        $inputs         = Input::all();        
         $Filename= '';
-        if(Input::hasFile('teacher_photo')){
-            $upload_file = Input::file('teacher_photo');
-            $Filename  = $upload_file->getClientOriginalName();
-            $path   = '/uploads/tempt/';
-            $upload_file->move(public_path().$path, $Filename);
+        $validator      = Validator::make($inputs, $clsTeacher->Rules(), $clsTeacher->Messages());
+        if ($validator->fails()) {
+            return redirect()->route('backend.teacher.regist')->withErrors($validator)->withInput();
+        }
+        if(Input::hasFile('teacher_photo')){          
+           
+          $upload_file = Input::file('teacher_photo');
+          $Filename  = $upload_file->getClientOriginalName();
+          $path   = '/uploads/tempt/';
+          $upload_file->move(public_path().$path, $Filename);
         }        
         $data = array();
         if(count($inputs) >0){
@@ -55,7 +63,7 @@ class TeacherController extends BackendController
            $data['teacher']['teacher_photo'] = $Filename;
            $data['teacher']['dept_name1']    = (!empty($data['teacher']['teacher_dept1']))?$clsDept->getDepartmentNameByID($data['teacher']['teacher_dept1']) :''; 
            $data['teacher']['dept_name2']    = (!empty($data['teacher']['teacher_dept2']))?$clsDept->getDepartmentNameByID($data['teacher']['teacher_dept2']) :'';
-           $data['teacher']['research_name'] = (!empty($data['teacher']['teacher_research']))?$clsResearch->getResearchNameByID($data['teacher']['teacher_research']) :''; 
+           $data['teacher']['research_name'] = (!empty($data['teacher']['teacher_research']))?$clsResearch->getResearchNameByID((int)$data['teacher']['teacher_research']) :''; 
         }                          
         Session::put('teacher', $data['teacher']);
         return view('backend.teacher.check',$data);
@@ -121,6 +129,7 @@ class TeacherController extends BackendController
         $data['teacher']     = $clsTeacher->get_by_id($id);
         $data['researches'] = $clsResearch->getlistResearch();
         $data['departments'] = $clsDept->getListDepartment();
+        $data['error_photo'] = trans('validation.error_teacher_photo_mimes');
         return view('backend.teacher.edit', $data);
     }
 
@@ -166,7 +175,7 @@ class TeacherController extends BackendController
     public function getDelete($id)
     {
        $clsTeacher              = new TeacherModel();
-       $data['teacher']     = $clsTeacher->get_by_id($id);
+       $data['teacher']         = $clsTeacher->get_by_id($id);
        return view('backend.teacher.detail', $data);
     }
      public function postDelete($id)

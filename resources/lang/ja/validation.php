@@ -29,8 +29,9 @@ return [
 
     //Research
     'error_research_name_required'        => '研究分野の名称を入力してください。',
-
+    //teacher
     'error_teacher_name_regex'            => 'ひらがなで入力してください。',
+    'error_teacher_photo_mimes'        => '正しいphoto形式を選択してください。',
     
 
 ];

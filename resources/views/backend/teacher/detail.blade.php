@@ -108,7 +108,7 @@
     <tr>
       <td align="center"><input type="button" onClick="location.href='{{route('backend.teacher.confirmdelete',$teacher->teacher_id)}}'" value="削除する（確認済）">
         　　　　　
-      <input type="button" onClick="location.href='{{route('backend.teacher.edit',$teacher->teacher_id)}}'" value="削除する"></td>
+      <input type="button" onClick="location.href='{{route('backend.teacher.edit',$teacher->teacher_id)}}'" value="やめる"></td>
     </tr>
     
     <tr>

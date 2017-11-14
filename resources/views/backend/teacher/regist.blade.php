@@ -50,32 +50,35 @@
           <tr>
             <td width="25%" class="col3">氏名</td>
             <td>姓：
-              <input type="text" name="teacher_name1f" id="teacher_name1f">
+              <input type="text" name="teacher_name1f" id="teacher_name1f" value="{{old('teacher_name1f')}}">
               　　　名：
-              <input type="text" name="teacher_name1g" id="teacher_name1g"></td>
+              <input type="text" name="teacher_name1g" id="teacher_name1g" value="{{old('teacher_name1g')}}"></td>
+
           </tr>
           <tr>
             <td width="25%" class="col3">氏名（よみ）</td>
             <td>せい：
-              <input type="text" name="teacher_name2f" id="teacher_name2f">
+              <input type="text" name="teacher_name2f" id="teacher_name2f" value="{{old('teacher_name2f')}}">
               　　　めい：
-              <input type="text" name="teacher_name2g" id="teacher_name2g"></td>
+              <input type="text" name="teacher_name2g" id="teacher_name2g" value="{{old('teacher_name2g')}}">
+              <span class="help-block" id="error-teacher-name">@if ($errors->first('teacher_name2f')) ※{!! $errors->first('teacher_name2f') !!} @endif @if ($errors->first('teacher_name2g'))<br> ※{!! $errors->first('teacher_name2g') !!} @endif</span></td>
           </tr>
           <tr>
             <td width="25%" class="col3">氏名（ローマ字）</td>
             <td>Family name：
-              <input type="text" name="teacher_name3f" id="teacher_name3f">
+              <input type="text" name="teacher_name3f" id="teacher_name3f" value="{{old('teacher_name3f')}}">
             　　　Given name：
-               <input type="text" name="teacher_name3g" id="teacher_name3g"></td>
+               <input type="text" name="teacher_name3g" id="teacher_name3g" value="{{old('teacher_name3g')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">顔写真</td>
-            <td><input type="file" name="teacher_photo" id="teacher_photo">
-              <input name="img-delete" type="button" id="img-delete" value="×"></td>
+            <td><input type="file" name="teacher_photo" id="teacher_photo" value="{{old('teacher_photo')}}">
+              <input name="img-delete" type="button" id="img-delete" value="×">
+              <span class="help-block" id="error-teacher-photo" style="display: none">{{$error_photo}}</span></td>
           </tr>
           <tr>
             <td width="25%" class="col3">リンク先URL</td>
-            <td><input name="teacher_url" type="text" id="teacher_url" size="60"></td>
+            <td><input name="teacher_url" type="text" id="teacher_url" size="60" value="{{old('teacher_url')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">分野</td>
@@ -88,12 +91,12 @@
           </tr>
           <tr>
             <td width="25%" class="col3">学位</td>
-            <td><input type="text" name="teacher_degree" id="teacher_degree"></td>
+            <td><input type="text" name="teacher_degree" id="teacher_degree" value="{{old('teacher_degree')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">学位取得機関と年月</td>
             <td>取得機関：
-              <input type="text" name="teacher_getplace" id="teacher_getplace">
+              <input type="text" name="teacher_getplace" id="teacher_getplace" value="{{old('teacher_getplace')}}">
               　　　
               <select name="teacher_getyear" id="teacher_getyear">
                 <option value="">----年</option>
@@ -110,43 +113,43 @@
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_1</td>
-            <td><input type="text" name="teacher_keyword1" id="teacher_keyword1"></td>
+            <td><input type="text" name="teacher_keyword1" id="teacher_keyword1" value="{{old('teacher_keyword1')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_2</td>
-            <td><input type="text" name="teacher_keyword2" id="teacher_keyword2"></td>
+            <td><input type="text" name="teacher_keyword2" id="teacher_keyword2" value="{{old('teacher_keyword2')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_3</td>
-            <td><input type="text" name="teacher_keyword3" id="teacher_keyword3"></td>
+            <td><input type="text" name="teacher_keyword3" id="teacher_keyword3" value="{{old('teacher_keyword3')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_4</td>
-            <td><input type="text" name="teacher_keyword4" id="teacher_keyword4"></td>
+            <td><input type="text" name="teacher_keyword4" id="teacher_keyword4" value="{{old('teacher_keyword4')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_5</td>
-            <td><input type="text" name="teacher_keyword5" id="teacher_keyword5"></td>
+            <td><input type="text" name="teacher_keyword5" id="teacher_keyword5" value="{{old('teacher_keyword5')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_6</td>
-            <td><input type="text" name="teacher_keyword6" id="teacher_keyword6"></td>
+            <td><input type="text" name="teacher_keyword6" id="teacher_keyword6" value="{{old('teacher_keyword6')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_7</td>
-            <td><input type="text" name="teacher_keyword7" id="teacher_keyword7"></td>
+            <td><input type="text" name="teacher_keyword7" id="teacher_keyword7" value="{{old('teacher_keyword7')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_8</td>
-            <td><input type="text" name="teacher_keyword8" id="teacher_keyword8"></td>
+            <td><input type="text" name="teacher_keyword8" id="teacher_keyword8" value="{{old('teacher_keyword8')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_9</td>
-            <td><input type="text" name="teacher_keyword9" id="teacher_keyword9"></td>
+            <td><input type="text" name="teacher_keyword9" id="teacher_keyword9" value="{{old('teacher_keyword9')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_10</td>
-            <td><input type="text" name="teacher_keyword10" id="teacher_keyword10"></td>
+            <td><input type="text" name="teacher_keyword10" id="teacher_keyword10" value="{{old('teacher_keyword10')}}"></td>
           </tr>
           <tr>
             <td width="25%" class="col3">表示／非表示</td>
@@ -178,6 +181,17 @@
 $("#img-delete").on("click",function() {
    $("#teacher_photo").val("");
 });
+
+$("#teacher_photo").on("change",function() {
+  var extension = $('#teacher_photo').val().split('.').pop().toLowerCase();
+  if($.inArray(extension, ['gif','png','jpg','jpeg','bmp']) == -1) {      
+      $("#error-teacher-photo").attr("style", "display:block");
+      $("#teacher_photo").val("");
+  }else{
+     $("#error-teacher-photo").attr("style", "display:none");
+  }
+
+});  
 </script>  
 {!! Form::close() !!} 
 @endsection

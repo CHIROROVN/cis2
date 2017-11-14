@@ -1,5 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
+<link href="{{ asset('') }}public/backend/css/pagination.css" rel="stylesheet" />
  <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
@@ -9,7 +10,7 @@
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>検索の結果、25件が該当しました。うち、1～20件を表示しています。</td>
+      <td>検索の結果、{{$teachers->total()}} 件が該当しました。うち、@if ($teachers->lastPage() > 0){{(($teachers->currentPage() -1)*LIMIT_PAGE ) +1}}～{{$teachers->currentPage()*LIMIT_PAGE}} @else 0 ～ 0 @endif件を表示しています。</td>
     </tr>
     <tr>
       <td><table width="100%" border="1" cellspacing="0" cellpadding="5">
@@ -41,24 +42,31 @@
     </tr>
     <tr>
       <td align="center">
-        @if ($teachers->lastPage() > 1)
+        @if ($teachers->lastPage() > 0)
             <ul class="pagination">
                 <li class="{{ ($teachers->currentPage() == 1) ? ' disabled' : '' }}">
-                    <input name="button11" type="button" disabled id="button11" value="前の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{route('backend.search.teacher')}}?page={{ $teachers->currentPage()-1 }}&teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}'">                    
+                    @if($teachers->currentPage()==1)
+                    <input name="button11" type="button" id="button11" value="前の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{route('backend.search.teacher')}}?teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}'" disabled>
+                    @else
+                    <input name="button11" type="button"  id="button11" value="前の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{route('backend.search.teacher')}}?page={{ $teachers->currentPage()-1 }}&teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}'">  
+                    @endif                   
                 </li>                
-                <li class="{{ ($teachers->currentPage() == $teachers->lastPage()) ? ' disabled' : '' }}">                    
-                    <input type="button" name="button12" id="button12" value="次の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{route('backend.search.teacher')}}?page={{ $teachers->currentPage()+1 }}&teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}'">
+                <li class="{{ ($teachers->currentPage() == $teachers->lastPage()) ? ' disabled' : '' }}">
+                    @if($teachers->currentPage()==$teachers->lastPage())                    
+                    <input type="button" name="button12" id="button12" value="次の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{route('backend.search.teacher')}}?page={{ $teachers->lastPage()}}&teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}'" disabled>
+                    @else
+                      <input type="button" name="button12" id="button12" value="次の{{LIMIT_PAGE}}件を表示" onclick="location.href='{{route('backend.search.teacher')}}?page={{ $teachers->currentPage()+1 }}&teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}'">
+                    @endif  
                 </li>
             </ul>
-
-            @endif
+            @endif      
       </td>
     </tr>
     <tr>
       <td align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="{{route('backend.search.index')}}?teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}" value="条件を変えて再検索"></td>
+      <td align="center"><input type="button" onClick="location.href='{{route('backend.search.index')}}?teacher_dept={{$teacher_dept}}&txtKeyword={{$txtKeyword}}'" value="条件を変えて再検索"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

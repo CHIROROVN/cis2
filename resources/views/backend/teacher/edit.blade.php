@@ -81,7 +81,7 @@
                   <td width="1%"><input type="radio" name="chkPhoto" id="chkPhoto" value="2"></td>
                   <td>次の画像に差し替える：
                     <input type="file" name="upload_photo" id="upload_photo">
-                    <input name="img-delete" type="button" id="img-delete" value="×"></td>
+                    <input name="img-delete" type="button" id="img-delete" value="×"><span class="help-block" id="error-teacher-photo" style="display: none">{{$error_photo}}</span></td>
                 </tr>
                 <tr>
                   <td width="1%"><input type="radio" name="chkPhoto" id="chkPhoto" value="3"></td>
@@ -193,6 +193,25 @@
 $("#img-delete").on("click",function() {
    $("#upload_photo").val("");
 });
+$("#upload_photo").on("change",function() {
+  var extension = $('#upload_photo').val().split('.').pop().toLowerCase();
+  if($.inArray(extension, ['gif','png','jpg','jpeg','bmp']) == -1) {      
+      $("#error-teacher-photo").attr("style", "display:block");
+      $("#upload_photo").val("");
+  }else{
+     $("#error-teacher-photo").attr("style", "display:none");
+  }
+
+});  
+
+function isZenKatakana(str){
+  str = (str==null)?"":str;
+  if(str.match(/^[ァ-ヶー　]*$/)){    //"ー"の後ろの文字は全角スペースです。
+    return true;
+  }else{
+    return false;
+  }
+}
 </script>  
 {!! Form::close() !!} 
 @endsection

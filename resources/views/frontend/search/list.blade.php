@@ -40,7 +40,7 @@
             <td ><input type="text" name="txtKeyword" id="txtKeyword" value="@if(!empty($txtKeyword)){{$txtKeyword}}@endif"></td>
           </tr>   
           <tr>
-            <td  align="left" id="btnSubmit"><button type="submit" class="button" >検索する</button></td> 
+            <td  align="left" id="btnSubmit"><button type="button" class="button" id="btSubmit">検索する</button></td> 
             <td></td>  　　　　　        
            </tr>       
         </tbody>
@@ -97,4 +97,11 @@
     @endif
   </div> 
 </div> 
+<script type="text/javascript">
+$("#btSubmit").on("click",function() {
+  var strKeyword = $('#txtKeyword').val();
+   $('#txtKeyword').val(strKeyword.trim());
+  $( "#frmSearch" ).submit();
+});
+</script>
 @endsection
