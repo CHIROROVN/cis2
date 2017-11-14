@@ -31,12 +31,7 @@ return [
 
     //Research
     'error_research_name_required'        => '研究分野の名称を入力してください。',
-<<<<<<< HEAD
-    //teacher
-=======
-    'error_research_name_regex'           => '研究分野の名称を入力してください。',
 
->>>>>>> 5b1e99202a7bdf0a4d3c1eb782317fe38087fb70
     'error_teacher_name_regex'            => 'ひらがなで入力してください。',
     'error_teacher_photo_mimes'        => '正しいphoto形式を選択してください。',
     
