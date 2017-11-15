@@ -12,11 +12,11 @@ table {
 td {
 	font-family: "ＭＳ Ｐゴシック", Osaka, "ヒラギノ角ゴ Pro W3";
 	font-size: 12px;
-	line-height: 18px;vertical-align: top;padding: 8px 10px 0 15px; 
+	line-height: 18px;vertical-align: top; padding: 5px 10px 5px 15px;
 }
  .td_color{
     background-color: #d0eeee;
-    height: 30px; width: 25%; font-weight: bold; border-bottom: solid 1px #ffffff;   
+    height: 30px; width: 25%; font-weight: bold; border-bottom: solid 1px #ffffff;   padding: 8px 10px 0 15px;
   }
   #tblList img {
     width: 85px; height: 115px; vertical-align: middle;
@@ -93,11 +93,11 @@ tr {
     border-bottom: solid 1px #dedede; text-align: left;vertical-align: top; line-height: 8px;
 }
 .flow-item table th {
-    text-align: left;
+    text-align: left;width: 20%;
     font-style: normal;
     font-weight: normal;
 }
-td, th {
+.flow-item td, th {
     display: table-cell;
     vertical-align: inherit;
 }
@@ -136,7 +136,7 @@ input, textarea, select {
     display: inline-block;
     text-align: start;
     margin: 0em;
-    font: 13.3333px Arial;
+    font: 13.3333px Arial;  
 }
 
 input, textarea, select, meter, progress {
@@ -176,6 +176,8 @@ ul.pagination a.active {
 }
 #teacher_dept,#teacher_research,#txtKeyword{ width: 300px; line-height: 20px; }
 #main-full div {
-    padding-left: 25px; 
+    padding-left: 25px; padding-bottom: 5px !important;   
 }
 #btnSubmit{padding-left: 0px !important; }
+
+.teacher_name{padding-left: 5px; margin-left: 5px;}

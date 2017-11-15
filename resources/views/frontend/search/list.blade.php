@@ -59,17 +59,17 @@
       @else
         @foreach($teachers as $teacher)           
           <tr><td style="vertical-align: top; width: 80px">@if(!empty($teacher->teacher_photo))<img src="{{ asset('') }}public/{{$teacher->teacher_photo}}">@endif</td>
-              <td style="vertical-align: top;"><div class="flow-item">@if(!empty($teacher->teacher_url))<a href="{{$teacher->teacher_url}}" target="blank">@endif<h4>{{$teacher->teacher_name1f}} {{$teacher->teacher_name1g}} {{$teacher->teacher_name2f}} {{$teacher->teacher_name2g}} / {{$teacher->teacher_name3g}} {{$teacher->teacher_name3f}}<span style="float: right"><img src="{{ asset('') }}public/common/img/li_arrow_blue1.png" class="icon"></span>@if(!empty($teacher->teacher_url))</a>@endif</h4>
+              <td style="vertical-align: top;"><div class="flow-item">@if(!empty($teacher->teacher_url))<a href="{{$teacher->teacher_url}}" target="blank">@endif<h4>{{$teacher->teacher_name1f}} {{$teacher->teacher_name1g}} <span class="teacher_name">{{$teacher->teacher_name2f}}</span><span class="teacher_name"> {{$teacher->teacher_name2g}}</span> / <span class="teacher_name">{{$teacher->teacher_name3g}} {{$teacher->teacher_name3f}}</span><span style="float: right"><img src="{{ asset('') }}public/common/img/li_arrow_blue1.png" class="icon"></span>@if(!empty($teacher->teacher_url))</a>@endif</h4>
             <table>
               <tbody>
                 <tr>
                   <th>所属</th>
-                  <td>{{getDepartmentName($departments,$teacher->teacher_dept1)}}
+                  <td @if($teacher->teacher_dept2 >0 && $teacher->teacher_dept1 >0) style="line-height: 18px;" @endif>{{getDepartmentName($departments,$teacher->teacher_dept1)}}
                       @if($teacher->teacher_dept2 >0)<br>{{getDepartmentName($departments,$teacher->teacher_dept2)}}@endif</td>
                 </tr>  
                 <tr>
                   <th>学位</th>
-                  <td>{{$teacher->teacher_degree}} ({{$teacher->teacher_getplace}} {{$teacher->teacher_getyear}} {{$teacher->teacher_getmonth}})</td>
+                  <td>{{$teacher->teacher_degree}} @if(!empty($teacher->teacher_getplace) || !empty($teacher->teacher_getmonth) || !empty($teacher->teacher_getyear))  ({{$teacher->teacher_getplace}} {{$teacher->teacher_getyear}} {{$teacher->teacher_getmonth}}) @endif</td>
                 </tr>
                 <tr>
                   <th>専門分野</th>
