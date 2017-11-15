@@ -22,7 +22,7 @@
                   <option value="">指定しない</option>
                   @if(count($departments) > 0)
                     @foreach($departments as $key=>$department)
-                    <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher_dept) selected="" @endif>{{$department->faculty_name}} {{$department->dept_name}}</option>
+                    <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher_dept) selected="" @endif>{{$department->faculty_name}} . {{$department->dept_name}}</option>
                     @endforeach
                   @endif
                 </select>
@@ -32,9 +32,11 @@
             <td class="td_color">研究分野</td>
             <td class="td_border_botton"><select name="teacher_research" id="teacher_research">
                   <option value="">指定しない</option>
-                  @if(count($researches) > 0)
-                    @foreach($researches as $key=>$research) 
-                       <option value="{{$key}}" @if($key==$teacher_research) selected="" @endif>{{$research}}</option>
+                  @if($teacher_dept >0)
+                    @foreach($researches as $research)
+                        @if($research->dept_id == $teacher_dept)
+                          <option value="{{$research->research_id}}" @if($research->research_id==$teacher_research) selected="" @endif>{{$research->research_name}}</option>
+                        @endif 
                     @endforeach
                   @endif
                 </select></td>
@@ -106,6 +108,23 @@ $("#btSubmit").on("click",function() {
   var strKeyword = $('#txtKeyword').val();
    $('#txtKeyword').val(strKeyword.trim());
   $( "#frmSearch" ).submit();
+});
+var arrResearch = new Array();
+<?php if(count($researches) > 0){ 
+        foreach($researches as $research){
+?>  arrResearch.push({'research_id':'<?php echo $research->research_id?>','research_name':'<?php echo $research->research_name?>','dept_id':'<?php echo $research->dept_id?>'});
+<?php }}?>  
+$("#teacher_dept").on("change",function() {
+  $('#teacher_research').val('') ;
+  $("#teacher_research").html("<option value=''>指定しない</option>");  
+  id = $('#teacher_dept').val();  
+  if(Array.isArray(arrResearch)){
+      $.each(arrResearch, function(key, val){
+        if(val.dept_id==id){
+            $("#teacher_research").append(new Option(val.research_name, val.research_id)); 
+        }
+    });     
+  }
 });
 </script>
 @endsection

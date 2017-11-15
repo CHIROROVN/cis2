@@ -15,7 +15,7 @@ class SearchController extends FrontendController {
 	public function index()
 	{
 	   $clsSearch            = new SearchModel(); 
-       $data['researches']   = $clsSearch->getlistResearch();
+       $data['researches']   = $clsSearch->getlistResearchInFaculty();
        $data['departments']   = $clsSearch->getlistDepartment();            
 	   return view('frontend.search.index',$data);
 	}
@@ -28,7 +28,8 @@ class SearchController extends FrontendController {
 		$data['teacher_dept'] 		= !empty($teacher_dept ) ? $teacher_dept  : NULL;
 		$data['teacher_research'] 	= !empty($teacher_research ) ? $teacher_research  : NULL ;
 		$data['txtKeyword'] 		= !empty($txtKeyword ) ? $txtKeyword  : NULL ;		
-		$data['researches']   		= $clsSearch->getlistResearch();
+		$data['researches']   		= $clsSearch->getlistResearchInFaculty();
+		
         $data['departments']   		= $clsSearch->getlistDepartment();
 		$data['teachers']      		= $clsSearch->get_all($data['teacher_dept'],$data['teacher_research'],$data['txtKeyword']);	
        

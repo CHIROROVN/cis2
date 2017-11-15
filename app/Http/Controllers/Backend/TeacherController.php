@@ -95,7 +95,7 @@ class TeacherController extends BackendController
     public function save($id)
     {
         $clsTeacher             = new TeacherModel();
-        $data                   = session('teacher');   
+        $data                   = session('teacher');           
         $data['last_date']      = date('Y-m-d H:i:s');
         $data['last_kind']      = UPDATE;  
         $data['last_ipadrs']    = CLIENT_IP_ADRS;  
@@ -109,7 +109,7 @@ class TeacherController extends BackendController
            }
         }
         unset($data['dept_name1']);unset($data['dept_name2']);unset($data['research_name']);
-        
+       
         if ( $clsTeacher->update($id,$data) ) {
             Session::flash('success', trans('common.msg_edit_success'));
         } else {
@@ -173,7 +173,9 @@ class TeacherController extends BackendController
            }elseif($choose_upload==3){
                 $data['teacher']['teacher_photo'] = '';
            }
-        }                                          
+           $data['teacher']['teacher_dspl_flag'] = (isset($data['teacher']['teacher_dspl_flag']) && $data['teacher']['teacher_dspl_flag']==1)?1:NULL;
+        }                
+                                
         Session::put('teacher', $data['teacher']);
         return view('backend.teacher.check_edit',$data);
     }

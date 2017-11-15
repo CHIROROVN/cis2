@@ -10,7 +10,7 @@
       <td>&nbsp;</td>
     </tr>
     <tr>
-      <td>検索の結果、{{$teachers->total()}} 件が該当しました。うち、@if ($teachers->lastPage() > 0){{(($teachers->currentPage() -1)*LIMIT_PAGE ) +1}}～{{$teachers->currentPage()*LIMIT_PAGE}} @else 0 ～ 0 @endif件を表示しています。</td>
+      <td>検索の結果、{{$teachers->total()}} 件が該当しました。うち、@if ($teachers->lastPage() > 0) {{(($teachers->currentPage() -1)*LIMIT_PAGE ) +1}}～{{$teachers->currentPage()*LIMIT_PAGE}} @else 0 ～ 0 @endif 件を表示しています。</td>
     </tr>
     <tr>
       <td><table width="100%" border="1" cellspacing="0" cellpadding="5">
@@ -26,16 +26,16 @@
           @if(empty($teachers) || count($teachers) < 1)
           <tr><td colspan="6"><strong style="color: #777;">該当するデータがありません。</strong></td></tr>
           @else
-          @foreach($teachers as $teacher) 
-          <tr>
-            <td><input type="button" onClick="location.href='{{route('backend.teacher.delete',$teacher->teacher_id)}}'" value="削除"></td>
-            <td align="center">@if($teacher->teacher_dspl_flag==1)<span class="f_red">×</span> @else <span class="f_blue">○</span>@endif</td>
-            <td>{{$teacher->dept_name}}</td>
-            <td>{{$teacher->teacher_name1f}}　{{$teacher->teacher_name1g}}</td>
-            <td>{{$teacher->last_date}}</td>
-            <td><input type="button" value="詳細・変更" onclick="location.href='{{route('backend.search.detail',$teacher->teacher_id)}}'"></td>
-          </tr>
-          @endforeach  
+            @foreach($teachers as $teacher) 
+            <tr>
+              <td><input type="button" onClick="location.href='{{route('backend.teacher.delete',$teacher->teacher_id)}}'" value="削除"></td>
+              <td align="center">@if($teacher->teacher_dspl_flag==1)<span class="f_red">×</span> @else <span class="f_blue">○</span> @endif</td>
+              <td>{{$teacher->dept_name}}</td>
+              <td>{{$teacher->teacher_name1f}}　{{$teacher->teacher_name1g}}</td>
+              <td>{{$teacher->last_date}}</td>
+              <td><input type="button" value="詳細・変更" onclick="location.href='{{route('backend.search.detail',$teacher->teacher_id)}}'"></td>
+            </tr>
+            @endforeach  
           @endif  
         </tbody>
       </table></td>
@@ -59,7 +59,7 @@
                     @endif  
                 </li>
             </ul>
-            @endif      
+         @endif      
       </td>
     </tr>
     <tr>

@@ -39,7 +39,7 @@ class SearchModel
         if(!empty($research_id)){
           $results = $results->where('teacher_research', '=', $research_id);
         }  
-        $results = $results->where('t_teacher.last_kind', '<>', DELETE)->where('teacher_dspl_flag', '<>', '1')->paginate(LIMIT_PAGE);//->get();        
+        $results = $results->where('t_teacher.last_kind', '<>', DELETE)->whereNull('teacher_dspl_flag')->paginate(LIMIT_PAGE);//->where('teacher_dspl_flag', '<>', '1')//->get();        
         return $results;           
     }
 
@@ -71,6 +71,14 @@ class SearchModel
     public function getlistResearch()
     {        
         $results = DB::table('m_research')->where('last_kind', '<>', DELETE)->lists( 'research_name','research_id'); //      
+        return $results;
+    }
+    
+    public function getlistResearchInFaculty()
+    {        
+        $results = DB::table('m_research')->leftJoin('m_faculty', 'm_faculty.faculty_id', '=', 'm_research.research_parent_id')
+                                          ->leftJoin('m_dept', 'm_dept.dept_id', '=', 'm_faculty.faculty_id')
+                                          ->where('m_faculty.last_kind', '<>', DELETE)->where('m_dept.last_kind', '<>', DELETE)->where('m_research.last_kind', '<>', DELETE)->select( 'research_name','research_id','dept_id')->get(); //                                                
         return $results;
     }
 

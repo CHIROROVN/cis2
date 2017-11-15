@@ -23,9 +23,11 @@
             <td width="25%" class="col3">学部・所属</td>
             <td><select name="teacher_dept" id="teacher_dept">
               <option value="">指定しない</option>
+              @if(count($departments) > 0)
                 @foreach($departments as $key=>$department)
-                  <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher_dept) selected="" @endif>{{$department->faculty_name}} {{$department->dept_name}}</option>
+                  <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher_dept) selected="" @endif>{{$department->faculty_name}} . {{$department->dept_name}}</option>
                 @endforeach
+                @endif    
                 </select>
             </select></td>
           </tr>
