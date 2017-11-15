@@ -59,7 +59,8 @@
             <td>せい：
               <input type="text" name="teacher_name2f" id="teacher_name2f" value="{{ $teacher->teacher_name2f }}">
               　　　めい：
-              <input type="text" name="teacher_name2g" id="teacher_name2g" value="{{ $teacher->teacher_name2g }}"></td>
+              <input type="text" name="teacher_name2g" id="teacher_name2g" value="{{ $teacher->teacher_name2g }}">
+              <div  id="error-teacher-name">@if ($errors->first('teacher_name2f'))<span class="error-text"> {!! $errors->first('teacher_name2f') !!} </span>@endif @if ($errors->first('teacher_name2g'))<br><span class="error-text"> {!! $errors->first('teacher_name2g') !!}</span> @endif</div></td>
           </tr>
           <tr>
             <td width="25%" class="col3">氏名（ローマ字）</td>
@@ -81,7 +82,8 @@
                   <td width="1%"><input type="radio" name="chkPhoto" id="chkPhoto" value="2"></td>
                   <td>次の画像に差し替える：
                     <input type="file" name="upload_photo" id="upload_photo">
-                    <input name="img-delete" type="button" id="img-delete" value="×"><span class="help-block" id="error-teacher-photo" style="display: none">{{$error_photo}}</span></td>
+                    <input name="img-delete" type="button" id="img-delete" value="×">
+                    <div class="error-text" id="error-teacher-photo" style="display: none">{{$error_photo}}</div></td>
                 </tr>
                 <tr>
                   <td width="1%"><input type="radio" name="chkPhoto" id="chkPhoto" value="3"></td>
@@ -182,7 +184,7 @@
       <td align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="window.go.back();" value="検索結果一覧画面へ戻る（編集内容は保存されません）"></td>
+      <td align="center"><input type="button" onClick="history.back();" value="検索結果一覧画面へ戻る（編集内容は保存されません）"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

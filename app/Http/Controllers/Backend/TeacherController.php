@@ -46,7 +46,7 @@ class TeacherController extends BackendController
         if ($validator->fails()) {
             return redirect()->route('backend.teacher.regist')->withErrors($validator)->withInput();
         }
-        if(Input::hasFile('teacher_photo')){          
+        if(Input::hasFile('teacher_photo')){ 
            
           $upload_file = Input::file('teacher_photo');
           $Filename  = $upload_file->getClientOriginalName();
@@ -140,9 +140,18 @@ class TeacherController extends BackendController
     {
         $clsResearch         = new ResearchModel();
         $clsDept             = new DeptModel();
-        $inputs         = Input::all();
-        $choose_upload = Input::get('chkPhoto');
-        $Filename= ''; $data = array();
+        $clsTeacher          = new TeacherModel();
+        $inputs              = Input::all();
+        $choose_upload       = Input::get('chkPhoto');
+        $Filename            = ''; $data = array();
+        $Rules               = $clsTeacher->Rules();
+        if($choose_upload !=2){
+          unset($Rules['teacher_photo']);
+        }
+        $validator           = Validator::make($inputs, $Rules, $clsTeacher->Messages());
+        if ($validator->fails()) {
+           return redirect()->route('backend.teacher.edit',$id)->withErrors($validator)->withInput();
+        }
         if(count($inputs) >0){
            foreach($inputs as $key=>$val)
            {

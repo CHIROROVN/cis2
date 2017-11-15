@@ -20,9 +20,11 @@
             <td class="td_border_botton">
                 <select name="teacher_dept" id="teacher_dept">
                   <option value="">指定しない</option>
-                  @foreach($departments as $key=>$department)
-                  <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher_dept) selected="" @endif>{{$department->faculty_name}} {{$department->dept_name}}</option>
-                  @endforeach
+                  @if(count($departments) > 0)
+                    @foreach($departments as $key=>$department)
+                    <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher_dept) selected="" @endif>{{$department->faculty_name}} {{$department->dept_name}}</option>
+                    @endforeach
+                  @endif
                 </select>
             </td>
           </tr>
@@ -30,9 +32,11 @@
             <td class="td_color">研究分野</td>
             <td class="td_border_botton"><select name="teacher_research" id="teacher_research">
                   <option value="">指定しない</option>
-                  @foreach($researches as $key=>$research) 
-                     <option value="{{$key}}" @if($key==$teacher_research) selected="" @endif>{{$research}}</option>
-                  @endforeach
+                  @if(count($researches) > 0)
+                    @foreach($researches as $key=>$research) 
+                       <option value="{{$key}}" @if($key==$teacher_research) selected="" @endif>{{$research}}</option>
+                    @endforeach
+                  @endif
                 </select></td>
           </tr>
           <tr>

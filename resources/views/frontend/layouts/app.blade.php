@@ -90,7 +90,7 @@
           </ul>
         </div>
         <div id="back_to_top">
-          <p><a href="http://www.cis.ac.jp/index.html#wrapper"><img src="{{ asset('') }}public/common/img/btn_bk_ptop_off.png" alt="このページの先頭へ" width="211" height="50"></a></p>
+          <p><a href="#wrapper"><img src="{{ asset('') }}public/common/img/btn_bk_ptop_off.png" alt="このページの先頭へ" width="211" height="50"></a></p>
         </div>
         <div id="back_to_home">
           <p><a href="http://www.cis.ac.jp/index.html"><img src="{{ asset('') }}public/common/img/btn_bk_home_off.png" alt="ホーム" width="227" height="32"></a></p>
@@ -110,7 +110,7 @@
   <!-- /#footer --> 
 </div>
 <div id="scroll_top" style="display: none;">
-  <a href="http://www.cis.ac.jp/index.html#wrapper"><img src="{{ asset('') }}public/common/img/top_arrow_off.png" width="38" height="180" alt="このページの先頭へ"></a>
+  <a href="#wrapper"><img src="http://www.cis.ac.jp/common/img/top_arrow_off.png" width="38" height="180" alt="このページの先頭へ"></a>
 </div>
 
 <!-- InstanceEnd --></body></html>

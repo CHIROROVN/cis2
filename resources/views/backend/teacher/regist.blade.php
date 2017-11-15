@@ -61,7 +61,7 @@
               <input type="text" name="teacher_name2f" id="teacher_name2f" value="{{old('teacher_name2f')}}">
               　　　めい：
               <input type="text" name="teacher_name2g" id="teacher_name2g" value="{{old('teacher_name2g')}}">
-              <span class="help-block" id="error-teacher-name">@if ($errors->first('teacher_name2f')) ※{!! $errors->first('teacher_name2f') !!} @endif @if ($errors->first('teacher_name2g'))<br> ※{!! $errors->first('teacher_name2g') !!} @endif</span></td>
+              <div  id="error-teacher-name">@if ($errors->first('teacher_name2f'))<span class="error-text"> {!! $errors->first('teacher_name2f') !!} </span>@endif @if ($errors->first('teacher_name2g'))<br><span class="error-text"> {!! $errors->first('teacher_name2g') !!}</span> @endif</div></td>
           </tr>
           <tr>
             <td width="25%" class="col3">氏名（ローマ字）</td>
@@ -74,7 +74,8 @@
             <td width="25%" class="col3">顔写真</td>
             <td><input type="file" name="teacher_photo" id="teacher_photo" value="{{old('teacher_photo')}}">
               <input name="img-delete" type="button" id="img-delete" value="×">
-              <span class="help-block" id="error-teacher-photo" style="display: none">{{$error_photo}}</span></td>
+              <div class="error-text" id="error-teacher-photo" style="display: none">{{$error_photo}}</div>
+              </td>
           </tr>
           <tr>
             <td width="25%" class="col3">リンク先URL</td>

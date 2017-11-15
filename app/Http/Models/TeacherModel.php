@@ -37,8 +37,8 @@ class TeacherModel
 
     public function insert($data)
     {
-        $results = DB::table($this->table)->insert($data);        
-        return $results;
+      $results = DB::table($this->table)->insert($data);
+      return $results;
     }
 
     public function get_by_id($id)
@@ -50,7 +50,9 @@ class TeacherModel
    
     public function update($id, $data)
     {
+        
         $results = DB::table($this->table)->where('teacher_id', $id)->update($data);
+       
         return $results;
     }    
      

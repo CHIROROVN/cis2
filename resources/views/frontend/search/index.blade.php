@@ -20,19 +20,23 @@
             <td class="td_border_botton">
                 <select name="teacher_dept" id="teacher_dept">
                   <option value="">指定しない</option>
-                  @foreach($departments as $key=>$department)
-                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
-                  @endforeach
+                  @if(count($departments) > 0)
+                    @foreach($departments as $key=>$department)
+                    <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
+                    @endforeach
+                  @endif  
                 </select>
             </td>
           </tr>
           <tr>
             <td  class="td_color">研究分野</td>
             <td class="td_border_botton"><select name="teacher_research" id="teacher_research">
-                  <option value="">指定しない</option>
-                  @foreach($researches as $key=>$research) 
-                     <option value="{{$key}}">{{$research}}</option>
-                  @endforeach
+                  <option value="">指定しない</option>\
+                  @if(count($researches) > 0)
+                    @foreach($researches as $key=>$research) 
+                       <option value="{{$key}}">{{$research}}</option>
+                    @endforeach
+                  @endif   
                 </select></td>
           </tr>
           <tr>

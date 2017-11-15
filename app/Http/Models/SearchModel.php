@@ -61,8 +61,11 @@ class SearchModel
                                         ->orWhere('teacher_dept2','=', $dept_id);  
                                });
         } 
-        $results = $results->where('t_teacher.last_kind', '<>', DELETE)->where('teacher_dspl_flag', '<>', '1')
+        $results = $results->where('t_teacher.last_kind', '<>', DELETE)//->where('teacher_dspl_flag', '<>', '1')
                                 ->select('dept_name', 'teacher_name1f', 'teacher_name1g','teacher_id','t_teacher.last_date','teacher_dspl_flag')->paginate(LIMIT_PAGE);
+                                /*->toSql();
+  echo $results;
+                                 die;*/
         return $results;
     }
     public function getlistResearch()
@@ -74,7 +77,7 @@ class SearchModel
     public function getlistDepartment()
     {        
         $results = DB::table('m_dept')->join('m_faculty', 'm_faculty.faculty_id', '=', 'm_dept.dept_id')->where('m_faculty.last_kind', '<>', DELETE)
-                                      ->where('m_dept.last_kind', '<>', DELETE)->select('dept_name', 'faculty_name','dept_id')->orderBy('faculty_sort', 'asc')->orderBy('dept_sort', 'asc')->get(); //->where('last_kind', '<>', DELETE)    
+                                      ->where('m_dept.last_kind', '<>', DELETE)->select('dept_name', 'faculty_name','dept_id')->orderBy('faculty_sort', 'asc')->orderBy('dept_sort', 'asc')->get();    
         return $results;
     }
     public function get_detail_teacher($teacher_id)
