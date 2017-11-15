@@ -42,7 +42,7 @@
     </tr>
     <tr>
       <td align="center">
-        @if ($teachers->lastPage() > 0)
+        @if ($teachers->lastPage() > 1)
             <ul class="pagination">
                 <li class="{{ ($teachers->currentPage() == 1) ? ' disabled' : '' }}">
                     @if($teachers->currentPage()==1)
