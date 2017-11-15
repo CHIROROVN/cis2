@@ -94,15 +94,21 @@
           </tr>
           <tr>
             <td width="25%" class="col3">リンク先URL</td>
-            <td><input name="teacher_url" type="text" id="teacher_url" size="60" value="{{ $teacher->teacher_url }}"></td>
+            <td><input name="teacher_url" type="text" id="teacher_url" size="60" value="{{ $teacher->teacher_url }}">
+                <div class="error-text" id="error-teacher-url" style="display: none">{{$error_url}}</div>
+            </td>
           </tr>
           <tr>
             <td width="25%" class="col3">分野</td>
             <td><select name="teacher_research" id="teacher_research">
               <option value="">▼選択</option>
-              @foreach($researches as $key=>$research) 
-                     <option value="{{$key}}" @if($key==$teacher->teacher_research ) selected="" @endif>{{$research}}</option>
-                  @endforeach
+              @if($teacher->teacher_dept1 >0)
+                @foreach($researches as $research) 
+                  @if($research->dept_id == $teacher->teacher_dept1)
+                    <option value="{{$research->research_id}}" @if($research->research_id==$teacher->teacher_research ) selected="" @endif>{{$research->research_name}}</option>
+                  @endif                   
+                @endforeach
+              @endif
             </select></td>
           </tr>
           <tr>
@@ -175,7 +181,7 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><input type="submit" value="確認画面へ"></td>
+      <td align="center"><input type="button" value="確認画面へ" name="btsubmit" id="btsubmit"></td>
     </tr>
     <tr>
       <td align="center"><input type="reset" name="button" id="button" value="編集前の状態に戻す"></td>
@@ -204,6 +210,24 @@ $("#upload_photo").on("change",function() {
      $("#error-teacher-photo").attr("style", "display:none");
   }
 
+});
+
+var arrResearch = new Array();
+<?php if(count($researches) > 0){ 
+        foreach($researches as $research){
+?>  arrResearch.push({'research_id':'<?php echo $research->research_id?>','research_name':'<?php echo $research->research_name?>','dept_id':'<?php echo $research->dept_id?>'});
+<?php }}?>  
+$("#teacher_dept1").on("change",function() {
+  $('#teacher_research').val('') ;
+  $("#teacher_research").html("<option value=''>▼選択</option>");  
+  id = $('#teacher_dept1').val();  
+  if(Array.isArray(arrResearch)){
+      $.each(arrResearch, function(key, val){
+        if(val.dept_id==id){
+            $("#teacher_research").append(new Option(val.research_name, val.research_id)); 
+        }
+    });     
+  }
 });  
 
 function isZenKatakana(str){
@@ -214,6 +238,18 @@ function isZenKatakana(str){
     return false;
   }
 }
+$("#btsubmit").on("click",function() {
+  var strLink = $("#teacher_url").val();
+  if(strLink !=''){
+   if(/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(strLink)){
+        $("#error-teacher-url").attr("style", "display:none");
+    }else{
+       $("#error-teacher-url").attr("style", "display:block");
+       return false;
+    }     
+  } 
+  $("#frmUpload").submit();
+});   
 </script>  
 {!! Form::close() !!} 
 @endsection

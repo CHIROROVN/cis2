@@ -1,6 +1,7 @@
 <?php namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Backend\BackendController;
 use App\Http\Models\SearchModel;
+use App\Http\Models\DeptModel;
 use Form;
 use Input;
 use Validator;
@@ -38,8 +39,10 @@ class SearchController extends BackendController
 	}
 	
 	public function detail($id){	
-        $clsSearch            = new SearchModel(); 
-        $data['teacher']   		= $clsSearch->get_detail_teacher($id);        
+        $clsSearch              = new SearchModel(); 
+        $clsDept             = new DeptModel();
+        $data['teacher']   		= $clsSearch->get_detail_teacher($id);  
+        $data['dept_namè2']   	= (isset($data['teacher']->teacher_dept2) && $data['teacher']->teacher_dept2 >0)?$clsDept->getDepartmentNameByID($data['teacher']->teacher_dept2):'';            
 		return view('backend.search.detail',$data);
 	}
 }

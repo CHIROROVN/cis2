@@ -34,6 +34,7 @@ return [
 
     'error_teacher_name_regex'            => 'ひらがなで入力してください。',
     'error_teacher_photo_mimes'        => '正しいphoto形式を選択してください。',
+    'error_teacher_url_regex'            => 'URLを入力してください。',
     
 
 ];

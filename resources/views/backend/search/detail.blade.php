@@ -20,11 +20,11 @@
           </tr>
           <tr>
             <td width="25%" class="col3">所属専攻（大学院）</td>
-            <td>&nbsp;</td>
+            <td>{{$dept_namè2}}</td>
           </tr>
           <tr>
             <td width="25%" class="col3">役職</td>
-            <td><label for="radio">教授</label></td>
+            <td><label for="radio">@if(isset($teacher->teacher_title)){{getTeacherTitle($teacher->teacher_title)}}@else{{getTeacherTitle(0)}}@endif</label></td>
           </tr>
           <tr>
             <td width="25%" class="col3">氏名</td>
@@ -36,7 +36,7 @@
           </tr>
           <tr>
             <td width="25%" class="col3">氏名（ローマ字）</td>
-            <td>{{$teacher->teacher_name3f}}　{{$teacher->teacher_name2g}}</td>
+            <td>{{$teacher->teacher_name3f}}　{{$teacher->teacher_name3g}}</td>
           </tr>
           <tr>
             <td width="25%" class="col3">顔写真</td>
@@ -56,7 +56,7 @@
           </tr>
           <tr>
             <td width="25%" class="col3">学位取得機関と年月</td>
-            <td>{{$teacher->teacher_getplace}}　（{{$teacher->teacher_getyear}}年{{$teacher->teacher_getmonth}}月）</td>
+            <td>{{$teacher->teacher_getplace}} @if(!empty($teacher->teacher_getyear) || !empty($teacher->teacher_getmonth))　（{{$teacher->teacher_getyear}}年{{$teacher->teacher_getmonth}}月） @endif</td>
           </tr>
           <tr>
             <td width="25%" class="col3">専門分野キーワード_1</td>
@@ -108,7 +108,7 @@
     <tr>
       <td align="center"><input type="button" onClick="location.href='{{route('backend.teacher.edit',$teacher->teacher_id)}}'" value="変更する">
         　　　　　
-      <input type="button" onClick="#" value="削除する"></td>
+      <input type="button" onClick="location.href='{{route('backend.teacher.delete',$teacher->teacher_id)}}'" value="削除する"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -117,7 +117,7 @@
       <td align="center">&nbsp;</td>
     </tr>
     <tr>
-      <td align="center"><input type="button" onClick="window.history.back();" value="一覧へ戻る"></td>
+      <td align="center"><input type="button" onClick="history.back();" value="一覧へ戻る"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

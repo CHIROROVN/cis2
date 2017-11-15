@@ -20,11 +20,11 @@
           </tr>
           <tr>
             <td width="25%" class="col3">所属専攻（大学院）</td>
-            <td>&nbsp;</td>
+            <td>{{$dept_namè2}}</td>
           </tr>
           <tr>
             <td width="25%" class="col3">役職</td>
-            <td><label for="radio">教授</label></td>
+            <td><label for="radio">@if(isset($teacher->teacher_title)){{getTeacherTitle($teacher->teacher_title)}}@else{{getTeacherTitle(0)}}@endif</label></td>
           </tr>
           <tr>
             <td width="25%" class="col3">氏名</td>

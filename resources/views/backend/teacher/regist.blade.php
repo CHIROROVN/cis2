@@ -20,7 +20,7 @@
             <td><select name="teacher_dept1" id="teacher_dept1">
               <option value="">指定しない</option>
                   @foreach($departments as $key=>$department)
-                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
+                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} . {{$department->dept_name}}</option>
                   @endforeach
 
             </select></td>
@@ -30,7 +30,7 @@
             <td><select name="teacher_dept2" id="teacher_dept2">
               <option value="">指定しない</option>
                   @foreach($departments as $key=>$department)
-                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
+                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} . {{$department->dept_name}}</option>
                   @endforeach
             </select></td>
           </tr>
@@ -44,7 +44,7 @@
               講師　　　
               <input type="radio" name="teacher_title" id="teacher_title" value="4">
               名誉教授　　　
-              <input type="radio" name="teacher_title" id="teacher_title" value="0">
+              <input type="radio" name="teacher_title" id="teacher_title" value="0" checked="">
               なし</label></td>
           </tr>
           <tr>
@@ -79,15 +79,14 @@
           </tr>
           <tr>
             <td width="25%" class="col3">リンク先URL</td>
-            <td><input name="teacher_url" type="text" id="teacher_url" size="60" value="{{old('teacher_url')}}"></td>
+            <td><input name="teacher_url" type="text" id="teacher_url" size="60" value="{{old('teacher_url')}}">
+              <div class="error-text" id="error-teacher-url" style="display: none">{{$error_url}}</div>
+               </td>
           </tr>
           <tr>
             <td width="25%" class="col3">分野</td>
             <td><select name="teacher_research" id="teacher_research">
-              <option value="">▼選択</option>
-              @foreach($researches as $key=>$research) 
-                     <option value="{{$key}}">{{$research}}</option>
-                  @endforeach
+              <option value="">▼選択</option>             
             </select></td>
           </tr>
           <tr>
@@ -160,7 +159,7 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><input type="submit" value="確認画面へ" id="btnSubmit">
+      <td align="center"><input type="button" value="確認画面へ" name="btsubmit" id="btsubmit">
         　　　　　
       <input type="reset" name="button14" id="button14" value="クリア"></td>
     </tr>
@@ -193,6 +192,35 @@ $("#teacher_photo").on("change",function() {
   }
 
 });  
+var arrResearch = new Array();
+<?php if(count($researches) > 0){ 
+        foreach($researches as $research){
+?>  arrResearch.push({'research_id':'<?php echo $research->research_id?>','research_name':'<?php echo $research->research_name?>','dept_id':'<?php echo $research->dept_id?>'});
+<?php }}?>  
+$("#teacher_dept1").on("change",function() {
+  $('#teacher_research').val('') ;
+  $("#teacher_research").html("<option value=''>▼選択</option>");  
+  id = $('#teacher_dept1').val();  
+  if(Array.isArray(arrResearch)){
+      $.each(arrResearch, function(key, val){
+        if(val.dept_id==id){
+            $("#teacher_research").append(new Option(val.research_name, val.research_id)); 
+        }
+    });     
+  }
+});
+$("#btsubmit").on("click",function() {
+  var strLink = $("#teacher_url").val();
+  if(strLink !=''){
+   if(/^(http|https|ftp):\/\/[a-z0-9]+([\-\.]{1}[a-z0-9]+)*\.[a-z]{2,5}(:[0-9]{1,5})?(\/.*)?$/i.test(strLink)){
+        $("#error-teacher-url").attr("style", "display:none");
+    }else{
+       $("#error-teacher-url").attr("style", "display:block");
+       return false;
+    }     
+  } 
+  $("#frmUpload").submit();
+});   
 </script>  
 {!! Form::close() !!} 
 @endsection

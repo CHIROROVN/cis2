@@ -36,6 +36,14 @@ class ResearchModel
         return $results;
     }
 
+    public function getlistResearchInFaculty()
+    {        
+        $results = DB::table('m_research')->leftJoin('m_faculty', 'm_faculty.faculty_id', '=', 'm_research.research_parent_id')
+                                          ->leftJoin('m_dept', 'm_dept.dept_id', '=', 'm_faculty.faculty_id')
+                                          ->where('m_faculty.last_kind', '<>', DELETE)->where('m_dept.last_kind', '<>', DELETE)->where('m_research.last_kind', '<>', DELETE)->select( 'research_name','research_id','dept_id')->get(); //                                                
+        return $results;
+    }
+
     public function getResearchNameByID($research_id)
     {        
         $results = DB::table('m_research')->where('last_kind', '<>', DELETE)->where('research_id', '=', $research_id)->select('research_name')->first();  //      
