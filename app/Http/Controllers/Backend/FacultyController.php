@@ -128,11 +128,7 @@ class FacultyController extends BackendController
 
 		if($action == 'TOP'){
 			$first_sort = $first->faculty_sort;
-			if($first_sort <= 0){
-				$data['faculty_sort'] = 0;
-			}else{
-				$data['faculty_sort'] = $first_sort - 1;
-			}
+			$data['faculty_sort'] = $first_sort - 1;
 			$data['last_date'] = date('Y-m-d H:i:s');
 			$clsFaculty->update($id, $data);
 		}

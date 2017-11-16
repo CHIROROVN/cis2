@@ -1,7 +1,6 @@
 <?php namespace App\Http\Controllers\Backend;
 use App\Http\Controllers\Controller;
 use Config;
-use DB;
 
 class BackendController extends Controller
 {
