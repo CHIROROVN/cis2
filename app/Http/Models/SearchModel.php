@@ -76,15 +76,17 @@ class SearchModel
     
     public function getlistResearchInFaculty()
     {        
+       // DB::enableQueryLog();
         $results = DB::table('m_research')->leftJoin('m_faculty', 'm_faculty.faculty_id', '=', 'm_research.research_parent_id')
                                           ->leftJoin('m_dept', 'm_dept.dept_id', '=', 'm_faculty.faculty_id')
-                                          ->where('m_faculty.last_kind', '<>', DELETE)->where('m_dept.last_kind', '<>', DELETE)->where('m_research.last_kind', '<>', DELETE)->select( 'research_name','research_id','dept_id')->get(); //                                                
+                                          ->where('m_faculty.last_kind', '<>', DELETE)->where('m_dept.last_kind', '<>', DELETE)->where('m_research.last_kind', '<>', DELETE)->select( 'research_name','research_id','dept_id')->get(); //  
+        //dd(DB::getQueryLog());                                                                                
         return $results;
     }
 
     public function getlistDepartment()
     {        
-        $results = DB::table('m_dept')->join('m_faculty', 'm_faculty.faculty_id', '=', 'm_dept.dept_id')->where('m_faculty.last_kind', '<>', DELETE)
+        $results = DB::table('m_dept')->join('m_faculty', 'm_faculty.faculty_id', '=', 'm_dept.dept_parent_id')->where('m_faculty.last_kind', '<>', DELETE)
                                       ->where('m_dept.last_kind', '<>', DELETE)->select('dept_name', 'faculty_name','dept_id')->orderBy('faculty_sort', 'asc')->orderBy('dept_sort', 'asc')->get();    
         return $results;
     }

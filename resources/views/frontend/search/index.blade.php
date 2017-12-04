@@ -22,7 +22,7 @@
                   <option value="">指定しない</option>
                   @if(count($departments) > 0)
                     @foreach($departments as $key=>$department)
-                    <option value="{{$department->dept_id}}">{{$department->faculty_name}} . {{$department->dept_name}}</option>
+                    <option value="{{$department->dept_id}}">{{$department->faculty_name}}.{{$department->dept_name}}</option>
                     @endforeach
                   @endif  
                 </select>

@@ -71,7 +71,7 @@
                 </tr>  
                 <tr>
                   <th>学位</th>
-                  <td>{{$teacher->teacher_degree}} @if(!empty($teacher->teacher_getplace) || !empty($teacher->teacher_getmonth) || !empty($teacher->teacher_getyear))  ({{$teacher->teacher_getplace}} {{$teacher->teacher_getyear}} {{$teacher->teacher_getmonth}}) @endif</td>
+                  <td>{{$teacher->teacher_degree}} @if(!empty($teacher->teacher_getplace) || !empty($teacher->teacher_getmonth) || !empty($teacher->teacher_getyear))  ({{$teacher->teacher_getplace}} {{$teacher->teacher_getyear}}年 {{$teacher->teacher_getmonth}}月) @endif</td>
                 </tr>
                 <tr>
                   <th>専門分野</th>

@@ -19,11 +19,10 @@ class TeacherController extends BackendController
 {
 	
 	public function __construct()
-    {
+  {
         parent::__construct();
         $this->middleware('auth');
-    }	
-    
+   }	    
 
 	public function getRegist(){
     $data =array();
@@ -173,7 +172,7 @@ class TeacherController extends BackendController
         $data['last_kind']      = UPDATE;  
         $data['last_ipadrs']    = CLIENT_IP_ADRS;  
         $data['last_user']      = Auth::user()->u_id;   
-        if(strpos($data['teacher_photo'],'tempt') !== false){                     
+        if(isset($data['teacher_photo']) && strpos($data['teacher_photo'],'tempt') !== false){                     
            if (File::exists(public_path().$data['teacher_photo'])) {
                $arrPhoto = explode("/", $data['teacher_photo']);                
                if (\File::copy(public_path().$data['teacher_photo'] , public_path().'/uploads/'.$arrPhoto[count($arrPhoto)-1])) {
@@ -198,9 +197,10 @@ class TeacherController extends BackendController
     public function getDelete($id)
     {
        $clsTeacher              = new TeacherModel();
-       $clsDept             = new DeptModel();
+       $clsDept                 = new DeptModel();
        $data['teacher']         = $clsTeacher->get_by_id($id);
-       $data['dept_namè2']    = (isset($data['teacher']->teacher_dept2) && $data['teacher']->teacher_dept2 >0)?$clsDept->getDepartmentNameByID($data['teacher']->teacher_dept2):''; 
+       $data['dept_name1']    = (isset($data['teacher']->teacher_dept1) && $data['teacher']->teacher_dept1 >0)?$clsDept->getDepartmentNameByID($data['teacher']->teacher_dept1):''; 
+       $data['dept_name2']    = (isset($data['teacher']->teacher_dept2) && $data['teacher']->teacher_dept2 >0)?$clsDept->getDepartmentNameByID($data['teacher']->teacher_dept2):''; 
        return view('backend.teacher.detail', $data);
     }
      public function postDelete($id)

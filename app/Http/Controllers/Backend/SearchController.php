@@ -40,9 +40,10 @@ class SearchController extends BackendController
 	
 	public function detail($id){	
         $clsSearch              = new SearchModel(); 
-        $clsDept             = new DeptModel();
-        $data['teacher']   		= $clsSearch->get_detail_teacher($id);  
-        $data['dept_namè2']   	= (isset($data['teacher']->teacher_dept2) && $data['teacher']->teacher_dept2 >0)?$clsDept->getDepartmentNameByID($data['teacher']->teacher_dept2):'';            
+        $clsDept                = new DeptModel();
+        $data['teacher']   		= $clsSearch->get_detail_teacher($id); 
+        $data['dept_name1']   	= (isset($data['teacher']->teacher_dept1) && $data['teacher']->teacher_dept1 >0)?$clsDept->getDepartmentNameByID($data['teacher']->teacher_dept1):'';        
+        $data['dept_name2']   	= (isset($data['teacher']->teacher_dept2) && $data['teacher']->teacher_dept2 >0)?$clsDept->getDepartmentNameByID($data['teacher']->teacher_dept2):'';            
 		return view('backend.search.detail',$data);
 	}
 }

@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
-{!! Form::open(array('route' => 'backend.teacher.save','id'=>'frmUpload', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8')) !!} 
+{!! Form::open(array('route' => 'backend.teacher.save','id'=>$teacher['teacher_id'], 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8')) !!} 
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
@@ -109,7 +109,7 @@
     <tr>
       <td align="center"><input type="submit"  value="登録する（確認済）">
         　　　　　
-      <input type="button" onClick="history.back()" value="戻って修正する"></td>
+      <input type="button" onClick="{{route('backend.search.detail', $teacher['teacher_id'])}}" value="戻って修正する"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

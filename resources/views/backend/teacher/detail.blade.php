@@ -16,11 +16,11 @@
         <tbody>
           <tr>
             <td width="25%" class="col3">所属学科（学部）</td>
-            <td>{{$teacher->dept_name}}</td>
+            <td>{{$dept_name1}}</td>
           </tr>
           <tr>
             <td width="25%" class="col3">所属専攻（大学院）</td>
-            <td>{{$dept_namè2}}</td>
+            <td>{{$dept_name2}}</td>
           </tr>
           <tr>
             <td width="25%" class="col3">役職</td>
@@ -36,7 +36,7 @@
           </tr>
           <tr>
             <td width="25%" class="col3">氏名（ローマ字）</td>
-            <td>{{$teacher->teacher_name3f}}　{{$teacher->teacher_name2g}}</td>
+            <td>{{$teacher->teacher_name3f}}　{{$teacher->teacher_name3g}}</td>
           </tr>
           <tr>
             <td width="25%" class="col3">顔写真</td>
@@ -47,7 +47,7 @@
             <td>{{$teacher->teacher_url}}</td>
           </tr>
           <tr>
-            <td width="25%" class="col3">分野</td>
+            <td width="25%" class="col3">専門分野</td>
             <td>{{$teacher->research_name}}</td>
           </tr>
           <tr>

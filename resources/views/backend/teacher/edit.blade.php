@@ -20,7 +20,7 @@
             <td><select name="teacher_dept1" id="teacher_dept1">
               <option value="">指定しない</option>
                   @foreach($departments as $key=>$department)
-                  <option value="{{$department->dept_id}}"  @if($department->dept_id==$teacher->teacher_dept1 ) selected="" @endif>{{$department->faculty_name}} {{$department->dept_name}}</option>
+                  <option value="{{$department->dept_id}}"  @if($department->dept_id==$teacher->teacher_dept1 ) selected="" @endif>{{$department->faculty_name}}.{{$department->dept_name}}</option>
                   @endforeach
 
             </select></td>
@@ -30,7 +30,7 @@
             <td><select name="teacher_dept2" id="teacher_dept2">
               <option value="">指定しない</option>
                   @foreach($departments as $key=>$department)
-                  <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher->teacher_dept2) selected="" @endif>{{$department->faculty_name}} {{$department->dept_name}}</option>
+                  <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher->teacher_dept2) selected="" @endif>{{$department->faculty_name}}.{{$department->dept_name}}</option>
                   @endforeach
             </select></td>
           </tr>
@@ -123,7 +123,7 @@
               <select name="teacher_getyear" id="teacher_getyear">
                 <option value="">----年</option>
                 @for ($i = START_YEAR; $i <= END_YEAR; $i++)
-                <option value="{{$i}}" @if($i==$teacher->teacher_getyear ) selected="" @endif>{{$i}}</option>
+                <option value="{{$i}}" @if($i==$teacher->teacher_getyear ) selected="" @endif>{{$i}}年</option>
                 @endfor
               </select>
               <select name="teacher_getmonth" id="teacher_getmonth">
