@@ -2,6 +2,7 @@
 use App\Http\Controllers\Backend\BackendController;
 
 use App\Http\Models\FacultyModel;
+use App\Http\Models\TeacherModel;
 use Validator;
 use Session;
 use Html;
@@ -84,6 +85,11 @@ class FacultyController extends BackendController
 		$data['last_user'] = Auth::user()->u_id;
 
 		if($clsFaculty->update($id, $data)){
+			if($data['faculty_dspl_flag']==1)
+			{
+                $clsTeacher          = new TeacherModel();
+                $clsTeacher->inActiveTeacher($id,1);
+			}	 
 			Session::flash('success', trans('common.msg_cts-adm_edit_success'));
 			return redirect()->route('backend.faculty.index');
 		}else{

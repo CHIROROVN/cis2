@@ -53,6 +53,16 @@ class TeacherModel
         $results = DB::table($this->table)->where('teacher_id', $id)->update($data);
         return $results;
     }    
-     
+    
+    public function inActiveTeacher($id,$type){//type={1=>faculty,2=>dept,3=>research}
+       if($type==1){//faculty
+          $arrDept = DB::table('m_dept')->where('dept_parent_id', $id)->get();
+          if(count($arrDept) >0){
+             foreach($arrDept as $vDept){
+               $results =DB::table($this->table)->where('teacher_dept1', $vDept->dept_id)->update(['teacher_dspl_flag' => '1']);  
+             } 
+          }
+       }
+    } 
 
 }
