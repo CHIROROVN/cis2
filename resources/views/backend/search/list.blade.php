@@ -29,7 +29,7 @@
             @foreach($teachers as $teacher) 
             <tr>
               <td><input type="button" onClick="location.href='{{route('backend.teacher.delete',$teacher->teacher_id)}}'" value="削除"></td>
-              <td align="center">@if($teacher->teacher_dspl_flag==1)<span class="f_red">×</span> @else <span class="f_blue">○</span> @endif</td>
+              <td align="center">@if($teacher->teacher_dspl_flag==1 || $teacher->faculty_dspl_flag==1 || $teacher->dept_dspl_flag==1 || $teacher->research_dspl_flag==1)<span class="f_red">×</span> @else <span class="f_blue">○</span> @endif</td>
               <td>{{$teacher->dept_name}}</td>
               <td>{{$teacher->teacher_name1f}}　{{$teacher->teacher_name1g}}</td>
               <td>{{$teacher->last_date}}</td>

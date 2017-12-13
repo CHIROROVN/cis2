@@ -62,7 +62,19 @@ class TeacherModel
                $results =DB::table($this->table)->where('teacher_dept1', $vDept->dept_id)->update(['teacher_dspl_flag' => '1']);  
              } 
           }
+          $arrResearch = DB::table('m_research')->where('research_parent_id', $id)->get();
+          if(count($arrResearch) >0){
+             foreach($arrResearch as $vResearch){
+               $results =DB::table($this->table)->where('teacher_research', $vResearch->research_id)->update(['teacher_dspl_flag' => '1']);  
+             } 
+          }
+       }elseif($type==2){//dept
+           $results =DB::table($this->table)->where('teacher_dept1', $id)->update(['teacher_dspl_flag' => '1']);
+       }elseif($type==3)
+       {
+          $results =DB::table($this->table)->where('teacher_research', $id)->update(['teacher_dspl_flag' => '1']);  
        }
+
     } 
 
 }

@@ -65,8 +65,9 @@ class SearchModel
 
     public function get_teacher($dept_id=null,$key_words=null)
     {
-         $results = DB::table($this->table)->leftJoin('m_dept', 'm_dept.dept_id', '=', 't_teacher.teacher_dept1')
-                                           ;
+         $results = DB::table($this->table)->leftJoin('m_research', 'm_research.research_id', '=', 't_teacher.teacher_research')
+                                            ->leftJoin('m_dept', 'm_dept.dept_id', '=', 't_teacher.teacher_dept1')
+                                           ->leftJoin('m_faculty', 'm_faculty.faculty_id', '=', 'm_dept.dept_parent_id');
           if(!empty($key_words)){
           $results = $results->Where(function ($query) use ($key_words) {
                                   $query->where('teacher_name1f',  'like',  '%' . $key_words . '%')
@@ -94,7 +95,7 @@ class SearchModel
                                });
         } 
         $results = $results->where('t_teacher.last_kind', '<>', DELETE)//->where('teacher_dspl_flag', '<>', '1')
-                                ->select('dept_name', 'teacher_name1f', 'teacher_name1g','teacher_id','t_teacher.last_date','teacher_dspl_flag')->paginate(LIMIT_PAGE);
+                                ->select('dept_name', 'teacher_name1f', 'teacher_name1g','teacher_id','t_teacher.last_date','teacher_dspl_flag','faculty_dspl_flag','dept_dspl_flag','research_dspl_flag')->paginate(LIMIT_PAGE);
                                 /*->toSql();
   echo $results;
                                  die;*/

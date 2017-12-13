@@ -3,6 +3,7 @@ use App\Http\Controllers\Backend\BackendController;
 
 use App\Http\Models\ResearchModel;
 use App\Http\Models\FacultyModel;
+use App\Http\Models\TeacherModel;
 use Validator;
 use Session;
 use Html;
@@ -96,6 +97,11 @@ class ResearchController extends BackendController
 		$data['last_user'] = Auth::user()->u_id;
 
 		if($clsResearch->update($id, $data)){
+			if($data['research_dspl_flag']==1)
+			{
+                $clsTeacher          = new TeacherModel();
+                $clsTeacher->inActiveTeacher($id,3);
+			}	 
 			Session::flash('success', trans('common.msg_cts-adm_edit_success'));
 			return redirect()->route('backend.research.index',$faculty_id);
 		}else{
