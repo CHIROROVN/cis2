@@ -40,10 +40,14 @@
           <tr>
             <td><input type="button" onClick="location.href='{{route('backend.research.delete',[$faculty_id, $rs->research_id])}}'" value="削除"></td>
             <td align="center">
-              @if(empty($rs->research_dspl_flag))
-              <span class="f_blue">○</span>
+              @if(empty($rs->faculty_dspl_flag))
+                @if(empty($rs->research_dspl_flag))
+                <span class="f_blue">○</span>
+                @else
+                <span class="f_red">×</span>
+                @endif
               @else
-              <span class="f_red">×</span>
+                <span class="f_red">×</span>
               @endif
             </td>
             <td>{{$rs->research_name}}</td>

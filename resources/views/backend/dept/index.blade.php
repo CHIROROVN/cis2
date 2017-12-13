@@ -59,10 +59,14 @@
           <tr>
             <td><input type="button" onClick="location.href='{{route('backend.dept.delete', [$faculty_id, $dept->dept_id])}}'" value="削除"></td>
             <td align="center">
-              @if(empty($dept->dept_dspl_flag))
-              <span class="f_blue">○</span>
+              @if(empty($dept->faculty_dspl_flag))
+                @if(empty($dept->dept_dspl_flag))
+                <span class="f_blue">○</span>
+                @else
+                <span class="f_red">×</span>
+                @endif
               @else
-              <span class="f_red">×</span>
+                <span class="f_red">×</span>
               @endif
             </td>
             <td>{{$dept->dept_name}}</td>

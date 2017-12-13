@@ -27,7 +27,13 @@ class ResearchModel
     }
 
     public function getAllResearch($faculty_id){
-        return DB::table($this->table)->where('last_kind', '<>', DELETE)->where('research_parent_id', '=', $faculty_id)->orderBy('research_sort', 'ASC')->get();
+        return DB::table($this->table)
+            ->leftJoin('m_faculty', 'm_research.research_parent_id', '=', 'm_faculty.faculty_id')
+            ->where('m_research.last_kind', '<>', DELETE)
+            ->where('m_research.research_parent_id', '=', $faculty_id)
+            ->select('m_research.*', 'm_faculty.faculty_dspl_flag')
+            ->orderBy('m_research.research_sort', 'ASC')
+            ->get();
     }
 
     public function getlistResearch()

@@ -27,7 +27,13 @@ class DeptModel
     }
 
     public function getAllDept($faculty_id){
-        return DB::table($this->table)->where('last_kind', '<>', DELETE)->where('dept_parent_id', '=', $faculty_id)->orderBy('dept_sort', 'ASC')->get();
+        return DB::table($this->table)
+                ->leftJoin('m_faculty', 'm_dept.dept_parent_id', '=', 'm_faculty.faculty_id')
+                ->where('m_dept.last_kind', '<>', DELETE)
+                ->where('m_dept.dept_parent_id', '=', $faculty_id)
+                ->select('m_dept.*', 'm_faculty.faculty_dspl_flag')
+                ->orderBy('m_dept.dept_sort', 'ASC')
+                ->get();
     }
 
     public function getListDepartment()
