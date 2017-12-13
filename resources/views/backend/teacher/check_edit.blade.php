@@ -1,6 +1,6 @@
 @extends('backend.layouts.app')
 @section('content')
-{!! Form::open(array('route' => 'backend.teacher.save','id'=>$teacher['teacher_id'], 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8')) !!} 
+{!! Form::open(array('route' => ['backend.teacher.save',$teacher['teacher_id']],'id'=>'frmEdit', 'enctype'=>'multipart/form-data', 'accept-charset'=>'UTF-8')) !!} 
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
@@ -41,7 +41,7 @@
           </tr>
           <tr>
             <td width="25%" class="col3">顔写真</td>
-            <td>@if(!empty($teacher['teacher_photo']))<img src="{{ asset('') }}public/{{$teacher['teacher_photo']}}" width="120" height="180"> @else 画像なし@endif</td>
+            <td>@if(!empty($teacher['teacher_photo']))<img src="{{ asset('') }}public/{{$teacher['teacher_photo']}}" width="85px" height="113px"> @else 画像なし@endif</td>
           </tr>
           <tr>
             <td width="25%" class="col3">リンク先URL</td>
@@ -109,7 +109,7 @@
     <tr>
       <td align="center"><input type="submit"  value="登録する（確認済）">
         　　　　　
-      <input type="button" onClick="{{route('backend.search.detail', $teacher['teacher_id'])}}" value="戻って修正する"></td>
+      <input type="button" onClick="location.href='{{route('backend.search.detail', $teacher['teacher_id'])}}'" value="戻って修正する"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

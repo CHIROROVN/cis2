@@ -28,7 +28,7 @@
     </tr>
     @endif
     <tr>
-      <td align="right"><input type="button" onClick="location.href='{{route('backend.faculty.regist')}}'" value="学部の新規登録"></td>
+      <td align="right"><input type="button" onClick="location.href='{{route('backend.faculty.regist')}}'" value="学部/研究科名の新規登録"></td>
     </tr>
     <tr>
       <td><table width="100%" border="1" cellspacing="0" cellpadding="5">

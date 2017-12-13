@@ -22,7 +22,7 @@
                   <option value="">指定しない</option>
                   @if(count($departments) > 0)
                     @foreach($departments as $key=>$department)
-                    <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher_dept) selected="" @endif>{{$department->faculty_name}} . {{$department->dept_name}}</option>
+                    <option value="{{$department->dept_id}}" @if($department->dept_id==$teacher_dept) selected="" @endif>{{$department->faculty_name}} {{$department->dept_name}}</option>
                     @endforeach
                   @endif
                 </select>
@@ -34,7 +34,7 @@
                   <option value="">指定しない</option>
                   @if($teacher_dept >0)
                     @foreach($researches as $research)
-                        @if($research->dept_id == $teacher_dept)
+                        @if($research->faculty_id == $faculty_id)
                           <option value="{{$research->research_id}}" @if($research->research_id==$teacher_research) selected="" @endif>{{$research->research_name}}</option>
                         @endif 
                     @endforeach
@@ -71,7 +71,7 @@
                 </tr>  
                 <tr>
                   <th>学位</th>
-                  <td>{{$teacher->teacher_degree}} @if(!empty($teacher->teacher_getplace) || !empty($teacher->teacher_getmonth) || !empty($teacher->teacher_getyear))  ({{$teacher->teacher_getplace}} {{$teacher->teacher_getyear}}年 {{$teacher->teacher_getmonth}}月) @endif</td>
+                  <td>{{$teacher->teacher_degree}} @if(!empty($teacher->teacher_getplace) || !empty($teacher->teacher_getmonth) || !empty($teacher->teacher_getyear))  ({{$teacher->teacher_getplace}} @if(!empty($teacher->teacher_getyear)){{$teacher->teacher_getyear}}年 @endif {{$teacher->teacher_getmonth}}月) @endif</td>
                 </tr>
                 <tr>
                   <th>専門分野</th>
@@ -110,17 +110,30 @@ $("#btSubmit").on("click",function() {
   $( "#frmSearch" ).submit();
 });
 var arrResearch = new Array();
+var arrDepartment = new Array();
+<?php if(count($departments) > 0){ 
+         foreach($departments as $department){
+?>
+arrDepartment.push({'dept_id':'<?php echo $department->dept_id?>','faculty_id':'<?php echo $department->faculty_id?>'});
+<?php }}?>  
+
 <?php if(count($researches) > 0){ 
         foreach($researches as $research){
-?>  arrResearch.push({'research_id':'<?php echo $research->research_id?>','research_name':'<?php echo $research->research_name?>','dept_id':'<?php echo $research->dept_id?>'});
+?>  arrResearch.push({'research_id':'<?php echo $research->research_id?>','research_name':'<?php echo $research->research_name?>','faculty_id':'<?php echo $research->faculty_id?>'});
 <?php }}?>  
 $("#teacher_dept").on("change",function() {
   $('#teacher_research').val('') ;
   $("#teacher_research").html("<option value=''>指定しない</option>");  
-  id = $('#teacher_dept').val();  
+  dept_id = $('#teacher_dept').val();  
+  var id;
+  if(Array.isArray(arrDepartment)){
+     $.each(arrDepartment, function(key, val){
+        if(dept_id==val.dept_id) id = val.faculty_id;
+     });
+  } 
   if(Array.isArray(arrResearch)){
       $.each(arrResearch, function(key, val){
-        if(val.dept_id==id){
+        if(val.faculty_id==id){
             $("#teacher_research").append(new Option(val.research_name, val.research_id)); 
         }
     });     

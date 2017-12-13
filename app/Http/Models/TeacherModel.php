@@ -15,7 +15,7 @@ class TeacherModel
            'teacher_name2f' => 'regex:/^[\x{3041}-\x{3096}]+$/u',  
            'teacher_name2g' => 'regex:/^[\x{3041}-\x{3096}]+$/u',     
            //'teacher_url'  => 'nullable|regex:/^((?:https?\:\/\/|www\.)(?:[-a-z0-9]+\.)*[-a-z0-9]+.*)$/',
-           'teacher_photo'  => 'mimes:jpg,jpeg,png,gif|max:5000',                   
+           'teacher_photo'  => 'image|mimes:jpg,jpeg,png,gif|max:5000',                   
         );
     }
 
@@ -25,7 +25,7 @@ class TeacherModel
            'teacher_name2f.regex'  => trans('validation.error_teacher_name_regex'), 
            'teacher_name2g.regex'  => trans('validation.error_teacher_name_regex'),            
            //'teacher_url.regex'     => trans('validation.error_teacher_name_regex'),
-           'teacher_photo.mimes'     => trans('validation.error_teacher_photo_mimes'),
+           'teacher_photo.image'     => trans('validation.error_teacher_photo_mimes'),
         );
     }
     
@@ -37,8 +37,8 @@ class TeacherModel
 
     public function insert($data)
     {
-      $results = DB::table($this->table)->insert($data);
-      return $results;
+        $results = DB::table($this->table)->insert($data);        
+        return $results;
     }
 
     public function get_by_id($id)
@@ -50,9 +50,7 @@ class TeacherModel
    
     public function update($id, $data)
     {
-        //DB::enableQueryLog();
         $results = DB::table($this->table)->where('teacher_id', $id)->update($data);
-       //dd(DB::getQueryLog());
         return $results;
     }    
      

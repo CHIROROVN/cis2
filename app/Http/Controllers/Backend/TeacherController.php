@@ -39,8 +39,8 @@ class TeacherController extends BackendController
     {
         $clsDept          = new DeptModel();
         $clsResearch      = new ResearchModel();
-        $clsTeacher      = new TeacherModel();
-        $inputs         = Input::all();        
+        $clsTeacher       = new TeacherModel();
+        $inputs           = Input::all();        
         $Filename= '';
         $validator      = Validator::make($inputs, $clsTeacher->Rules(), $clsTeacher->Messages());
         if ($validator->fails()) {
@@ -60,6 +60,7 @@ class TeacherController extends BackendController
                if($key !='_token' && $key !='teacher_photo')
                  $data['teacher'][$key] = $val; 
            } 
+           $data['teacher']['teacher_id'] = '';
            $data['teacher']['teacher_photo'] = $Filename;
            $data['teacher']['dept_name1']    = (!empty($data['teacher']['teacher_dept1']))?$clsDept->getDepartmentNameByID($data['teacher']['teacher_dept1']) :''; 
            $data['teacher']['dept_name2']    = (!empty($data['teacher']['teacher_dept2']))?$clsDept->getDepartmentNameByID($data['teacher']['teacher_dept2']) :'';
@@ -103,8 +104,15 @@ class TeacherController extends BackendController
         $clsResearch         = new ResearchModel();
         $clsDept             = new DeptModel();
         $data['teacher']     = $clsTeacher->get_by_id($id);
-        $data['researches'] = $clsResearch->getlistResearchInFaculty();
+        $data['researches'] = $clsResearch->getlistResearchInFaculty();        
         $data['departments'] = $clsDept->getListDepartment();
+        $data['faculty_id']  = 0;
+        if(count($data['departments']) >0){
+          foreach($data['departments'] as $department){
+             if($department->dept_id ==$data['teacher']->teacher_dept1) $data['faculty_id']  = $department->faculty_id;
+          }
+             
+        }
         $data['error_photo'] = trans('validation.error_teacher_photo_mimes');
         $data['error_url']   = trans('validation.error_teacher_url_regex');
         return view('backend.teacher.edit', $data);
@@ -159,6 +167,7 @@ class TeacherController extends BackendController
            }
            $data['teacher']['teacher_dspl_flag'] = (isset($data['teacher']['teacher_dspl_flag']) && $data['teacher']['teacher_dspl_flag']==1)?1:NULL;
         }      
+       
                                                  
         Session::put('teacher', $data['teacher']);
         return view('backend.teacher.check_edit',$data);

@@ -16,13 +16,14 @@
 });
 
 
-Route::group(['prefix' => 'hoge/teacher-db', 'namespace' => 'Frontend'], function () 
+Route::group(['prefix' => 'teacher-db', 'namespace' => 'Frontend'], function () 
 {
 	Route::get('/search', ['as' => 'frontend.search.index', 'uses' => 'SearchController@index']);
 	Route::get('/teacher', ['as' => 'frontend.search.teacher', 'uses' => 'SearchController@search']);
+	Route::get('/ajax/research/{id}', ['as' => 'frontend.search.research', 'uses' => 'SearchController@ajaxresearch']);
 });
 
-Route::group(['prefix' => 'hoge/teacher-db/contents-adm', 'namespace' => 'Backend'], function () 
+Route::group(['prefix' => 'teacher-db/contents-adm', 'namespace' => 'Backend'], function () 
 {
 	Route::get('/', function(){
 		return redirect()->route('backend.menu.index');

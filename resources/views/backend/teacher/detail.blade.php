@@ -40,7 +40,7 @@
           </tr>
           <tr>
             <td width="25%" class="col3">顔写真</td>
-            <td>@if(!empty($teacher->teacher_photo))<img src="{{ asset('') }}public/{{$teacher->teacher_photo}}" width="120" height="180"> @else 画像なし @endif</td>
+            <td>@if(!empty($teacher->teacher_photo))<img src="{{ asset('') }}public/{{$teacher->teacher_photo}}" width="85px" height="113"> @else 画像なし @endif</td>
           </tr>
           <tr>
             <td width="25%" class="col3">リンク先URL</td>
@@ -108,7 +108,7 @@
     <tr>
       <td align="center"><input type="button" onClick="location.href='{{route('backend.teacher.confirmdelete',$teacher->teacher_id)}}'" value="削除する（確認済）">
         　　　　　
-      <input type="button" onClick="location.href='{{route('backend.teacher.edit',$teacher->teacher_id)}}'" value="やめる"></td>
+      <input type="button" onClick="location.href='{{route('backend.search.detail',$teacher->teacher_id)}}'" value="やめる"></td>
     </tr>
     
     <tr>

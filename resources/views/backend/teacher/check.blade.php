@@ -110,7 +110,7 @@
     <tr>
       <td align="center"><input type="submit"  value="登録する（確認済）">
         　　　　　
-      <input type="button" onClick="{{route('backend.search.detail', $teacher['teacher_id'])}}" value="戻って修正する"></td>
+      <input type="button" onClick="history.back()" value="戻って修正する"></td>
     </tr>
     <tr>
       <td>&nbsp;</td>

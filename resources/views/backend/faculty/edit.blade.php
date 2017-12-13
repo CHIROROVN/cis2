@@ -3,7 +3,7 @@
 <table width="920" border="0" align="center" cellpadding="5" cellspacing="0">
   <tbody>
     <tr>
-      <td class="col1">■教員検索システム　＞　学部/研究科の新規登録</td>
+      <td class="col1">■教員検索システム　＞　学部/研究科の変更</td>
     </tr>
     <tr>
       <td>&nbsp;</td>
@@ -28,7 +28,7 @@
       </table></td>
     </tr>
     <tr>
-      <td align="center"><input type="submit" value="登録する">      　　　　　
+      <td align="center"><input type="submit" value="変更する">      　　　　　
         <input type="reset" name="btn-reset" id="btn-reset" value="クリア"></td>
     </tr>
     {!! Form::close() !!}

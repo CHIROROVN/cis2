@@ -20,7 +20,7 @@
             <td><select name="teacher_dept1" id="teacher_dept1">
               <option value="">指定しない</option>
                   @foreach($departments as $key=>$department)
-                  <option value="{{$department->dept_id}}">{{$department->faculty_name}}.{{$department->dept_name}}</option>
+                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
                   @endforeach
 
             </select></td>
@@ -30,7 +30,7 @@
             <td><select name="teacher_dept2" id="teacher_dept2">
               <option value="">指定しない</option>
                   @foreach($departments as $key=>$department)
-                  <option value="{{$department->dept_id}}">{{$department->faculty_name}}.{{$department->dept_name}}</option>
+                  <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
                   @endforeach
             </select></td>
           </tr>
@@ -84,7 +84,7 @@
                </td>
           </tr>
           <tr>
-            <td width="25%" class="col3">分野</td>
+            <td width="25%" class="col3">専門分野</td>
             <td><select name="teacher_research" id="teacher_research">
               <option value="">▼選択</option>             
             </select></td>
@@ -192,18 +192,30 @@ $("#teacher_photo").on("change",function() {
   }
 
 });  
+var arrDepartment = new Array();
+<?php if(count($departments) > 0){ 
+         foreach($departments as $department){
+?>
+arrDepartment.push({'dept_id':'<?php echo $department->dept_id?>','faculty_id':'<?php echo $department->faculty_id?>'});
+<?php }}?>
 var arrResearch = new Array();
 <?php if(count($researches) > 0){ 
         foreach($researches as $research){
-?>  arrResearch.push({'research_id':'<?php echo $research->research_id?>','research_name':'<?php echo $research->research_name?>','dept_id':'<?php echo $research->dept_id?>'});
+?>  arrResearch.push({'research_id':'<?php echo $research->research_id?>','research_name':'<?php echo $research->research_name?>','faculty_id':'<?php echo $research->faculty_id?>'});
 <?php }}?>  
 $("#teacher_dept1").on("change",function() {
   $('#teacher_research').val('') ;
   $("#teacher_research").html("<option value=''>▼選択</option>");  
-  id = $('#teacher_dept1').val();  
+  dept_id = $('#teacher_dept1').val();   
+  var id;
+  if(Array.isArray(arrDepartment)){
+     $.each(arrDepartment, function(key, val){
+        if(dept_id==val.dept_id) id = val.faculty_id;
+     });
+  }      
   if(Array.isArray(arrResearch)){
       $.each(arrResearch, function(key, val){
-        if(val.dept_id==id){
+        if(val.faculty_id==id){
             $("#teacher_research").append(new Option(val.research_name, val.research_id)); 
         }
     });     

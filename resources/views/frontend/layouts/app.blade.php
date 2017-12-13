@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="http://www.cis.ac.jp/common/css/base.css" type="text/css" media="screen,print">
 <link rel="alternate" media="handheld" type="text/html" href="http://www.sp.cis.ac.jp/">
 <script src="http://www.cis.ac.jp/common/js/jquery-1.7.2.min.js"></script>
-<script src="http://www.cis.ac.jp/common/js/common.js"></script>
+<script src="{{ asset('') }}public/js/common.js"></script>
 <!--[if lt IE 9]> 
 <script src="http://www.cis.ac.jp/common/js/html5shiv.js"></script>
 <![endif]-->

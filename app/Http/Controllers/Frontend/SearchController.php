@@ -29,8 +29,15 @@ class SearchController extends FrontendController {
 		$data['teacher_research'] 	= !empty($teacher_research ) ? $teacher_research  : NULL ;
 		$data['txtKeyword'] 		= !empty($txtKeyword ) ? $txtKeyword  : NULL ;		
 		$data['researches']   		= $clsSearch->getlistResearchInFaculty();
-		
+		$data['faculty_id']   		= 0;	
         $data['departments']   		= $clsSearch->getlistDepartment();
+        if(!empty($data['teacher_dept'])){
+        	foreach($data['departments'] as $department){
+        		if($department->dept_id==$data['teacher_dept']){
+                   $data['faculty_id'] = $department->faculty_id;
+        		}	
+        	}
+		}
 		$data['teachers']      		= $clsSearch->get_all($data['teacher_dept'],$data['teacher_research'],$data['txtKeyword']);	
        
 		return view('frontend.search.list',$data);

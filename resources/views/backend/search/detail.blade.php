@@ -40,7 +40,7 @@
           </tr>
           <tr>
             <td width="25%" class="col3">顔写真</td>
-            <td>@if(!empty($teacher->teacher_photo))<img src="{{ asset('') }}public/{{$teacher->teacher_photo}}" width="120" height="180"> @else 画像なし @endif</td>
+            <td>@if(!empty($teacher->teacher_photo))<img src="{{ asset('') }}public/{{$teacher->teacher_photo}}" width="85px" height="113px"> @else 画像なし @endif</td>
           </tr>
           <tr>
             <td width="25%" class="col3">リンク先URL</td>

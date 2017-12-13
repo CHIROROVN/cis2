@@ -22,7 +22,7 @@
                   <option value="">指定しない</option>
                   @if(count($departments) > 0)
                     @foreach($departments as $key=>$department)
-                    <option value="{{$department->dept_id}}">{{$department->faculty_name}}.{{$department->dept_name}}</option>
+                    <option value="{{$department->dept_id}}">{{$department->faculty_name}} {{$department->dept_name}}</option>
                     @endforeach
                   @endif  
                 </select>
@@ -53,18 +53,30 @@ $("#btSubmit").on("click",function() {
    $('#txtKeyword').val(strKeyword.trim());
   $( "#frmSearch" ).submit();
 });
+var arrDepartment = new Array();
+<?php if(count($departments) > 0){ 
+         foreach($departments as $department){
+?>
+arrDepartment.push({'dept_id':'<?php echo $department->dept_id?>','faculty_id':'<?php echo $department->faculty_id?>'});
+<?php }}?>  
 var arrResearch = new Array();
 <?php if(count($researches) > 0){ 
         foreach($researches as $research){
-?>  arrResearch.push({'research_id':'<?php echo $research->research_id?>','research_name':'<?php echo $research->research_name?>','dept_id':'<?php echo $research->dept_id?>'});
+?>  arrResearch.push({'research_id':'<?php echo $research->research_id?>','research_name':'<?php echo $research->research_name?>','faculty_id':'<?php echo $research->faculty_id?>'});
 <?php }}?>  
 $("#teacher_dept").on("change",function() {
   $('#teacher_research').val('') ;
-  $("#teacher_research").html("<option value=''>指定しない</option>");  
-  id = $('#teacher_dept').val();  
+  $("#teacher_research").html("<option value=''>指定しない</option>"); 
+  dept_id = $('#teacher_dept').val();   
+  var id;
+  if(Array.isArray(arrDepartment)){
+     $.each(arrDepartment, function(key, val){
+        if(dept_id==val.dept_id) id = val.faculty_id;
+     });
+  }    
   if(Array.isArray(arrResearch)){
       $.each(arrResearch, function(key, val){
-        if(val.dept_id==id){
+        if(val.faculty_id==id){
             $("#teacher_research").append(new Option(val.research_name, val.research_id)); 
         }
     });     
